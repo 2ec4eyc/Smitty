@@ -15,6 +15,8 @@
   --wf-on-dark-muted: #CFC7C7;
   --wf-blush: #FBEFEF;
   --wf-blush-line: #F1C6CA;
+  --wf-gold: #F2B937;
+  --wf-gold-foil: linear-gradient(160deg, #FFF3C4 0%, #F7CB57 25%, #C98A1E 50%, #FFE08A 70%, #E0A030 100%);
   --wf-radius: 12px;
   --wf-head: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --wf-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -59,6 +61,45 @@ html { scroll-behavior: smooth; }
 .wf-top__dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--wf-red); margin-right: 8px; box-shadow: 0 0 0 4px rgba(240,0,28,.25); }
 .wf-top .wf__btn { min-height: 36px; padding: 8px 16px; font-size: 12px; box-shadow: none; }
 
+/* Birthday accents */
+.wf .wf__gold { background: var(--wf-gold-foil); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.wf--dark .wf__pill--party { border-color: rgba(242,185,55,.6); color: #FFE08A; background: rgba(242,185,55,.12); }
+
+/* Falling confetti behind the hero copy (decorative, CSS only) */
+.wf-hero { position: relative; overflow: hidden; }
+.wf-hero .wf__wrap { position: relative; z-index: 1; }
+.wf-confetti { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.wf-confetti i { position: absolute; top: -24px; left: var(--x); width: 9px; height: 16px; border-radius: 2px; background: var(--c);
+  opacity: .85; animation: wf-fall var(--d) linear var(--t) infinite; }
+.wf-confetti i:nth-child(3n) { width: 10px; height: 10px; border-radius: 50%; }
+.wf-confetti i:nth-child(1) { --x: 4%; --c: #F2B937; --d: 9s; --t: -1s; }
+.wf-confetti i:nth-child(2) { --x: 11%; --c: #F0001C; --d: 11s; --t: -6s; }
+.wf-confetti i:nth-child(3) { --x: 17%; --c: #fff; --d: 8s; --t: -3s; }
+.wf-confetti i:nth-child(4) { --x: 24%; --c: #FFE08A; --d: 12s; --t: -9s; }
+.wf-confetti i:nth-child(5) { --x: 31%; --c: #FF6B7D; --d: 10s; --t: -2s; }
+.wf-confetti i:nth-child(6) { --x: 38%; --c: #F2B937; --d: 13s; --t: -7s; }
+.wf-confetti i:nth-child(7) { --x: 45%; --c: #F0001C; --d: 9s; --t: -5s; }
+.wf-confetti i:nth-child(8) { --x: 52%; --c: #fff; --d: 11s; --t: -10s; }
+.wf-confetti i:nth-child(9) { --x: 59%; --c: #FFE08A; --d: 8s; --t: -4s; }
+.wf-confetti i:nth-child(10) { --x: 66%; --c: #F2B937; --d: 12s; --t: -1s; }
+.wf-confetti i:nth-child(11) { --x: 73%; --c: #FF6B7D; --d: 10s; --t: -8s; }
+.wf-confetti i:nth-child(12) { --x: 80%; --c: #F0001C; --d: 9s; --t: -6s; }
+.wf-confetti i:nth-child(13) { --x: 87%; --c: #fff; --d: 13s; --t: -3s; }
+.wf-confetti i:nth-child(14) { --x: 93%; --c: #F2B937; --d: 11s; --t: -11s; }
+.wf-confetti i:nth-child(15) { --x: 98%; --c: #FFE08A; --d: 10s; --t: -5s; }
+.wf-confetti i:nth-child(16) { --x: 8%; --c: #FF6B7D; --d: 14s; --t: -12s; }
+.wf-confetti i:nth-child(17) { --x: 28%; --c: #fff; --d: 12s; --t: -4s; }
+.wf-confetti i:nth-child(18) { --x: 63%; --c: #F0001C; --d: 14s; --t: -2s; }
+.wf-confetti i:nth-child(19) { --x: 77%; --c: #F2B937; --d: 8s; --t: -7s; }
+.wf-confetti i:nth-child(20) { --x: 90%; --c: #FF6B7D; --d: 12s; --t: -9s; }
+@keyframes wf-fall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(28px, 60vh, 0) rotate(270deg); }
+  100% { transform: translate3d(-12px, 130vh, 0) rotate(560deg); opacity: .2; }
+}
+@media (max-width: 520px) { .wf-confetti i { width: 6px; height: 11px; opacity: .55; } .wf-confetti i:nth-child(n+13) { display: none; } }
+@media (prefers-reduced-motion: reduce) { .wf-confetti { display: none; } }
+
 /* Hero */
 .wf-hero .wf__wrap { padding-top: 64px; padding-bottom: 32px; }
 .wf-hero h1 { margin: 20px 0 20px; }
@@ -72,7 +113,8 @@ html { scroll-behavior: smooth; }
 .wf-check svg { width: 14px; height: 14px; }
 .wf-dates { margin: 24px auto 0; max-width: 600px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .wf-date { border-radius: 10px; padding: 14px 10px; text-align: center; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); }
-.wf-date--key { background: rgba(240,0,28,.16); border-color: rgba(240,0,28,.6); }
+.wf-date--key { background: rgba(242,185,55,.14); border-color: rgba(242,185,55,.7); }
+.wf-date--key .wf-date__label { color: #FFE08A; }
 .wf-date__label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FF8A96; }
 .wf-date__day { display: block; font-family: var(--wf-head); font-weight: 800; font-size: 18px; margin-top: 4px; }
 .wf-date__dow { display: block; font-size: 13px; color: var(--wf-on-dark-muted); }
@@ -86,7 +128,7 @@ html { scroll-behavior: smooth; }
 .wf-perks ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .wf-perks li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 10px;
   background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); font-size: 15px; line-height: 1.45; }
-.wf-perks__ico { width: 40px; height: 40px; border-radius: 10px; background: rgba(240,0,28,.18); display: grid; place-items: center; font-size: 20px; }
+.wf-perks__ico { width: 40px; height: 40px; border-radius: 10px; background: rgba(242,185,55,.18); display: grid; place-items: center; font-size: 20px; }
 .wf-perks strong { color: #fff; }
 
 /* Why */
@@ -172,9 +214,10 @@ body{margin:0;background:#0A0606}
 <section class="sec sec--hero"><!-- Goat's 33 · 02 HERO · GHL section background = backgrounds/hero-desktop.jpg (mobile: hero-mobile.jpg)
      Put GHL's native FORM right after this element, then 03-waitlist-perks below the form. -->
 <div class="wf wf--dark wf-hero">
+  <div class="wf-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wf__wrap wf__center">
-    <span class="wf__pill">Birthday month · 33 days · $330</span>
-    <h1><span>Goat's 33:</span> <span class="wf__red">33 Days to Fundable</span></h1>
+    <span class="wf__pill wf__pill--party">🎉 Birthday month · 33 days · $330</span>
+    <h1><span class="wf__gold">Goat's 33:</span> <span class="wf__red">33 Days to Fundable</span></h1>
     <p class="wf__lead">I just turned 33. For my birthday month, I'm taking you through the 33 credit and funding moves I wish somebody showed me at 23, for $330.</p>
 
     <div class="wf-learn">

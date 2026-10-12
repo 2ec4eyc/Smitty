@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Background art source. Render: see render-backgrounds.sh. ?v=hero|dark|light -->
+<!-- Background art source (birthday edition). Render: see render-backgrounds.sh. ?v=hero|dark|light -->
 <html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
 <style>
@@ -8,11 +8,15 @@
   .l{position:absolute;inset:0}
   .streak{position:absolute;width:140%;left:-20%;filter:blur(var(--b));transform:rotate(var(--r));opacity:var(--o)}
   .glow{position:absolute;border-radius:50%;filter:blur(120px)}
-  .n33{position:absolute;font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:3px rgba(255,60,80,.22)}
-  .vig{background:radial-gradient(ellipse 55% 60% at 50% 50%,rgba(7,4,4,.9),rgba(7,4,4,.45) 60%,rgba(7,4,4,0) 100%)}
-  .grain{opacity:.09;mix-blend-mode:overlay}
+  .vig{background:radial-gradient(ellipse 50% 58% at 50% 50%,rgba(7,4,4,.88),rgba(7,4,4,.4) 62%,rgba(7,4,4,0) 100%)}
+  .grain{opacity:.08;mix-blend-mode:overlay}
   body.light{background:#FBFAFA}
   .light .glow{filter:blur(140px)}
+  .bal{position:absolute;border-radius:50% 50% 48% 48% / 55% 55% 45% 45%}
+  .foil{position:absolute;font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;letter-spacing:-.05em;line-height:.8;
+    background:linear-gradient(160deg,#FFF3C4 0%,#F7CB57 22%,#B57A16 45%,#FFE08A 62%,#C98A1E 80%,#FFF0B8 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+  .conf{position:absolute}
 </style></head>
 <body>
 <div class="l" id="art"></div>
@@ -22,27 +26,81 @@ const v = new URLSearchParams(location.search).get('v') || 'hero';
 const W = innerWidth, H = innerHeight, portrait = H > W;
 const art = document.getElementById('art');
 const add = (html) => art.insertAdjacentHTML('beforeend', html);
+let seed = 33; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647; // same art every render
 const streak = (top, h, rot, blur, op, c1, c2) => add(`<div class="streak" style="top:${top}%;height:${h}px;--r:${rot}deg;--b:${blur}px;--o:${op};background:linear-gradient(90deg,transparent,${c1} 30%,${c2} 50%,${c1} 70%,transparent)"></div>`);
 const glow = (x, y, s, c) => add(`<div class="glow" style="left:${x}%;top:${y}%;width:${s}px;height:${s}px;margin:-${s/2}px 0 0 -${s/2}px;background:${c}"></div>`);
 
+// Round party balloon with highlight, knot and string. x,y = center in px, r = radius.
+const COLORS = { red: ['#FF4A5E', '#F0001C', '#7A000E'], gold: ['#FFF0B0', '#F2B937', '#8A5A0B'], pink: ['#FFD3D9', '#F58A99', '#B8404F'], white: ['#FFFFFF', '#F1E6E6', '#B9A9A9'] };
+function balloon(x, y, r, color, tilt = 0, op = 1) {
+  const [hi, mid, lo] = COLORS[color], w = r * 2, h = r * 2.3;
+  add(`<svg style="position:absolute;left:${x - r}px;top:${y - r}px;overflow:visible;opacity:${op};transform:rotate(${tilt}deg);transform-origin:${r}px ${h}px" width="${w}" height="${h + 260}">
+    <defs><radialGradient id="b${x}${y}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="${hi}"/><stop offset=".45" stop-color="${mid}"/><stop offset="1" stop-color="${lo}"/></radialGradient></defs>
+    <path d="M${r} ${h} q ${-r * .25} 60 0 120 t 0 140" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none"/>
+    <path d="M${r - 9} ${h + 10} L${r + 9} ${h + 10} L${r} ${h - 4} Z" fill="${lo}"/>
+    <ellipse cx="${r}" cy="${h / 2}" rx="${r}" ry="${h / 2}" fill="url(#b${x}${y})"/>
+    <ellipse cx="${r * .62}" cy="${h * .28}" rx="${r * .18}" ry="${r * .32}" fill="rgba(255,255,255,.55)" transform="rotate(-25 ${r * .62} ${h * .28})"/>
+  </svg>`);
+}
+// Gold foil number balloon with strings.
+function foilNumber(text, x, y, size, tilt) {
+  add(`<div class="foil" style="left:${x}px;top:${y}px;font-size:${size}px;transform:rotate(${tilt}deg)">${text}</div>`);
+  add(`<svg style="position:absolute;left:${x}px;top:${y + size * .78}px;overflow:visible" width="10" height="10">
+    <path d="M${size * .3} 0 q -30 90 10 180 t -10 200" stroke="rgba(255,236,170,.4)" stroke-width="2" fill="none"/>
+    <path d="M${size * .85} 0 q 30 90 -10 180 t 10 200" stroke="rgba(255,236,170,.4)" stroke-width="2" fill="none"/></svg>`);
+}
+// Confetti: strips, dots and squiggles; keep(x,y) returns 0..1 to thin it out where text sits.
+function confetti(n, palette, keep, scale = 1) {
+  for (let i = 0; i < n; i++) {
+    const x = rnd() * W, y = rnd() * H;
+    if (rnd() > keep(x / W, y / H)) continue;
+    const c = palette[Math.floor(rnd() * palette.length)], rot = rnd() * 360, k = (0.6 + rnd() * 0.9) * scale, t = rnd();
+    if (t < .5) add(`<div class="conf" style="left:${x}px;top:${y}px;width:${10 * k}px;height:${22 * k}px;background:${c};border-radius:2px;transform:rotate(${rot}deg)"></div>`);
+    else if (t < .8) add(`<div class="conf" style="left:${x}px;top:${y}px;width:${11 * k}px;height:${11 * k}px;background:${c};border-radius:50%"></div>`);
+    else add(`<svg class="conf" style="left:${x}px;top:${y}px;transform:rotate(${rot}deg)" width="${46 * k}" height="${18 * k}" viewBox="0 0 46 18"><path d="M2 9 q 5 -8 10 0 t 10 0 t 10 0 t 10 0" stroke="${c}" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`);
+  }
+}
+const edges = (x, y) => Math.min(1, Math.pow(Math.hypot((x - .5) * 1.4, (y - .5) * 1.1) * 1.8, 2.2)); // sparse in the middle
+
 if (v === 'light') {
   document.body.className = 'light';
-  glow(-4, 20, 700, 'rgba(240,0,28,.22)');
-  glow(104, 75, 760, 'rgba(240,0,28,.20)');
-  glow(96, 8, 420, 'rgba(255,170,180,.45)');
-  glow(6, 92, 460, 'rgba(255,170,180,.45)');
-  document.querySelector('.grain').style.opacity = .05;
+  glow(-4, 20, 700, 'rgba(240,0,28,.18)');
+  glow(104, 75, 760, 'rgba(240,0,28,.16)');
+  glow(96, 8, 420, 'rgba(255,200,120,.35)');
+  glow(6, 92, 460, 'rgba(255,170,180,.4)');
+  confetti(700, ['#F0001C', '#F2B937', '#F58A99', '#FFD3D9', '#E8A92A'], (x, y) => Math.pow(Math.abs(x - .5) * 2, 2.5), .9);
+  balloon(W * .06, H * .14, 70, 'red', -8, .9);
+  balloon(W * .12, H * .26, 56, 'gold', 6, .9);
+  balloon(W * .93, H * .6, 74, 'pink', 8, .9);
+  balloon(W * .86, H * .72, 54, 'red', -6, .9);
+  document.querySelector('.grain').style.opacity = .04;
 } else {
   const flip = v === 'dark' ? -1 : 1;
-  glow(flip > 0 ? 0 : 100, 0, portrait ? 900 : 1100, 'rgba(184,0,24,.6)');
-  glow(flip > 0 ? 100 : 0, 100, portrait ? 900 : 1100, 'rgba(184,0,24,.5)');
-  // wide red light planes plus thin bright beams, like the reference site
-  streak(12, 260, -28 * flip, 50, .75, 'rgba(240,0,28,0)', 'rgba(240,0,28,.85)');
-  streak(22, 18, -28 * flip, 3, .95, 'rgba(255,60,80,0)', 'rgba(255,110,125,1)');
-  streak(27, 6, -28 * flip, 1, .8, 'rgba(255,60,80,0)', 'rgba(255,170,180,1)');
-  streak(70, 320, -28 * flip, 70, .6, 'rgba(184,0,24,0)', 'rgba(230,0,30,.9)');
-  streak(80, 14, -28 * flip, 2, .85, 'rgba(255,60,80,0)', 'rgba(255,120,135,1)');
-  if (v === 'hero') add(`<div class="n33" style="right:${portrait ? -8 : -3}%;bottom:${portrait ? 2 : -6}%;font-size:${portrait ? 900 : 1000}px">33</div>`);
+  glow(flip > 0 ? 0 : 100, 0, portrait ? 900 : 1100, 'rgba(184,0,24,.55)');
+  glow(flip > 0 ? 100 : 0, 100, portrait ? 900 : 1100, 'rgba(184,0,24,.45)');
+  glow(flip > 0 ? 82 : 18, portrait ? 80 : 45, 700, 'rgba(242,185,55,.16)');
+  streak(12, 260, -28 * flip, 50, .6, 'rgba(240,0,28,0)', 'rgba(240,0,28,.85)');
+  streak(22, 18, -28 * flip, 3, .8, 'rgba(255,60,80,0)', 'rgba(255,110,125,1)');
+  streak(70, 320, -28 * flip, 70, .5, 'rgba(184,0,24,0)', 'rgba(230,0,30,.9)');
+  if (v === 'hero') {
+    // Hero is a tall section (~1660px desktop, ~1900px on phones), so art stays in the side gutters
+    // outside the 760px text column, and the image is rendered at the section's shape.
+    if (portrait) {
+      balloon(W * .06, 150, 120, 'red', -12); balloon(W * .94, 120, 110, 'gold', 12);
+      balloon(W * .03, H * .55, 80, 'gold', -8, .7); balloon(W * .97, H * .8, 80, 'red', 8, .7);
+    } else {
+      foilNumber('33', W * .72, 120, 300, 6);
+      balloon(W * .2, 230, 110, 'red', -10); balloon(W * .26, 150, 78, 'gold', 6); balloon(W * .16, 520, 70, 'white', -4, .9);
+      balloon(W * .8, 860, 96, 'red', 10); balloon(W * .85, 980, 70, 'gold', -6);
+      balloon(W * .19, 1180, 84, 'gold', -8, .9);
+    }
+  } else {
+    balloon(W * .93, H * .2, 100, 'red', 10); balloon(W * .85, H * .1, 74, 'gold', -6);
+    balloon(W * .06, H * .7, 90, 'gold', -8); balloon(W * .13, H * .82, 64, 'red', 6);
+  }
+  const gutters = (x) => (x < .3 || x > .7 ? 1 : .03);
+  if (v === 'hero') confetti(portrait ? 260 : 520, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], portrait ? (x) => (x < .1 || x > .9 ? .9 : .04) : gutters, portrait ? 2.2 : 1);
+  else confetti(320, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], edges, 1);
   add('<div class="l vig"></div>');
 }
 </script>

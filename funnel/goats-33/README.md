@@ -7,12 +7,12 @@ Upload everything in `backgrounds/` to GHL **Media**:
 
 | File | Use on | Size |
 |---|---|---|
-| `hero-desktop.jpg` | Hero section (desktop) | 1920×1080 |
-| `hero-mobile.jpg` | Hero section (mobile) | 1080×1920 |
+| `hero-desktop.jpg` | Hero section (desktop) | 1920×1680 |
+| `hero-mobile.jpg` | Hero section (mobile) | 1080×5270 (tall on purpose: the hero is a long section on phones) |
 | `light-section.jpg` | "Why I'm doing this" section | 1920×1080 |
 | `dark-section.jpg` | "Who it's for" section | 1920×1080 |
 
-In each section: **Section → Background → Image**, size **Cover**, position **Center**. For the hero, set the mobile image in the mobile view if your builder supports a separate mobile background. Otherwise use `hero-desktop.jpg` for both, since the center stays dark either way.
+In each section: **Section → Background → Image**, size **Cover**, position **Center**. For the hero, set the mobile image in the mobile view if your builder supports a separate mobile background. Otherwise use `hero-desktop.jpg` for both. The balloons and confetti sit along the sides, so the text column stays clear either way.
 
 ## 2. Paste the global styles (once)
 **Page Settings → Custom CSS**: paste all of `registration/00-global-styles.css`, replacing anything from an earlier version.
@@ -50,6 +50,7 @@ Fields: **First name** (required), **Email** (required), **Phone** (optional; la
 ## Brand colors (taken from partnerwithsmitty.com/class)
 | Role | Hex |
 |---|---|
+| Gold (birthday accent: headline foil, balloons, confetti) | `#F2B937` |
 | Red (buttons, highlights) | `#F0001C` |
 | Deep red (hover, accents) | `#B80018` |
 | Near-black (dark sections) | `#0A0606` |
