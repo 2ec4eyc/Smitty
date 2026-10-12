@@ -7,7 +7,7 @@ Upload everything in `backgrounds/` to GHL **Media**:
 
 | File | Use on | Size |
 |---|---|---|
-| `hero-desktop.jpg` | Hero section (desktop) | 1920×1680 |
+| `hero-desktop.jpg` | Hero section (desktop) | 1920×2600 (tall so it covers the hero, waitlist header, form and perks) |
 | `hero-mobile.jpg` | Hero section (mobile) | 1080×5270 (tall on purpose: the hero is a long section on phones) |
 | `light-section.jpg` | "Why I'm doing this" section | 1920×1080 |
 | `dark-section.jpg` | "Who it's for" section | 1920×1080 |

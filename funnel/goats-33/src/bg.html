@@ -23,7 +23,7 @@
 <svg class="l grain" width="100%" height="100%"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
 <script>
 const v = new URLSearchParams(location.search).get('v') || 'hero';
-const W = innerWidth, H = innerHeight, portrait = H > W;
+const W = innerWidth, H = innerHeight, portrait = W < 1200; // phone art for the narrow renders, not just tall ones
 const art = document.getElementById('art');
 const add = (html) => art.insertAdjacentHTML('beforeend', html);
 let seed = 33; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647; // same art every render
@@ -89,17 +89,22 @@ if (v === 'light') {
       balloon(W * .06, 150, 120, 'red', -12); balloon(W * .94, 120, 110, 'gold', 12);
       balloon(W * .03, H * .55, 80, 'gold', -8, .7); balloon(W * .97, H * .8, 80, 'red', 8, .7);
     } else {
-      foilNumber('33', W * .72, 120, 300, 6);
-      balloon(W * .2, 230, 110, 'red', -10); balloon(W * .26, 150, 78, 'gold', 6); balloon(W * .16, 520, 70, 'white', -4, .9);
-      balloon(W * .8, 860, 96, 'red', 10); balloon(W * .85, 980, 70, 'gold', -6);
-      balloon(W * .19, 1180, 84, 'gold', -8, .9);
+      // Art spread down the whole height (fractions of H), so a taller or shorter section still looks full.
+      foilNumber('33', W * .765, H * .075, 260, 6);
+      balloon(W * .2, H * .09, 110, 'red', -10); balloon(W * .26, H * .06, 78, 'gold', 6); balloon(W * .16, H * .2, 70, 'white', -4, .9);
+      balloon(W * .8, H * .33, 96, 'red', 10); balloon(W * .85, H * .38, 70, 'gold', -6);
+      balloon(W * .19, H * .45, 84, 'gold', -8, .9);
+      balloon(W * .17, H * .66, 100, 'red', -8); balloon(W * .23, H * .7, 72, 'gold', 8);
+      balloon(W * .82, H * .62, 76, 'white', 6, .9);
+      balloon(W * .8, H * .82, 104, 'gold', 10); balloon(W * .86, H * .86, 74, 'red', -6);
+      balloon(W * .2, H * .9, 80, 'white', -6, .9);
     }
   } else {
     balloon(W * .93, H * .2, 100, 'red', 10); balloon(W * .85, H * .1, 74, 'gold', -6);
     balloon(W * .06, H * .7, 90, 'gold', -8); balloon(W * .13, H * .82, 64, 'red', 6);
   }
   const gutters = (x) => (x < .3 || x > .7 ? 1 : .03);
-  if (v === 'hero') confetti(portrait ? 260 : 520, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], portrait ? (x) => (x < .1 || x > .9 ? .9 : .04) : gutters, portrait ? 2.2 : 1);
+  if (v === 'hero') confetti(portrait ? 260 : 800, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], portrait ? (x) => (x < .1 || x > .9 ? .9 : .04) : gutters, portrait ? 2.2 : 1);
   else confetti(320, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], edges, 1);
   add('<div class="l vig"></div>');
 }
