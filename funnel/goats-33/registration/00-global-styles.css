@@ -118,9 +118,27 @@ html { scroll-behavior: smooth; }
 .wf-date__label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FF8A96; }
 .wf-date__day { display: block; font-family: var(--wf-head); font-weight: 800; font-size: 18px; margin-top: 4px; }
 .wf-date__dow { display: block; font-size: 13px; color: var(--wf-on-dark-muted); }
-.wf-formhead { margin-top: 40px; scroll-margin-top: 24px; }
-.wf-formhead h3 { font-size: 22px; }
-.wf-formhead p { margin: 6px 0 0; color: var(--wf-on-dark-muted); font-size: 15px; }
+.wf-formhead { margin-top: 48px; scroll-margin-top: 24px; }
+.wf .wf-formhead__title { font-size: clamp(34px, 6vw, 52px); text-shadow: 0 6px 30px rgba(240,0,28,.35); }
+/* Moving gold foil shine on "waitlist" */
+.wf .wf-shine { background-image: linear-gradient(100deg, #C98A1E 0%, #F7CB57 20%, #FFF6D0 32%, #F7CB57 44%, #C98A1E 60%, #F7CB57 80%, #C98A1E 100%);
+  background-size: 250% 100%; animation: wf-shine 3.5s linear infinite; }
+@keyframes wf-shine { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+/* Glowing underline that sweeps red to gold */
+.wf-formhead__bar { display: block; width: 120px; height: 4px; margin: 14px auto 0; border-radius: 4px;
+  background: linear-gradient(90deg, var(--wf-red), var(--wf-gold), var(--wf-red)); background-size: 200% 100%;
+  box-shadow: 0 0 16px rgba(240,0,28,.6); animation: wf-stat-bar 3s linear infinite, wf-bar-grow 2.4s ease-in-out infinite alternate; }
+@keyframes wf-bar-grow { from { width: 80px; } to { width: 160px; } }
+.wf-formhead p { margin: 14px 0 0; color: var(--wf-on-dark-muted); font-size: 16px; }
+.wf-formhead__ico { display: inline-block; animation: wf-buzz 4s ease-in-out infinite; }
+@keyframes wf-buzz { 0%, 85%, 100% { transform: rotate(0); } 87%, 91%, 95% { transform: rotate(-12deg); } 89%, 93%, 97% { transform: rotate(12deg); } }
+/* Bouncing arrow pointing down to the form */
+.wf-formhead__arrow { display: grid; place-items: center; width: 40px; height: 40px; margin: 14px auto 0; border-radius: 50%;
+  color: #fff; background: var(--wf-red); box-shadow: 0 0 0 0 rgba(240,0,28,.6); animation: wf-arrow 1.6s ease-in-out infinite, wf-arrow-ring 1.6s ease-out infinite; }
+.wf-formhead__arrow svg { width: 22px; height: 22px; }
+@keyframes wf-arrow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+@keyframes wf-arrow-ring { 0% { box-shadow: 0 0 0 0 rgba(240,0,28,.55); } 80%, 100% { box-shadow: 0 0 0 14px rgba(240,0,28,0); } }
+@media (prefers-reduced-motion: reduce) { .wf .wf-shine, .wf-formhead__bar, .wf-formhead__ico, .wf-formhead__arrow { animation: none; } }
 
 /* Perks under the form button */
 .wf-perks .wf__wrap { padding-top: 24px; padding-bottom: 72px; max-width: 560px; }
