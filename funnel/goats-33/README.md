@@ -15,8 +15,10 @@ Upload everything in `backgrounds/` to GHL **Media**:
 In each section: **Section → Background → Image**, size **Cover**, position **Center**. For the hero, set the mobile image in the mobile view if your builder supports a separate mobile background. Otherwise use `hero-desktop.jpg` for both, since the center stays dark either way.
 
 ## 2. Paste the global styles (once)
-**Page Settings → Tracking Code → Header Code**: paste all of `registration/00-global-styles.html`.
-It holds the fonts, the brand colors (`--wf-red` and the rest) and all styling. To change a color later, edit it there once.
+**Page Settings → Custom CSS**: paste all of `registration/00-global-styles.css`, replacing anything from an earlier version.
+It's plain CSS. It loads the fonts and holds the brand colors (`--wf-red` and the rest) and all styling. To change a color later, edit it there once.
+
+If the page shows black text, plain Times-style fonts or buttons with no red, the global CSS isn't loading. Check it's pasted in Custom CSS, complete, and the page is saved.
 
 ## 3. Build the page (top to bottom)
 For every section and row, set **padding to 0** and **full width**, because the blocks bring their own spacing.

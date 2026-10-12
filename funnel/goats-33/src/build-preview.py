@@ -24,7 +24,7 @@ body{margin:0;background:#0A0606}
 </style>"""
 page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Goat's 33 preview</title>
-{blk("00")}{CSS}</head><body>
+<style>{(root / "registration" / "00-global-styles.css").read_text()}</style>{CSS}</head><body>
 {blk("01")}
 <section class="sec sec--hero">{blk("02")}{FORM}{blk("03")}</section>
 <section class="sec sec--light">{blk("04")}</section>
