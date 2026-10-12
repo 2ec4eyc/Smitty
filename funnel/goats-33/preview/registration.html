@@ -120,7 +120,8 @@ html { scroll-behavior: smooth; }
 .wf-date__label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FF8A96; }
 .wf-date__day { display: block; font-family: var(--wf-head); font-weight: 800; font-size: 18px; margin-top: 4px; }
 .wf-date__dow { display: block; font-size: 13px; color: var(--wf-on-dark-muted); }
-.wf-formhead { margin-top: 48px; scroll-margin-top: 24px; }
+.wf-waitlist .wf__wrap { padding-top: 16px; padding-bottom: 16px; }
+.wf-formhead { scroll-margin-top: 24px; }
 .wf .wf-formhead__title { font-size: clamp(34px, 6vw, 52px); text-shadow: 0 6px 30px rgba(240,0,28,.35); }
 /* Moving gold foil shine on "waitlist" */
 .wf .wf-shine { background-image: linear-gradient(100deg, #C98A1E 0%, #F7CB57 20%, #FFF6D0 32%, #F7CB57 44%, #C98A1E 60%, #F7CB57 80%, #C98A1E 100%);
@@ -286,7 +287,7 @@ body{margin:0;background:#0A0606}
 </div>
 
 <section class="sec sec--hero"><!-- Goat's 33 · 02 HERO · GHL section background = backgrounds/hero-desktop.jpg (mobile: hero-mobile.jpg)
-     Put GHL's native FORM right after this element, then 03-waitlist-perks below the form. -->
+     Same section, stacked below this: 02b-waitlist-header, then GHL's native FORM, then 03-waitlist-perks. -->
 <div class="wf wf--dark wf-hero">
   <div class="wf-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wf__wrap wf__center">
@@ -310,6 +311,13 @@ body{margin:0;background:#0A0606}
     </div>
     <p style="margin:12px 0 0;font-size:14px;color:var(--wf-on-dark-muted)">Doors close Saturday, Oct 31, the last night of my birthday month.</p>
 
+  </div>
+</div>
+<!-- Goat's 33 · 02b WAITLIST HEADER · same GHL section as the hero, right after 02-hero
+     Below it: GHL's native FORM, then 03-waitlist-perks.
+     The buttons on the page jump here (#wf-register). -->
+<div class="wf wf--dark wf-waitlist">
+  <div class="wf__wrap wf__center">
     <div class="wf-formhead" id="wf-register">
       <h2 class="wf-formhead__title">Join the <span class="wf__gold wf-shine">waitlist</span></h2>
       <span class="wf-formhead__bar" aria-hidden="true"></span>

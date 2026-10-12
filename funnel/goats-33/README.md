@@ -25,15 +25,16 @@ For every section and row, set **padding to 0** and **full width**, because the 
 Each "Code" step below means a **Custom JS/HTML** element with that file pasted in.
 
 1. **Section: Top bar** → Code `01-top-bar.html`
-2. **Section: Hero** (background `hero-desktop.jpg`), one column, three elements stacked:
+2. **Section: Hero** (background `hero-desktop.jpg`), one column, four elements stacked:
    1. Code `02-hero.html`
-   2. **GHL Form element** (your waitlist form, see step 4)
-   3. Code `03-waitlist-perks.html`
+   2. Code `02b-waitlist-header.html`
+   3. **GHL Form element** (your waitlist form, see step 4)
+   4. Code `03-waitlist-perks.html`
 3. **Section: Why** (background `light-section.jpg`) → Code `04-why.html`
 4. **Section: Who it's for** (background `dark-section.jpg`) → Code `05-who-its-for.html`
 5. **Section: Footer** → Code `06-footer.html`
 
-The "I'm In For 33 →" button in the top bar and the "Save My Spot →" button jump to the form. They target `#wf-register`, which sits at the end of the hero block, right above the form. Nothing to configure.
+The "I'm In For 33 →" button in the top bar and the "Save My Spot →" button jump to the form. They target `#wf-register`, the waitlist header right above the form. Nothing to configure.
 
 ## 4. Style the GHL form to match
 Fields: **First name** (required), **Email** (required), **Phone** (optional; label it "Phone (optional, for text reminders when doors open)").

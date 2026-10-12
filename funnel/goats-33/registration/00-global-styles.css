@@ -118,7 +118,8 @@ html { scroll-behavior: smooth; }
 .wf-date__label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FF8A96; }
 .wf-date__day { display: block; font-family: var(--wf-head); font-weight: 800; font-size: 18px; margin-top: 4px; }
 .wf-date__dow { display: block; font-size: 13px; color: var(--wf-on-dark-muted); }
-.wf-formhead { margin-top: 48px; scroll-margin-top: 24px; }
+.wf-waitlist .wf__wrap { padding-top: 16px; padding-bottom: 16px; }
+.wf-formhead { scroll-margin-top: 24px; }
 .wf .wf-formhead__title { font-size: clamp(34px, 6vw, 52px); text-shadow: 0 6px 30px rgba(240,0,28,.35); }
 /* Moving gold foil shine on "waitlist" */
 .wf .wf-shine { background-image: linear-gradient(100deg, #C98A1E 0%, #F7CB57 20%, #FFF6D0 32%, #F7CB57 44%, #C98A1E 60%, #F7CB57 80%, #C98A1E 100%);
