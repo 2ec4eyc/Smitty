@@ -1,6 +1,6 @@
 <!-- Goat's 33 · 03 WAITLIST PERKS · same GHL section as the hero, directly UNDER the GHL form -->
 <div class="wf wf--dark wf-perks">
-  <div class="wf__wrap">
+  <div class="wf__wrap wf-perks__in">
     <p class="wf-perks__title">Join the waitlist and you get:</p>
     <ul>
       <li><span class="wf-perks__ico" aria-hidden="true">🎁</span><span><strong>My free 15-minute 3-report credit check</strong>, sent to your inbox right now</span></li>
@@ -9,3 +9,16 @@
     </ul>
   </div>
 </div>
+<script>
+/* Perks slide in one by one when they scroll into view. Without JS, or with reduced motion on, they just show. */
+(function () {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); e.target.classList.add('is-in'); } });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.wf-perks:not(.wf-anim)').forEach(function (sec) {
+    sec.classList.add('wf-anim');
+    io.observe(sec.querySelector('.wf-perks__in'));
+  });
+})();
+</script>
