@@ -2,7 +2,7 @@
 The form between the hero and the perks is a stand-in for GHL's native form element."""
 from pathlib import Path
 root = Path(__file__).resolve().parent.parent
-blk = lambda n: next((root / "registration").glob(f"{n}-*.html")).read_text()
+blk = lambda n: next((root / "registration").glob(f"{n}-*.html")).read_text().replace("SMITTY_PHOTO_URL", "../images/smitty-hero.jpg")
 FORM = """<div class="wf wf--dark" style="padding:0 16px"><form class="mock-form" onsubmit="return false">
   <p class="mock-note">Preview only: GHL's native form goes here</p>
   <label>First name<input placeholder="First name" autocomplete="given-name"></label>

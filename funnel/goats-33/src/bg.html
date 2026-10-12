@@ -90,10 +90,10 @@ if (v === 'light') {
       balloon(W * .03, H * .55, 80, 'gold', -8, .7); balloon(W * .97, H * .8, 80, 'red', 8, .7);
     } else {
       // Art spread down the whole height (fractions of H), so a taller or shorter section still looks full.
-      foilNumber('33', W * .765, H * .075, 260, 6);
-      balloon(W * .2, H * .09, 110, 'red', -10); balloon(W * .26, H * .06, 78, 'gold', 6); balloon(W * .16, H * .2, 70, 'white', -4, .9);
+      // Top half: the hero copy is left-aligned now, so keep balloons out of the text column (x .09 to .56).
+      balloon(W * .035, H * .07, 84, 'red', -10); balloon(W * .075, H * .035, 56, 'gold', 6); balloon(W * .03, H * .24, 60, 'white', -4, .9);
       balloon(W * .8, H * .33, 96, 'red', 10); balloon(W * .85, H * .38, 70, 'gold', -6);
-      balloon(W * .19, H * .45, 84, 'gold', -8, .9);
+      balloon(W * .04, H * .4, 70, 'gold', -8, .9);
       balloon(W * .17, H * .66, 100, 'red', -8); balloon(W * .23, H * .7, 72, 'gold', 8);
       balloon(W * .82, H * .62, 76, 'white', 6, .9);
       balloon(W * .8, H * .82, 104, 'gold', 10); balloon(W * .86, H * .86, 74, 'red', -6);
@@ -104,7 +104,8 @@ if (v === 'light') {
     balloon(W * .06, H * .7, 90, 'gold', -8); balloon(W * .13, H * .82, 64, 'red', 6);
   }
   const gutters = (x) => (x < .3 || x > .7 ? 1 : .03);
-  if (v === 'hero') confetti(portrait ? 260 : 800, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], portrait ? (x) => (x < .1 || x > .9 ? .9 : .04) : gutters, portrait ? 2.2 : 1);
+  const heroDesk = (x, y) => (y < .5 ? (x < .09 || x > .56 ? 1 : .02) : gutters(x));
+  if (v === 'hero') confetti(portrait ? 260 : 800, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], portrait ? (x) => (x < .1 || x > .9 ? .9 : .04) : heroDesk, portrait ? 2.2 : 1);
   else confetti(320, ['#F0001C', '#F2B937', '#FFE08A', '#FFFFFF', '#FF6B7D'], edges, 1);
   add('<div class="l vig"></div>');
 }

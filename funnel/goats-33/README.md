@@ -14,6 +14,9 @@ Upload everything in `backgrounds/` to GHL **Media**:
 
 In each section: **Section → Background → Image**, size **Cover**, position **Center**. For the hero, set the mobile image in the mobile view if your builder supports a separate mobile background. Otherwise use `hero-desktop.jpg` for both. The balloons and confetti sit along the sides, so the text column stays clear either way.
 
+## 1b. Upload Smitty's photo (hero)
+Upload `images/smitty-hero.jpg` (800×984) to GHL **Media**, copy its URL, then in `02-hero.html` replace `SMITTY_PHOTO_URL` with that URL before pasting the block.
+
 ## 2. Paste the global styles (once)
 **Page Settings → Custom CSS**: paste all of `registration/00-global-styles.css`, replacing anything from an earlier version.
 It's plain CSS. It loads the fonts and holds the brand colors (`--wf-red` and the rest) and all styling. To change a color later, edit it there once.

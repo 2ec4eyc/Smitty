@@ -106,6 +106,28 @@ html { scroll-behavior: smooth; }
 .wf-hero .wf__wrap { padding-top: 64px; padding-bottom: 32px; }
 .wf-hero h1 { margin: 20px 0 20px; }
 .wf-hero h1 span { display: block; }
+/* Hero with Smitty's photo: copy left, photo right on desktop; photo under the headline on phones */
+.wf-hero .wf-hero__grid { max-width: 1160px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  grid-template-areas: "head photo" "rest photo"; column-gap: 56px; align-items: center; text-align: left; }
+.wf-hero__head { grid-area: head; align-self: end; }
+.wf-hero__rest { grid-area: rest; align-self: start; }
+.wf-hero__rest .wf-learn, .wf-hero__rest .wf-dates { margin-left: 0; margin-right: 0; max-width: none; }
+.wf-hero__photo { grid-area: photo; position: relative; margin: 0; justify-self: center; width: 100%; max-width: 440px;
+  transform: rotate(2deg); animation: wf-photo-float 6s ease-in-out infinite; }
+.wf-hero__photo img { display: block; width: 100%; height: auto; border-radius: 18px; border: 4px solid transparent;
+  background: linear-gradient(#000, #000) padding-box, var(--wf-gold-foil) border-box;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.8), 0 0 60px -10px rgba(242,185,55,.45); }
+.wf-hero__badge { position: absolute; left: -18px; bottom: 28px; padding: 10px 16px; border-radius: 999px; background: var(--wf-red); color: #fff;
+  font-family: var(--wf-head); font-weight: 800; font-size: 15px; letter-spacing: .02em; transform: rotate(-6deg);
+  box-shadow: 0 12px 28px -8px rgba(240,0,28,.7); animation: wf-badge-wobble 3s ease-in-out infinite; }
+@keyframes wf-photo-float { 0%, 100% { transform: rotate(2deg) translateY(0); } 50% { transform: rotate(2deg) translateY(-10px); } }
+@keyframes wf-badge-wobble { 0%, 100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(-3deg) scale(1.05); } }
+@media (max-width: 860px) {
+  .wf-hero .wf-hero__grid { grid-template-columns: 1fr; grid-template-areas: "head" "photo" "rest"; text-align: center; }
+  .wf-hero__photo { max-width: 340px; margin: 28px auto 4px; }
+  .wf-hero__rest .wf-learn { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { .wf-hero__photo, .wf-hero__badge { animation: none; } }
 .wf-learn { margin: 36px auto 0; max-width: 600px; text-align: left; background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.12); border-radius: var(--wf-radius); padding: 24px; }
 .wf-learn h3 { margin-bottom: 14px; }
@@ -341,14 +363,23 @@ body{margin:0;background:#0A0606}
 </div>
 
 <section class="sec sec--hero"><!-- Goat's 33 · 02 HERO · GHL section background = backgrounds/hero-desktop.jpg (mobile: hero-mobile.jpg)
-     Same section, stacked below this: 02b-waitlist-header, then GHL's native FORM, then 03-waitlist-perks. -->
+     Same section, stacked below this: 02b-waitlist-header, then GHL's native FORM, then 03-waitlist-perks.
+     PHOTO: upload images/smitty-hero.jpg to GHL Media, copy its URL, and paste it in place of ../images/smitty-hero.jpg below. -->
 <div class="wf wf--dark wf-hero">
   <div class="wf-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="wf__wrap wf__center">
+  <div class="wf__wrap wf-hero__grid">
+    <div class="wf-hero__head">
     <span class="wf__pill wf__pill--party">🎉 Birthday month · 33 days · $330</span>
     <h1><span class="wf__gold">Goat's 33:</span> <span class="wf__red">33 Days to Fundable</span></h1>
     <p class="wf__lead">I just turned 33. For my birthday month, I'm taking you through the 33 credit and funding moves I wish somebody showed me at 23, for $330.</p>
+    </div>
 
+    <figure class="wf-hero__photo">
+      <img src="../images/smitty-hero.jpg" alt="Smitty smiling and pointing to his framed ClickFunnels Two Comma Club award" width="800" height="984" loading="eager">
+      <figcaption class="wf-hero__badge">🎂 Just turned 33</figcaption>
+    </figure>
+
+    <div class="wf-hero__rest">
     <div class="wf-learn">
       <h3>In 33 days, you'll…</h3>
       <ul>
@@ -364,7 +395,7 @@ body{margin:0;background:#0A0606}
       <div class="wf-date"><span class="wf-date__label">Challenge starts</span><span class="wf-date__day">Nov 1</span><span class="wf-date__dow">Sunday</span></div>
     </div>
     <p style="margin:12px 0 0;font-size:14px;color:var(--wf-on-dark-muted)">Doors close Saturday, Oct 31, the last night of my birthday month.</p>
-
+    </div>
   </div>
 </div>
 <!-- Goat's 33 · 02b WAITLIST HEADER · same GHL section as the hero, right after 02-hero
