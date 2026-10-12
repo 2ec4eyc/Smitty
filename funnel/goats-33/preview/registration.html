@@ -65,9 +65,9 @@ html { scroll-behavior: smooth; }
 .wf .wf__gold { background: var(--wf-gold-foil); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .wf--dark .wf__pill--party { border-color: rgba(242,185,55,.6); color: #FFE08A; background: rgba(242,185,55,.12); }
 
-/* Falling confetti behind the hero copy (decorative, CSS only) */
-.wf-hero { position: relative; overflow: hidden; }
-.wf-hero .wf__wrap { position: relative; z-index: 1; }
+/* Falling confetti behind the hero and why copy (decorative, CSS only) */
+.wf-hero, .wf-why { position: relative; overflow: hidden; }
+.wf-hero .wf__wrap, .wf-why .wf__wrap { position: relative; z-index: 1; }
 .wf-confetti { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 .wf-confetti i { position: absolute; top: -24px; left: var(--x); width: 9px; height: 16px; border-radius: 2px; background: var(--c);
   opacity: .85; animation: wf-fall var(--d) linear var(--t) infinite; }
@@ -97,6 +97,8 @@ html { scroll-behavior: smooth; }
   50% { transform: translate3d(28px, 60vh, 0) rotate(270deg); }
   100% { transform: translate3d(-12px, 130vh, 0) rotate(560deg); opacity: .2; }
 }
+/* White confetti disappears on the light section, so swap it for blush pink there */
+.wf-why .wf-confetti i:nth-child(3), .wf-why .wf-confetti i:nth-child(8), .wf-why .wf-confetti i:nth-child(13), .wf-why .wf-confetti i:nth-child(17) { --c: #F58A99; }
 @media (max-width: 520px) { .wf-confetti i { width: 6px; height: 11px; opacity: .55; } .wf-confetti i:nth-child(n+13) { display: none; } }
 @media (prefers-reduced-motion: reduce) { .wf-confetti { display: none; } }
 
@@ -262,6 +264,7 @@ body{margin:0;background:#0A0606}
 </section>
 <section class="sec sec--light"><!-- Goat's 33 · 04 WHY I'M DOING THIS · own GHL section, background = backgrounds/light-section.jpg -->
 <div class="wf wf-why">
+  <div class="wf-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wf__wrap">
     <span class="wf__pill">Why I'm doing this</span>
     <h2>Real talk. I learned it <span class="wf__red">the hard way.</span></h2>
