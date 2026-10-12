@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- Background art source. Render: see render-backgrounds.sh. ?v=hero|dark|light -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%;overflow:hidden}
+  body{position:relative;background:#070404}
+  .l{position:absolute;inset:0}
+  .streak{position:absolute;width:140%;left:-20%;filter:blur(var(--b));transform:rotate(var(--r));opacity:var(--o)}
+  .glow{position:absolute;border-radius:50%;filter:blur(120px)}
+  .n33{position:absolute;font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:3px rgba(255,60,80,.22)}
+  .vig{background:radial-gradient(ellipse 55% 60% at 50% 50%,rgba(7,4,4,.9),rgba(7,4,4,.45) 60%,rgba(7,4,4,0) 100%)}
+  .grain{opacity:.09;mix-blend-mode:overlay}
+  body.light{background:#FBFAFA}
+  .light .glow{filter:blur(140px)}
+</style></head>
+<body>
+<div class="l" id="art"></div>
+<svg class="l grain" width="100%" height="100%"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+<script>
+const v = new URLSearchParams(location.search).get('v') || 'hero';
+const W = innerWidth, H = innerHeight, portrait = H > W;
+const art = document.getElementById('art');
+const add = (html) => art.insertAdjacentHTML('beforeend', html);
+const streak = (top, h, rot, blur, op, c1, c2) => add(`<div class="streak" style="top:${top}%;height:${h}px;--r:${rot}deg;--b:${blur}px;--o:${op};background:linear-gradient(90deg,transparent,${c1} 30%,${c2} 50%,${c1} 70%,transparent)"></div>`);
+const glow = (x, y, s, c) => add(`<div class="glow" style="left:${x}%;top:${y}%;width:${s}px;height:${s}px;margin:-${s/2}px 0 0 -${s/2}px;background:${c}"></div>`);
+
+if (v === 'light') {
+  document.body.className = 'light';
+  glow(-4, 20, 700, 'rgba(240,0,28,.22)');
+  glow(104, 75, 760, 'rgba(240,0,28,.20)');
+  glow(96, 8, 420, 'rgba(255,170,180,.45)');
+  glow(6, 92, 460, 'rgba(255,170,180,.45)');
+  document.querySelector('.grain').style.opacity = .05;
+} else {
+  const flip = v === 'dark' ? -1 : 1;
+  glow(flip > 0 ? 0 : 100, 0, portrait ? 900 : 1100, 'rgba(184,0,24,.6)');
+  glow(flip > 0 ? 100 : 0, 100, portrait ? 900 : 1100, 'rgba(184,0,24,.5)');
+  // wide red light planes plus thin bright beams, like the reference site
+  streak(12, 260, -28 * flip, 50, .75, 'rgba(240,0,28,0)', 'rgba(240,0,28,.85)');
+  streak(22, 18, -28 * flip, 3, .95, 'rgba(255,60,80,0)', 'rgba(255,110,125,1)');
+  streak(27, 6, -28 * flip, 1, .8, 'rgba(255,60,80,0)', 'rgba(255,170,180,1)');
+  streak(70, 320, -28 * flip, 70, .6, 'rgba(184,0,24,0)', 'rgba(230,0,30,.9)');
+  streak(80, 14, -28 * flip, 2, .85, 'rgba(255,60,80,0)', 'rgba(255,120,135,1)');
+  if (v === 'hero') add(`<div class="n33" style="right:${portrait ? -8 : -3}%;bottom:${portrait ? 2 : -6}%;font-size:${portrait ? 900 : 1000}px">33</div>`);
+  add('<div class="l vig"></div>');
+}
+</script>
+</body></html>

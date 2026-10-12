@@ -1,0 +1,230 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Goat's 33 preview</title>
+<!-- Goat's 33 · GLOBAL STYLES
+     Paste ONCE per page: Page Settings → Tracking Code → Header Code.
+     Every block below depends on this. To rebrand, change the --wf-* colors here. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=Allura&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --wf-red: #F0001C;
+    --wf-red-deep: #B80018;
+    --wf-black: #0A0606;
+    --wf-ink: #121212;
+    --wf-muted: #5B5555;
+    --wf-on-dark: #FFFFFF;
+    --wf-on-dark-muted: #CFC7C7;
+    --wf-blush: #FBEFEF;
+    --wf-blush-line: #F1C6CA;
+    --wf-radius: 12px;
+    --wf-head: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+    --wf-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  .wf, .wf * { box-sizing: border-box; }
+  .wf { font-family: var(--wf-body); font-size: 17px; line-height: 1.6; color: var(--wf-ink); -webkit-font-smoothing: antialiased; }
+  .wf p { margin: 0 0 1em; }
+  .wf--dark { color: var(--wf-on-dark); }
+  .wf__wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 72px 20px; }
+  .wf__center { text-align: center; }
+
+  /* Eyebrow pill */
+  .wf__pill { display: inline-block; padding: 6px 14px; border: 1px solid var(--wf-blush-line); border-radius: 999px;
+    font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--wf-red-deep); background: #fff; }
+  .wf--dark .wf__pill { border-color: rgba(240,0,28,.55); color: #FF8A96; background: rgba(240,0,28,.12); }
+
+  /* Headings */
+  .wf h1, .wf h2, .wf h3 { font-family: var(--wf-head); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; margin: 0; }
+  .wf h1 { font-size: clamp(40px, 8vw, 72px); }
+  .wf h2 { font-size: clamp(30px, 5.5vw, 46px); }
+  .wf h3 { font-size: 20px; letter-spacing: -.01em; }
+  .wf .wf__red { color: var(--wf-red); }
+  .wf--dark .wf__red { color: #FF1F3A; }
+  .wf__lead { font-size: clamp(18px, 2.4vw, 21px); line-height: 1.55; }
+  .wf--dark .wf__lead { color: var(--wf-on-dark-muted); }
+
+  /* Button (also the style to copy into GHL's form button) */
+  .wf__btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; padding: 16px 32px;
+    border-radius: 10px; background: var(--wf-red); color: #fff !important; text-decoration: none !important;
+    font-family: var(--wf-head); font-weight: 800; font-size: 17px; letter-spacing: .04em; text-transform: uppercase;
+    box-shadow: 0 10px 30px -8px rgba(240,0,28,.65); transition: background .2s, transform .2s; }
+  .wf__btn:hover { background: var(--wf-red-deep); transform: translateY(-1px); }
+  .wf__btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+  /* Top bar */
+  .wf-top { background: #111; color: #fff; }
+  .wf-top__in { max-width: 1100px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+    font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .wf-top__dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--wf-red); margin-right: 8px; box-shadow: 0 0 0 4px rgba(240,0,28,.25); }
+  .wf-top .wf__btn { min-height: 36px; padding: 8px 16px; font-size: 12px; box-shadow: none; }
+
+  /* Hero */
+  .wf-hero .wf__wrap { padding-top: 64px; padding-bottom: 32px; }
+  .wf-hero h1 { margin: 20px 0 20px; }
+  .wf-hero h1 span { display: block; }
+  .wf-learn { margin: 36px auto 0; max-width: 600px; text-align: left; background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12); border-radius: var(--wf-radius); padding: 24px; }
+  .wf-learn h3 { margin-bottom: 14px; }
+  .wf-learn ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .wf-learn li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+  .wf-check { width: 26px; height: 26px; border-radius: 50%; background: var(--wf-red); display: grid; place-items: center; margin-top: 1px; }
+  .wf-check svg { width: 14px; height: 14px; }
+  .wf-dates { margin: 24px auto 0; max-width: 600px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .wf-date { border-radius: 10px; padding: 14px 10px; text-align: center; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); }
+  .wf-date--key { background: rgba(240,0,28,.16); border-color: rgba(240,0,28,.6); }
+  .wf-date__label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FF8A96; }
+  .wf-date__day { display: block; font-family: var(--wf-head); font-weight: 800; font-size: 18px; margin-top: 4px; }
+  .wf-date__dow { display: block; font-size: 13px; color: var(--wf-on-dark-muted); }
+  .wf-formhead { margin-top: 40px; scroll-margin-top: 24px; }
+  .wf-formhead h3 { font-size: 22px; }
+  .wf-formhead p { margin: 6px 0 0; color: var(--wf-on-dark-muted); font-size: 15px; }
+
+  /* Perks under the form button */
+  .wf-perks .wf__wrap { padding-top: 24px; padding-bottom: 72px; max-width: 560px; }
+  .wf-perks__title { font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--wf-on-dark-muted); text-align: center; margin-bottom: 12px !important; }
+  .wf-perks ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .wf-perks li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 10px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); font-size: 15px; line-height: 1.45; }
+  .wf-perks__ico { width: 40px; height: 40px; border-radius: 10px; background: rgba(240,0,28,.18); display: grid; place-items: center; font-size: 20px; }
+  .wf-perks strong { color: #fff; }
+
+  /* Why */
+  .wf-why h2 { margin: 16px 0 24px; }
+  .wf-why__body { font-size: 18px; color: #2A2626; }
+  .wf-why__callout { margin: 28px 0; padding: 22px 24px; border-left: 4px solid var(--wf-red); border-radius: 0 var(--wf-radius) var(--wf-radius) 0;
+    background: var(--wf-blush); font-family: var(--wf-head); font-weight: 700; font-size: 21px; line-height: 1.4; color: var(--wf-ink); }
+  .wf-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 28px; }
+  .wf-stat { text-align: center; padding: 16px 8px; border: 1px solid var(--wf-blush-line); border-radius: var(--wf-radius); background: #fff; }
+  .wf-stat b { display: block; font-family: var(--wf-head); font-weight: 800; font-size: 30px; color: var(--wf-red); line-height: 1.1; }
+  .wf-stat span { font-size: 13px; color: var(--wf-muted); }
+  .wf-sign { font-family: "Allura", cursive; font-size: 54px; line-height: 1; color: var(--wf-red); margin-top: 8px; }
+
+  /* Who it's for */
+  .wf-who h2 { margin: 16px 0 20px; }
+  .wf-who .wf__btn { margin-top: 12px; }
+
+  /* Footer */
+  .wf-foot { background: #111; color: #A39C9C; }
+  .wf-foot .wf__wrap { padding: 32px 20px; font-size: 13px; line-height: 1.6; text-align: center; }
+  .wf-foot strong { color: #fff; }
+
+  @media (max-width: 520px) {
+    .wf { font-size: 16px; }
+    .wf__wrap { padding: 56px 16px; }
+    .wf-dates { grid-template-columns: 1fr; }
+    .wf-date { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; text-align: left; padding: 12px 14px; }
+    .wf-date__day { margin-top: 0; }
+    .wf-top__msg { width: 100%; text-align: center; }
+    .wf-stat b { font-size: 24px; }
+    .wf-why__callout { font-size: 19px; }
+  }
+</style>
+<style>
+body{margin:0;background:#0A0606}
+.sec{background-size:cover;background-position:center}
+.sec--hero{background-image:url(../backgrounds/hero-desktop.jpg)}
+@media (max-width:767px){.sec--hero{background-image:url(../backgrounds/hero-mobile.jpg)}}
+.sec--dark{background-image:url(../backgrounds/dark-section.jpg)}
+.sec--light{background-image:url(../backgrounds/light-section.jpg)}
+.mock-form{max-width:520px;margin:16px auto 0;background:#fff;border-radius:14px;padding:24px;display:grid;gap:14px;color:#121212;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.mock-form label{display:grid;gap:6px;font-size:14px;font-weight:600}
+.mock-form input{height:52px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif;background:#FBF8F8}
+.mock-note{margin:0!important;font-size:12px;color:#B80018;text-align:center;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+</style></head><body>
+<!-- Goat's 33 · 01 TOP BAR · own GHL section, padding 0, no background -->
+<div class="wf wf-top">
+  <div class="wf-top__in">
+    <span class="wf-top__msg"><span class="wf-top__dot" aria-hidden="true"></span>Birthday pricing · Doors open Oct 19</span>
+    <a class="wf__btn" href="#wf-register">I'm In For 33 →</a>
+  </div>
+</div>
+
+<section class="sec sec--hero"><!-- Goat's 33 · 02 HERO · GHL section background = backgrounds/hero-desktop.jpg (mobile: hero-mobile.jpg)
+     Put GHL's native FORM right after this element, then 03-waitlist-perks below the form. -->
+<div class="wf wf--dark wf-hero">
+  <div class="wf__wrap wf__center">
+    <span class="wf__pill">Birthday month · 33 days · $330</span>
+    <h1><span>Goat's 33:</span> <span class="wf__red">33 Days to Fundable</span></h1>
+    <p class="wf__lead">I just turned 33. For my birthday month, I'm taking you through the 33 credit and funding moves I wish somebody showed me at 23, for $330.</p>
+
+    <div class="wf-learn">
+      <h3>In 33 days, you'll…</h3>
+      <ul>
+        <li><span class="wf-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Clean up your credit reports, step by step, yourself</span></li>
+        <li><span class="wf-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Set your business up the way lenders actually want to see it</span></li>
+        <li><span class="wf-check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Walk away with a funding plan you're ready to apply with</span></li>
+      </ul>
+    </div>
+
+    <div class="wf-dates">
+      <div class="wf-date wf-date--key"><span class="wf-date__label">Doors open</span><span class="wf-date__day">Oct 19</span><span class="wf-date__dow">Monday</span></div>
+      <div class="wf-date"><span class="wf-date__label">Doors close</span><span class="wf-date__day">Oct 31</span><span class="wf-date__dow">Saturday</span></div>
+      <div class="wf-date"><span class="wf-date__label">Challenge starts</span><span class="wf-date__day">Nov 1</span><span class="wf-date__dow">Sunday</span></div>
+    </div>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--wf-on-dark-muted)">Doors close Saturday, Oct 31, the last night of my birthday month.</p>
+
+    <div class="wf-formhead" id="wf-register">
+      <h3>Join the waitlist</h3>
+      <p>Phone is optional, for text reminders when doors open.</p>
+    </div>
+  </div>
+</div>
+<div class="wf wf--dark" style="padding:0 16px"><form class="mock-form" onsubmit="return false">
+  <p class="mock-note">Preview only: GHL's native form goes here</p>
+  <label>First name<input placeholder="First name" autocomplete="given-name"></label>
+  <label>Email<input type="email" placeholder="you@example.com" autocomplete="email"></label>
+  <label>Phone (optional)<input type="tel" placeholder="(312) 555-0133" autocomplete="tel"></label>
+  <button class="wf__btn" style="width:100%">I'm In For 33 →</button>
+</form></div><!-- Goat's 33 · 03 WAITLIST PERKS · same GHL section as the hero, directly UNDER the GHL form -->
+<div class="wf wf--dark wf-perks">
+  <div class="wf__wrap">
+    <p class="wf-perks__title">Join the waitlist and you get:</p>
+    <ul>
+      <li><span class="wf-perks__ico" aria-hidden="true">🎁</span><span><strong>My free 15-minute 3-report credit check</strong>, sent to your inbox right now</span></li>
+      <li><span class="wf-perks__ico" aria-hidden="true">⏰</span><span><strong>First access</strong>, 2 hours before the public</span></li>
+      <li><span class="wf-perks__ico" aria-hidden="true">💰</span><span><strong>Birthday pricing</strong></span></li>
+    </ul>
+  </div>
+</div>
+</section>
+<section class="sec sec--light"><!-- Goat's 33 · 04 WHY I'M DOING THIS · own GHL section, background = backgrounds/light-section.jpg -->
+<div class="wf wf-why">
+  <div class="wf__wrap">
+    <span class="wf__pill">Why I'm doing this</span>
+    <h2>Real talk. I learned it <span class="wf__red">the hard way.</span></h2>
+    <div class="wf-why__body">
+      <p>I grew up in Chicago, and nobody at my kitchen table was talking about credit. I learned it the hard way: denials, bad advice, and money I left on the table.</p>
+      <p>Now I've built an eight-figure business, and I've got two daughters I'm making sure never learn it the hard way.</p>
+    </div>
+    <div class="wf-why__callout">So for my 33rd birthday, I'm not throwing a party. I'm giving you the playbook.</div>
+    <div class="wf-stats">
+      <div class="wf-stat"><b>33</b><span>days</span></div>
+      <div class="wf-stat"><b>1</b><span>move a day</span></div>
+      <div class="wf-stat"><b>~20</b><span>minutes each</span></div>
+    </div>
+    <p class="wf-why__body">You do the reps, and I'll show you exactly what to do.</p>
+    <div class="wf-sign" aria-label="Smitty">— Smitty</div>
+  </div>
+</div>
+</section>
+<section class="sec sec--dark"><!-- Goat's 33 · 05 WHO IT'S FOR · own GHL section, background = backgrounds/dark-section.jpg -->
+<div class="wf wf--dark wf-who">
+  <div class="wf__wrap wf__center">
+    <span class="wf__pill">Who it's for</span>
+    <h2>Tired of guessing about credit? <span class="wf__red">Let's get you fundable.</span></h2>
+    <p class="wf__lead">For anybody who's tired of guessing about credit and wants to get fundable, whether you've got a business yet or not.</p>
+    <a class="wf__btn" href="#wf-register">Save My Spot →</a>
+  </div>
+</div>
+</section>
+<!-- Goat's 33 · 06 FOOTER · own GHL section, padding 0, no background -->
+<div class="wf wf-foot">
+  <div class="wf__wrap">
+    <p style="margin:0"><strong>Goat's 33</strong> is an educational program. You do all disputes and applications yourself. Results vary, and no specific credit score or funding outcome is guaranteed.</p>
+  </div>
+</div>
+
+</body></html>
