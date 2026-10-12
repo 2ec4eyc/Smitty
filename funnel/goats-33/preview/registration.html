@@ -134,11 +134,41 @@ body{margin:0;background:#0A0606}
 .mock-form input{height:52px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif;background:#FBF8F8}
 .mock-note{margin:0!important;font-size:12px;color:#B80018;text-align:center;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
 </style></head><body>
-<!-- Goat's 33 · 01 TOP BAR · own GHL section, padding 0, no background -->
+<!-- Goat's 33 · 01 TOP BAR · own GHL section, padding 0, no background
+     Effects: pulsing live dot, red light sweeping the bottom edge, button shine + arrow nudge.
+     All motion stops for visitors who have "reduce motion" turned on. -->
+<style>
+  .wf-top { position: relative; overflow: hidden;
+    background: linear-gradient(90deg, #111 0%, #1c0507 50%, #111 100%); background-size: 200% 100%;
+    animation: wf-top-bg 8s ease-in-out infinite; }
+  .wf-top::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--wf-red), #ff6b7d, var(--wf-red), transparent);
+    background-size: 50% 100%; background-repeat: no-repeat; animation: wf-top-line 3.5s linear infinite; }
+  .wf-top__dot { position: relative; animation: none; box-shadow: none; }
+  .wf-top__dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--wf-red);
+    animation: wf-top-ping 1.6s cubic-bezier(0, 0, .2, 1) infinite; }
+  .wf-top .wf__btn { position: relative; overflow: hidden; }
+  .wf-top .wf__btn::before { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg);
+    animation: wf-top-shine 3.2s ease-in-out infinite; }
+  .wf-top__arrow { display: inline-block; animation: wf-top-nudge 1.6s ease-in-out infinite; }
+  .wf-top .wf__btn:hover { box-shadow: 0 0 0 4px rgba(240,0,28,.3); }
+
+  @keyframes wf-top-bg { 50% { background-position: 100% 0; } }
+  @keyframes wf-top-line { from { background-position: -100% 0; } to { background-position: 200% 0; } }
+  @keyframes wf-top-ping { 0% { transform: scale(1); opacity: .8; } 80%, 100% { transform: scale(3); opacity: 0; } }
+  @keyframes wf-top-shine { 0%, 55% { left: -60%; } 85%, 100% { left: 130%; } }
+  @keyframes wf-top-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wf-top, .wf-top::after, .wf-top__dot::after, .wf-top .wf__btn::before, .wf-top__arrow { animation: none; }
+    .wf-top::after { background-size: 100% 100%; opacity: .5; }
+  }
+</style>
 <div class="wf wf-top">
   <div class="wf-top__in">
     <span class="wf-top__msg"><span class="wf-top__dot" aria-hidden="true"></span>Birthday pricing · Doors open Oct 19</span>
-    <a class="wf__btn" href="#wf-register">I'm In For 33 →</a>
+    <a class="wf__btn" href="#wf-register">I'm In For 33 <span class="wf-top__arrow" aria-hidden="true">→</span></a>
   </div>
 </div>
 
