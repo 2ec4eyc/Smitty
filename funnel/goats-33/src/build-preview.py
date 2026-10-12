@@ -32,4 +32,14 @@ page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 {blk("06")}
 </body></html>"""
 (root / "preview" / "registration.html").write_text(page)
-print("wrote preview/registration.html")
+ty = lambda n: next((root / "thank-you").glob(f"{n}-*.html")).read_text()
+(root / "preview" / "thank-you.html").write_text(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Goat's 33 thank-you preview</title>
+<style>{(root / "registration" / "00-global-styles.css").read_text()}</style>{CSS}</head><body>
+{ty("01")}
+<section class="sec sec--dark">{ty("02")}</section>
+<section class="sec sec--light">{ty("03")}</section>
+<section class="sec sec--dark">{ty("04")}</section>
+{blk("06")}
+</body></html>""")
+print("wrote preview/registration.html, preview/thank-you.html")

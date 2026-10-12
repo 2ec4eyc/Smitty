@@ -70,3 +70,23 @@ Everything else is your copy word for word. These short lines are mine and are e
 
 ## Editing the backgrounds
 `src/bg.html` draws them and `src/render-backgrounds.sh` saves them as JPGs. `src/build-preview.py` rebuilds the preview from the block files.
+
+---
+
+# Thank-you page (after they join the waitlist)
+
+Preview: `preview/thank-you.html`, or `preview/shot-thank-you-desktop.png` / `shot-thank-you-mobile.png`.
+
+In GHL, add a new step to the funnel after the registration page and set the waitlist form's **On submit** to go to it.
+
+1. **Page Settings → Custom CSS**: paste the same `registration/00-global-styles.css` (it holds the styles for both pages).
+2. Build these sections (padding 0, full width):
+   1. **Top bar** (background `#111111`) → Code `thank-you/01-top-bar.html`
+   2. **You're in** (background `dark-section.jpg`) → Code `thank-you/02-confirmed.html`
+   3. **What happens next** (background `light-section.jpg`) → Code `thank-you/03-next-steps.html`
+   4. **Perks locked in** (background `dark-section.jpg`) → Code `thank-you/04-perks-locked.html`
+   5. **Footer** (background `#111111`) → Code `registration/06-footer.html` (same footer)
+
+No new images: it reuses the backgrounds you already uploaded.
+
+The "Add To Calendar" buttons save an all-day event for **Monday, Oct 19** (doors open). Google Calendar opens in a new tab; "Apple / Outlook" downloads an `.ics` file. No time is set because the exact doors-open time isn't decided; send it and I'll add it.
