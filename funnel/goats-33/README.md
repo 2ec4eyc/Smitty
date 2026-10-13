@@ -5,7 +5,7 @@ Design follows the go.bizlaunch.io bridge-sale page: white and blush sections wi
 Preview: open `preview/registration.html` and `preview/thank-you.html`, or look at the `preview/shot-*.png` screenshots.
 
 ## 1. Upload Smitty's photo
-Upload `images/smitty-hero.jpg` (800×984) to GHL **Media** and copy its URL. In `registration/02-hero.html` and `registration/07-why.html`, replace `SMITTY_PHOTO_URL` with that URL before pasting.
+Upload `images/smitty-hero.jpg` (800×984) to GHL **Media** and copy its URL. In `registration/02-hero.html`, replace `SMITTY_PHOTO_URL` with that URL. In `registration/07-why.html`, replace `SMITTY_WHY_PHOTO_URL` with the URL of the photo you want in the story section (it can be a different photo).
 
 **Hero background:** upload `backgrounds/hero-section.jpg` (1920×1400, soft blush with red and gold glows) and set it on the **hero section** of both pages (Section → Background → Image, **Cover**, position **Top center**, section **full width**). The hero block itself is transparent, so this shows edge to edge. No image? Use the solid color `#FFF5F5`.
 Every other block paints its own background, so leave those GHL section backgrounds empty. The waitlist header is transparent too, so it shows whatever you set on its section (white `#FFFFFF` matches the design).

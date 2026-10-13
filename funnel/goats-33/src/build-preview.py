@@ -4,7 +4,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parent.parent
 PHOTO = "../images/smitty-hero.jpg"
 def blk(folder, n):
-    return next((root / folder).glob(f"{n}-*.html")).read_text().replace("SMITTY_PHOTO_URL", PHOTO)
+    return next((root / folder).glob(f"{n}-*.html")).read_text().replace("SMITTY_PHOTO_URL", PHOTO).replace("SMITTY_WHY_PHOTO_URL", PHOTO)
 reg = lambda n: blk("registration", n)
 ty = lambda n: blk("thank-you", n)
 FORM = """<form class="mock-form" onsubmit="return false">
