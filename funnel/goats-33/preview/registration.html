@@ -83,8 +83,9 @@ html { scroll-behavior: smooth; }
 .wf-tick--green { background: var(--wf-green); }
 
 /* Scroll reveal: the top-bar script arms only below-the-fold elements; anything it never reaches stays visible */
-[data-reveal="armed"] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
-[data-reveal="armed"].is-in { opacity: 1; transform: none; }
+/* doubled attribute = higher specificity, so a card's own hover transition can't cancel the fade */
+[data-reveal][data-reveal="armed"] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease var(--d, 0s), transform .6s cubic-bezier(.2,.8,.2,1) var(--d, 0s); }
+[data-reveal][data-reveal="armed"].is-in { opacity: 1; transform: none; }
 
 /* ---------- Top bar (red) ---------- */
 .wf-top { background: var(--wf-red); color: #fff; }
@@ -105,7 +106,7 @@ html { scroll-behavior: smooth; }
 .wf-hero__media { position: relative; max-width: 560px; margin: 32px auto 28px; }
 .wf-hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 18%;
   border-radius: 16px; box-shadow: 0 30px 60px -24px rgba(0,0,0,.45); }
-.wf-hero__tag { position: absolute; left: 14px; top: 14px; padding: 6px 12px; border-radius: 8px; background: rgba(0,0,0,.72); color: #fff;
+.wf-hero__tag { position: absolute; right: 14px; top: 14px; padding: 6px 12px; border-radius: 8px; background: rgba(0,0,0,.72); color: #fff;
   font-size: 12px; font-weight: 600; backdrop-filter: blur(4px); }
 .wf-trust { list-style: none; margin: 26px auto 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; font-size: 14px; font-weight: 600; color: #333; }
 .wf-trust li { display: inline-flex; align-items: center; gap: 8px; }
@@ -193,6 +194,108 @@ html { scroll-behavior: smooth; }
 .wf-foot .wf__wrap { padding: 28px 20px; font-size: 15px; line-height: 1.6; text-align: center; }
 .wf-foot strong { color: #fff; }
 
+/* ================= MOTION LAYER ================= */
+
+/* ---------- Hero opener (runs on page load, CSS only) ---------- */
+.wf-hero--motion { position: relative; overflow: hidden; overflow: clip; }
+.wf-hero--motion .wf__wrap { position: relative; z-index: 1; padding-bottom: 56px; }
+.wf-fx { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.wf-fx__grid { position: absolute; inset: -40px; background-image: linear-gradient(rgba(240,0,28,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(240,0,28,.07) 1px, transparent 1px);
+  background-size: 44px 44px; -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 20%, transparent 75%);
+  animation: wf-grid 14s linear infinite; }
+.wf-fx__orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; }
+.wf-fx__orb--a { width: 380px; height: 380px; left: -120px; top: 60px; background: rgba(240,0,28,.35); animation: wf-orb-a 12s ease-in-out infinite; }
+.wf-fx__orb--b { width: 320px; height: 320px; right: -100px; top: 340px; background: rgba(242,185,55,.3); animation: wf-orb-b 14s ease-in-out infinite; }
+@keyframes wf-grid { to { transform: translate(44px, 44px); } }
+@keyframes wf-orb-a { 50% { transform: translate(120px, 80px) scale(1.15); } }
+@keyframes wf-orb-b { 50% { transform: translate(-120px, -60px) scale(1.1); } }
+
+/* Fade/slide in for labels, lead, button, trust row */
+.wf-in { animation: wf-rise .7s cubic-bezier(.2,.8,.2,1) var(--d, 0s) both; }
+@keyframes wf-rise { from { opacity: 0; transform: translateY(18px); } }
+
+/* Kinetic headline: each word slides up from behind a mask */
+.wf-kinetic .wf-w { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 .04em .06em; margin: 0 -.04em -.06em; position: relative; }
+.wf-kinetic .wf-w > span { display: inline-block; animation: wf-word .8s cubic-bezier(.2,.9,.2,1) calc(.15s + var(--i) * .12s) both; }
+@keyframes wf-word { from { transform: translateY(105%) rotate(4deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.wf-kinetic .wf-mark { overflow: visible; }
+.wf-kinetic .wf-mark > span { position: relative; z-index: 1; }
+.wf-count { display: inline-block; min-width: 1.15em; text-align: right; font-variant-numeric: tabular-nums; }
+.wf-scribble { position: absolute; left: 0; right: 0; bottom: -.08em; width: 100%; height: .32em; overflow: visible; z-index: 0; }
+.wf-scribble path { fill: none; stroke: var(--wf-red); stroke-width: 6; stroke-linecap: round; opacity: .35;
+  stroke-dasharray: 320; stroke-dashoffset: 320; animation: wf-scribble .9s ease-out 1.35s forwards; }
+@keyframes wf-scribble { to { stroke-dashoffset: 0; } }
+
+/* Photo stage: wipe-in reveal plus floating chips */
+.wf-hero__stage { position: relative; max-width: 560px; margin: 32px auto 28px; }
+.wf-hero__stage .wf-hero__media { margin: 0; }
+.wf-wipe { animation: wf-wipe 1.1s cubic-bezier(.7,0,.2,1) .6s both; }
+.wf-wipe img { animation: wf-zoom 1.8s cubic-bezier(.2,.8,.2,1) .6s both; }
+@keyframes wf-wipe { from { clip-path: inset(0 100% 0 0 round 16px); } to { clip-path: inset(0 0 0 0 round 16px); } }
+@keyframes wf-zoom { from { transform: scale(1.15); } to { transform: scale(1); } }
+.wf-float { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px;
+  background: #fff; color: var(--wf-ink); font-size: 14px; font-weight: 700; white-space: nowrap; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35);
+  animation: wf-pop .5s cubic-bezier(.3,1.6,.5,1) var(--pd) both, wf-bob 4s ease-in-out calc(var(--pd) + .5s) infinite; }
+.wf-float .wf-tick { width: 18px; height: 18px; }
+.wf-float--a { left: -64px; top: 18%; --pd: 1.6s; }
+.wf-float--b { right: -70px; top: 46%; --pd: 1.8s; }
+.wf-float--c { left: -40px; bottom: 10%; --pd: 2s; }
+@keyframes wf-bob { 50% { transform: translateY(-8px); } }
+
+/* Scrolling ticker along the bottom of the hero */
+.wf-ticker { position: relative; z-index: 1; overflow: hidden; background: var(--wf-black); color: #fff; padding: 14px 0; transform: rotate(-1.2deg) scale(1.02); margin-bottom: 8px; }
+.wf-ticker__track { display: flex; width: max-content; gap: 22px; align-items: center; animation: wf-ticker 26s linear infinite;
+  font-family: var(--wf-head); font-weight: 800; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.wf-ticker__track i { color: var(--wf-red); font-style: normal; }
+@keyframes wf-ticker { to { transform: translateX(-50%); } }
+
+/* Buttons: light sweep across */
+.wf__btn--shine { position: relative; overflow: hidden; }
+.wf__btn--shine::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-20deg); animation: wf-shine 3.4s ease-in-out infinite; }
+@keyframes wf-shine { 0%, 55% { left: -60%; } 85%, 100% { left: 130%; } }
+
+/* Dark cards: red glow follows on hover, number pops when revealed */
+.wf-card { position: relative; overflow: hidden; }
+.wf-card::before { content: ""; position: absolute; inset: auto -40% -60% auto; width: 160px; height: 160px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,0,28,.35), transparent 70%); opacity: 0; transition: opacity .3s, transform .5s; }
+.wf-card:hover::before { opacity: 1; transform: translate(-30px, -30px); }
+[data-reveal="armed"].is-in .wf-card__num, .wf-card.is-in .wf-card__num { animation: wf-pop .6s cubic-bezier(.3,1.6,.5,1) calc(var(--d, 0s) + .2s) both; }
+
+/* Date tabs: tabs land one by one, then a progress line runs across */
+.wf-tabs--seq.is-in .wf-tab { animation: wf-tab-in .5s cubic-bezier(.2,.8,.2,1) both; }
+.wf-tabs--seq.is-in .wf-tab:nth-child(2) { animation-delay: .15s; }
+.wf-tabs--seq.is-in .wf-tab:nth-child(3) { animation-delay: .3s; }
+@keyframes wf-tab-in { from { opacity: 0; transform: translateX(-24px); } }
+.wf-progress { height: 4px; margin: 14px 18px 0; border-radius: 4px; background: rgba(0,0,0,.08); overflow: hidden; }
+.wf-progress span { display: block; height: 100%; width: 40%; border-radius: 4px; background: linear-gradient(90deg, var(--wf-black), var(--wf-red));
+  animation: wf-progress 3.2s ease-in-out infinite; }
+@keyframes wf-progress { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+
+/* Offer card: rotating glowing border */
+@property --wf-ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+.wf-offer--glow { border-color: transparent; background: linear-gradient(#fff, #fff) padding-box,
+  conic-gradient(from var(--wf-ang), var(--wf-red), #FF8A96, var(--wf-gold), var(--wf-red) 60%, var(--wf-red-deep), var(--wf-red)) border-box;
+  animation: wf-spin 4s linear infinite; }
+@keyframes wf-spin { to { --wf-ang: 360deg; } }
+.wf-perk__ico { transition: transform .3s; }
+.wf-perk:hover .wf-perk__ico { transform: rotate(-8deg) scale(1.1); }
+
+/* Bio: chips pop in after the card */
+.wf-bio.is-in .wf-chip { animation: wf-pop .45s cubic-bezier(.3,1.6,.5,1) both; }
+.wf-bio.is-in .wf-chip:nth-child(1) { animation-delay: .4s; }
+.wf-bio.is-in .wf-chip:nth-child(2) { animation-delay: .55s; }
+.wf-bio.is-in .wf-chip:nth-child(3) { animation-delay: .7s; }
+.wf-bio__photo img { transition: transform .8s ease; }
+.wf-bio:hover .wf-bio__photo img { transform: scale(1.04); }
+
+/* Final CTA: breathing red glow */
+.wf-glowbg { position: relative; overflow: hidden; overflow: clip; }
+.wf-glowbg::before { content: ""; position: absolute; left: 50%; top: 50%; width: 760px; height: 420px; transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(240,0,28,.32), transparent 70%); animation: wf-breathe 5s ease-in-out infinite; pointer-events: none; }
+.wf-glowbg .wf__wrap { position: relative; }
+@keyframes wf-breathe { 50% { transform: translate(-50%, -50%) scale(1.25); opacity: .6; } }
+
 /* ---------- Phones ---------- */
 @media (max-width: 760px) {
   .wf { font-size: 16px; }
@@ -207,11 +310,20 @@ html { scroll-behavior: smooth; }
   .wf__btn { width: 100%; padding-left: 18px; padding-right: 18px; }
   .wf-cal .wf__btn { flex: 1 1 100%; }
   .wf-price b { font-size: 38px; }
+  .wf-float { font-size: 12px; padding: 7px 11px; }
+  .wf-float--a { left: -6px; top: 6%; }
+  .wf-float--b { right: -6px; top: 44%; }
+  .wf-float--c { left: -6px; bottom: 6%; }
+  .wf-fx__orb--a { width: 260px; height: 260px; }
+  .wf-ticker__track { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .wf__btn, .wf-top__dot, .wf-okay, .wf-okay path { animation: none; }
+  .wf__btn, .wf-top__dot, .wf-okay, .wf-okay path, .wf-in, .wf-kinetic .wf-w > span, .wf-scribble path, .wf-wipe, .wf-wipe img,
+  .wf-float, .wf-fx__grid, .wf-fx__orb, .wf-ticker__track, .wf__btn--shine::after, .wf-progress span, .wf-offer--glow,
+  .wf-glowbg::before, .wf-tabs--seq.is-in .wf-tab, .wf-bio.is-in .wf-chip, .wf-card__num { animation: none !important; }
+  .wf-scribble path { stroke-dashoffset: 0; }
   .wf-okay path { stroke-dashoffset: 0; }
-  [data-reveal="armed"] { opacity: 1; transform: none; transition: none; }
+  [data-reveal][data-reveal="armed"] { opacity: 1; transform: none; transition: none; }
 }
 </style><style>
 body{margin:0;background:#fff}
@@ -251,27 +363,63 @@ body{margin:0;background:#fff}
 })();
 </script>
 
-<!-- Goat's 33 · 02 HERO · own GHL section, padding 0, no background (the block paints its own) -->
-<!-- PHOTO: upload images/smitty-hero.jpg to GHL Media and paste its URL in place of ../images/smitty-hero.jpg. -->
-<div class="wf wf-hero">
+<!-- Goat's 33 · 02 HERO · own GHL section, padding 0, no background (the block paints its own)
+     Motion-graphics opener: words build in, the red 33 counts up, an underline draws, the photo wipes in,
+     chips float around it and a ticker runs along the bottom. All motion stops under "reduce motion".
+     PHOTO: upload images/smitty-hero.jpg to GHL Media and paste its URL in place of ../images/smitty-hero.jpg. -->
+<div class="wf wf-hero wf-hero--motion">
+  <div class="wf-fx" aria-hidden="true"><span class="wf-fx__grid"></span><span class="wf-fx__orb wf-fx__orb--a"></span><span class="wf-fx__orb wf-fx__orb--b"></span></div>
   <div class="wf__wrap wf__center">
-    <div class="wf__labels"><span class="wf__label">🎂 Birthday month</span><span class="wf__label wf__label--soft">33 moves · 33 days · $330</span></div>
-    <h1>Goat's 33: <span class="wf__red">33 Days</span> to Fundable</h1>
-    <p class="wf__lead">I just turned 33. For my birthday month, I'm taking you through the 33 credit and funding moves I wish somebody showed me at 23, for $330.</p>
-    <figure class="wf-hero__media" style="margin-left:auto;margin-right:auto">
-      <img src="../images/smitty-hero.jpg" alt="Smitty smiling and pointing to his framed ClickFunnels Two Comma Club award" width="800" height="984" loading="eager">
-      <figcaption class="wf-hero__tag">Smitty · just turned 33</figcaption>
-    </figure>
-    <a class="wf__btn" href="#wf-register">I'm In For 33 <span class="wf__arrow" aria-hidden="true">→</span></a>
-    <p class="wf__note">Join the waitlist and get my free 15-minute 3-report credit check right now.</p>
-    <ul class="wf-trust">
+    <div class="wf__labels wf-in" style="--d:.05s"><span class="wf__label">🎂 Birthday month</span><span class="wf__label wf__label--soft">33 moves · 33 days · $330</span></div>
+    <h1 class="wf-kinetic" aria-label="Goat's 33: 33 Days to Fundable"><span aria-hidden="true">
+      <span class="wf-w" style="--i:0"><span>Goat's</span></span>
+      <span class="wf-w" style="--i:1"><span>33:</span></span>
+      <span class="wf-w wf__red wf-mark" style="--i:2"><span><span class="wf-count" data-to="33">33</span> Days</span><svg class="wf-scribble" viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M4 16 C 60 6, 140 4, 296 12"/></svg></span>
+      <span class="wf-w" style="--i:3"><span>to</span></span>
+      <span class="wf-w" style="--i:4"><span>Fundable</span></span>
+    </span></h1>
+    <p class="wf__lead wf-in" style="--d:.95s">I just turned 33. For my birthday month, I'm taking you through the 33 credit and funding moves I wish somebody showed me at 23, for $330.</p>
+    <div class="wf-hero__stage">
+      <figure class="wf-hero__media wf-wipe">
+        <img src="../images/smitty-hero.jpg" alt="Smitty smiling and pointing to his framed ClickFunnels Two Comma Club award" width="800" height="984" loading="eager">
+        <figcaption class="wf-hero__tag">Smitty · just turned 33</figcaption>
+      </figure>
+      <span class="wf-float wf-float--a" aria-hidden="true"><span class="wf-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Credit reports</span>
+      <span class="wf-float wf-float--b" aria-hidden="true"><span class="wf-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Business setup</span>
+      <span class="wf-float wf-float--c" aria-hidden="true"><span class="wf-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Funding plan</span>
+    </div>
+    <div class="wf-in" style="--d:1.5s">
+      <a class="wf__btn wf__btn--shine" href="#wf-register">I'm In For 33 <span class="wf__arrow" aria-hidden="true">→</span></a>
+      <p class="wf__note">Join the waitlist and get my free 15-minute 3-report credit check right now.</p>
+    </div>
+    <ul class="wf-trust wf-in" style="--d:1.7s">
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>33 days</li>
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>1 move a day</li>
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>About 20 minutes each</li>
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Birthday pricing</li>
     </ul>
   </div>
+  <div class="wf-ticker" aria-hidden="true"><div class="wf-ticker__track"><span>33 days</span><i aria-hidden="true">✦</i><span>1 move a day</span><i aria-hidden="true">✦</i><span>About 20 minutes each</span><i aria-hidden="true">✦</i><span>Birthday pricing</span><i aria-hidden="true">✦</i><span>Doors open Oct 19</span><i aria-hidden="true">✦</i><span>Credit · Business · Funding</span><i aria-hidden="true">✦</i><span>33 days</span><i aria-hidden="true">✦</i><span>1 move a day</span><i aria-hidden="true">✦</i><span>About 20 minutes each</span><i aria-hidden="true">✦</i><span>Birthday pricing</span><i aria-hidden="true">✦</i><span>Doors open Oct 19</span><i aria-hidden="true">✦</i><span>Credit · Business · Funding</span><i aria-hidden="true">✦</i></div></div>
 </div>
+<script>
+/* Counts the red 33 up from 0 once the headline has built in. Without JS it just shows 33. */
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.wf-count:not([data-done])').forEach(function (el) {
+    el.setAttribute('data-done', '');
+    var to = +el.dataset.to, t0 = null, dur = 1100;
+    el.textContent = '0';
+    setTimeout(function () {
+      requestAnimationFrame(function step(ts) {
+        t0 = t0 || ts;
+        var k = Math.min((ts - t0) / dur, 1);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step);
+      });
+    }, 450);
+  });
+})();
+</script>
 
 <!-- Goat's 33 · 03 WHAT YOU GET (dark) · own GHL section, padding 0, no background (the block paints its own) -->
 <div class="wf wf--dark">
@@ -280,13 +428,13 @@ body{margin:0;background:#fff}
       <span class="wf__label">What you get</span>
       <h2>In 33 days, <span class="wf__red">you'll…</span></h2>
     </div>
-    <div class="wf-cards" data-reveal>
-      <div class="wf-card"><span class="wf-card__num">01</span><span class="wf-card__eyebrow">Credit</span><p>Clean up your credit reports, step by step, yourself</p></div>
-      <div class="wf-card"><span class="wf-card__num">02</span><span class="wf-card__eyebrow">Business</span><p>Set your business up the way lenders actually want to see it</p></div>
-      <div class="wf-card"><span class="wf-card__num">03</span><span class="wf-card__eyebrow">Funding</span><p>Walk away with a funding plan you're ready to apply with</p></div>
+    <div class="wf-cards">
+      <div class="wf-card" data-reveal style="--d:0.00s"><span class="wf-card__num">01</span><span class="wf-card__eyebrow">Credit</span><p>Clean up your credit reports, step by step, yourself</p></div>
+      <div class="wf-card" data-reveal style="--d:0.15s"><span class="wf-card__num">02</span><span class="wf-card__eyebrow">Business</span><p>Set your business up the way lenders actually want to see it</p></div>
+      <div class="wf-card" data-reveal style="--d:0.30s"><span class="wf-card__num">03</span><span class="wf-card__eyebrow">Funding</span><p>Walk away with a funding plan you're ready to apply with</p></div>
     </div>
     <div class="wf-callout" data-reveal>33 days. <span class="wf__red">One move a day.</span> About 20 minutes each.</div>
-    <a class="wf__btn" href="#wf-register">I'm In For 33 <span class="wf__arrow" aria-hidden="true">→</span></a>
+    <a class="wf__btn wf__btn--shine" href="#wf-register">I'm In For 33 <span class="wf__arrow" aria-hidden="true">→</span></a>
   </div>
 </div>
 
@@ -298,11 +446,12 @@ body{margin:0;background:#fff}
       <h2>Mark your <span class="wf__red">calendar</span></h2>
       <p class="wf__lead">Waitlist gets first access, 2 hours before the public.</p>
     </div>
-    <div class="wf-tabs" data-reveal>
+    <div class="wf-tabs wf-tabs--seq" data-reveal>
       <div class="wf-tab wf-tab--dark"><span class="wf-tab__step">Step 1</span><span class="wf-tab__title">Doors open</span><span class="wf-tab__date">Mon, Oct 19</span></div>
       <div class="wf-tab wf-tab--red"><span class="wf-tab__step">Step 2</span><span class="wf-tab__title">Doors close</span><span class="wf-tab__date">Sat, Oct 31</span></div>
       <div class="wf-tab"><span class="wf-tab__step">Step 3</span><span class="wf-tab__title">Challenge starts</span><span class="wf-tab__date">Sun, Nov 1</span></div>
     </div>
+    <div class="wf-progress" aria-hidden="true"><span></span></div>
     <p class="wf__note" style="margin-top:18px !important">Doors close Saturday, Oct 31, the last night of my birthday month.</p>
   </div>
 </div>
@@ -321,7 +470,7 @@ body{margin:0;background:#fff}
 
 <div class="mock-row"><div class="mock-row__in"><div><!-- Goat's 33 · 06 WAITLIST OFFER CARD · LEFT column of the waitlist row (GHL form goes in the RIGHT column) -->
 <div class="wf">
-  <div class="wf-offer">
+  <div class="wf-offer wf-offer--glow">
     <div class="wf-offer__bar"><span>Waitlist perks</span><span>🎂 Birthday month</span></div>
     <div class="wf-offer__body">
       <div class="wf-perk"><span class="wf-perk__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><div><strong>My free 15-minute 3-report credit check</strong><span>Sent to your inbox right now</span></div></div>
@@ -360,14 +509,14 @@ body{margin:0;background:#fff}
 </div>
 
 <!-- Goat's 33 · 08 WHO IT'S FOR + FINAL CTA (dark) · own GHL section, padding 0, no background (the block paints its own) -->
-<div class="wf wf--dark">
+<div class="wf wf--dark wf-glowbg">
   <div class="wf__wrap wf__center">
     <div class="wf__head" data-reveal>
       <span class="wf__label">Who it's for</span>
       <h2>Tired of guessing about credit? <span class="wf__red">Let's get you fundable.</span></h2>
       <p class="wf__lead">For anybody who's tired of guessing about credit and wants to get fundable, whether you've got a business yet or not.</p>
     </div>
-    <a class="wf__btn" href="#wf-register">Save My Spot <span class="wf__arrow" aria-hidden="true">→</span></a>
+    <a class="wf__btn wf__btn--shine" href="#wf-register">Save My Spot <span class="wf__arrow" aria-hidden="true">→</span></a>
     <p class="wf__note">Doors open Monday, Oct 19. Waitlist gets in 2 hours early.</p>
   </div>
 </div>

@@ -1,21 +1,57 @@
-<!-- Goat's 33 · 02 HERO · own GHL section, padding 0, no background (the block paints its own) -->
-<!-- PHOTO: upload images/smitty-hero.jpg to GHL Media and paste its URL in place of SMITTY_PHOTO_URL. -->
-<div class="wf wf-hero">
+<!-- Goat's 33 · 02 HERO · own GHL section, padding 0, no background (the block paints its own)
+     Motion-graphics opener: words build in, the red 33 counts up, an underline draws, the photo wipes in,
+     chips float around it and a ticker runs along the bottom. All motion stops under "reduce motion".
+     PHOTO: upload images/smitty-hero.jpg to GHL Media and paste its URL in place of SMITTY_PHOTO_URL. -->
+<div class="wf wf-hero wf-hero--motion">
+  <div class="wf-fx" aria-hidden="true"><span class="wf-fx__grid"></span><span class="wf-fx__orb wf-fx__orb--a"></span><span class="wf-fx__orb wf-fx__orb--b"></span></div>
   <div class="wf__wrap wf__center">
-    <div class="wf__labels"><span class="wf__label">🎂 Birthday month</span><span class="wf__label wf__label--soft">33 moves · 33 days · $330</span></div>
-    <h1>Goat's 33: <span class="wf__red">33 Days</span> to Fundable</h1>
-    <p class="wf__lead">I just turned 33. For my birthday month, I'm taking you through the 33 credit and funding moves I wish somebody showed me at 23, for $330.</p>
-    <figure class="wf-hero__media" style="margin-left:auto;margin-right:auto">
-      <img src="SMITTY_PHOTO_URL" alt="Smitty smiling and pointing to his framed ClickFunnels Two Comma Club award" width="800" height="984" loading="eager">
-      <figcaption class="wf-hero__tag">Smitty · just turned 33</figcaption>
-    </figure>
-    <a class="wf__btn" href="#wf-register">I'm In For 33 <span class="wf__arrow" aria-hidden="true">→</span></a>
-    <p class="wf__note">Join the waitlist and get my free 15-minute 3-report credit check right now.</p>
-    <ul class="wf-trust">
+    <div class="wf__labels wf-in" style="--d:.05s"><span class="wf__label">🎂 Birthday month</span><span class="wf__label wf__label--soft">33 moves · 33 days · $330</span></div>
+    <h1 class="wf-kinetic" aria-label="Goat's 33: 33 Days to Fundable"><span aria-hidden="true">
+      <span class="wf-w" style="--i:0"><span>Goat's</span></span>
+      <span class="wf-w" style="--i:1"><span>33:</span></span>
+      <span class="wf-w wf__red wf-mark" style="--i:2"><span><span class="wf-count" data-to="33">33</span> Days</span><svg class="wf-scribble" viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M4 16 C 60 6, 140 4, 296 12"/></svg></span>
+      <span class="wf-w" style="--i:3"><span>to</span></span>
+      <span class="wf-w" style="--i:4"><span>Fundable</span></span>
+    </span></h1>
+    <p class="wf__lead wf-in" style="--d:.95s">I just turned 33. For my birthday month, I'm taking you through the 33 credit and funding moves I wish somebody showed me at 23, for $330.</p>
+    <div class="wf-hero__stage">
+      <figure class="wf-hero__media wf-wipe">
+        <img src="SMITTY_PHOTO_URL" alt="Smitty smiling and pointing to his framed ClickFunnels Two Comma Club award" width="800" height="984" loading="eager">
+        <figcaption class="wf-hero__tag">Smitty · just turned 33</figcaption>
+      </figure>
+      <span class="wf-float wf-float--a" aria-hidden="true"><span class="wf-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Credit reports</span>
+      <span class="wf-float wf-float--b" aria-hidden="true"><span class="wf-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Business setup</span>
+      <span class="wf-float wf-float--c" aria-hidden="true"><span class="wf-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Funding plan</span>
+    </div>
+    <div class="wf-in" style="--d:1.5s">
+      <a class="wf__btn wf__btn--shine" href="#wf-register">I'm In For 33 <span class="wf__arrow" aria-hidden="true">→</span></a>
+      <p class="wf__note">Join the waitlist and get my free 15-minute 3-report credit check right now.</p>
+    </div>
+    <ul class="wf-trust wf-in" style="--d:1.7s">
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>33 days</li>
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>1 move a day</li>
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>About 20 minutes each</li>
       <li><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Birthday pricing</li>
     </ul>
   </div>
+  <div class="wf-ticker" aria-hidden="true"><div class="wf-ticker__track"><span>33 days</span><i aria-hidden="true">✦</i><span>1 move a day</span><i aria-hidden="true">✦</i><span>About 20 minutes each</span><i aria-hidden="true">✦</i><span>Birthday pricing</span><i aria-hidden="true">✦</i><span>Doors open Oct 19</span><i aria-hidden="true">✦</i><span>Credit · Business · Funding</span><i aria-hidden="true">✦</i><span>33 days</span><i aria-hidden="true">✦</i><span>1 move a day</span><i aria-hidden="true">✦</i><span>About 20 minutes each</span><i aria-hidden="true">✦</i><span>Birthday pricing</span><i aria-hidden="true">✦</i><span>Doors open Oct 19</span><i aria-hidden="true">✦</i><span>Credit · Business · Funding</span><i aria-hidden="true">✦</i></div></div>
 </div>
+<script>
+/* Counts the red 33 up from 0 once the headline has built in. Without JS it just shows 33. */
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.wf-count:not([data-done])').forEach(function (el) {
+    el.setAttribute('data-done', '');
+    var to = +el.dataset.to, t0 = null, dur = 1100;
+    el.textContent = '0';
+    setTimeout(function () {
+      requestAnimationFrame(function step(ts) {
+        t0 = t0 || ts;
+        var k = Math.min((ts - t0) / dur, 1);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step);
+      });
+    }, 450);
+  });
+})();
+</script>
