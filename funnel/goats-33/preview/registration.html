@@ -30,7 +30,7 @@ html { scroll-behavior: smooth; }
 .wf, .wf * { box-sizing: border-box; }
 .wf { font-family: var(--wf-body); font-size: 17px; line-height: 1.6; color: var(--wf-ink); -webkit-font-smoothing: antialiased; }
 .wf p { margin: 0 0 1em; }
-.wf--white { background: #fff; }
+.wf--white { background: transparent; } /* waitlist header: shows the GHL section's own background */
 .wf--blush { background: var(--wf-blush); }
 .wf--grey { background: var(--wf-grey); }
 .wf--dark { background: var(--wf-black); color: #fff; }
@@ -456,9 +456,9 @@ body{margin:0;background:#fff}
   </div>
 </div>
 
-<!-- Goat's 33 · 05 WAITLIST HEADER · first element of the WAITLIST section (transparent: shows the GHL section's own background; padding 0)
+<!-- Goat's 33 · 05 WAITLIST HEADER · first element of the WAITLIST section (transparent via the global CSS: shows the GHL section's own background; padding 0)
      Below it, add a 2-column row: left = 06-waitlist-offer, right = GHL's native FORM. The page's buttons jump here (#wf-register). -->
-<div class="wf" style="background:transparent">
+<div class="wf wf--white">
   <div class="wf__wrap wf__center" style="padding-bottom:32px">
     <div class="wf__head wf-formhead" id="wf-register" style="margin-bottom:0">
       <span class="wf__label">Join the waitlist</span>
