@@ -7,7 +7,8 @@ Preview: open `preview/registration.html` and `preview/thank-you.html`, or look 
 ## 1. Upload Smitty's photo
 Upload `images/smitty-hero.jpg` (800×984) to GHL **Media** and copy its URL. In `registration/02-hero.html` and `registration/07-why.html`, replace `SMITTY_PHOTO_URL` with that URL before pasting.
 
-No background images are needed: every block paints its own background. Leave GHL section backgrounds empty, except the waitlist section (white, see below).
+**Hero background:** upload `backgrounds/hero-section.jpg` (1920×1400, soft blush with red and gold glows) and set it on the **hero section** of both pages (Section → Background → Image, **Cover**, position **Top center**, section **full width**). The hero block itself is transparent, so this shows edge to edge. No image? Use the solid color `#FFF5F5`.
+Every other block paints its own background, so leave those GHL section backgrounds empty. The waitlist header is transparent too, so it shows whatever you set on its section (white `#FFFFFF` matches the design).
 
 ## 2. Paste the global styles (once per page)
 **Page Settings → Custom CSS**: paste all of `registration/00-global-styles.css` on **both** pages, replacing any earlier version.
@@ -18,7 +19,7 @@ If the page shows plain Times-style fonts, black text on black, or buttons with 
 Set every section and row to **full width, padding 0**. Each "Code" step is a **Custom JS/HTML** element with that file pasted in.
 
 1. **Top bar** → Code `01-top-bar.html` (also loads the fonts and the scroll fade-in)
-2. **Hero** → Code `02-hero.html`
+2. **Hero** (background image `hero-section.jpg`, full width) → Code `02-hero.html`
 3. **What you get** → Code `03-what-you-get.html`
 4. **Key dates** → Code `04-key-dates.html`
 5. **Waitlist** (section background `#FFFFFF`):
@@ -46,7 +47,7 @@ Fields: **First name** (required), **Email** (required), **Phone** (optional; la
 Same Custom CSS as above, full width, padding 0.
 
 1. **Top bar** → Code `thank-you/01-top-bar.html`
-2. **You're in** → Code `thank-you/02-confirmed.html` (green "You're registered" strip + hero)
+2. **You're in** (background image `hero-section.jpg`) → Code `thank-you/02-confirmed.html` (green "You're registered" strip + hero)
 3. **What happens next** → Code `thank-you/03-next-steps.html`
 4. **Perks locked in** → Code `thank-you/04-perks-locked.html`
 5. **Footer** → Code `registration/09-footer.html` (same footer)

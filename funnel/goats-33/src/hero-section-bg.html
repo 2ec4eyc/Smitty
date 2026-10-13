@@ -1,0 +1,18 @@
+<!doctype html>
+<!-- Hero section background (blush with soft red and gold glows; the hero block adds its own moving grid). Render: src/render-hero-bg.sh -->
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;height:100%;overflow:hidden}
+  body{position:relative;background:linear-gradient(180deg,#FFEFEF 0%,#FFF7F7 45%,#FFFFFF 100%)}
+  .l{position:absolute;inset:0}
+  .glow{position:absolute;border-radius:50%;filter:blur(110px)}
+  .grid{background-image:linear-gradient(rgba(240,0,28,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(240,0,28,.055) 1px,transparent 1px);
+    background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 75% 60% at 50% 30%,#000 25%,transparent 80%);mask-image:radial-gradient(ellipse 75% 60% at 50% 30%,#000 25%,transparent 80%)}
+  .streak{position:absolute;left:-10%;width:120%;height:2px;transform:rotate(-14deg);background:linear-gradient(90deg,transparent,rgba(240,0,28,.08),transparent)}
+  .grain{opacity:.035;mix-blend-mode:multiply}
+</style></head><body>
+  <div class="glow" style="left:50%;top:-260px;width:1300px;height:620px;margin-left:-650px;background:rgba(240,0,28,.11)"></div>
+  <div class="glow" style="left:-220px;top:320px;width:680px;height:680px;background:rgba(240,0,28,.12)"></div>
+  <div class="glow" style="right:-220px;top:620px;width:720px;height:720px;background:rgba(242,185,55,.18)"></div>
+  <div class="streak" style="top:22%"></div><div class="streak" style="top:24%;opacity:.5"></div>
+  <svg class="l grain" width="100%" height="100%"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+</body></html>

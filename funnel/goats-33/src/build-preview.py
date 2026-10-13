@@ -16,6 +16,7 @@ FORM = """<form class="mock-form" onsubmit="return false">
 </form>"""
 CSS = """<style>
 body{margin:0;background:#fff}
+.mock-hero{background:#FFF5F5 url(../backgrounds/hero-section.jpg) center top/cover no-repeat}
 .mock-row{background:#fff;padding:0 16px 80px}
 .mock-row__in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
 @media (max-width:760px){.mock-row__in{grid-template-columns:1fr}}
@@ -31,9 +32,9 @@ def page(title, body):
 {body}
 </body></html>"""
 (root / "preview" / "registration.html").write_text(page("Goat's 33 preview", "\n".join([
-    reg("01"), reg("02"), reg("03"), reg("04"), reg("05"),
+    reg("01"), f'<div class="mock-hero">{reg("02")}</div>', reg("03"), reg("04"), reg("05"),
     f'<div class="mock-row"><div class="mock-row__in"><div>{reg("06")}</div>{FORM}</div></div>',
     reg("07"), reg("08"), reg("09")])))
 (root / "preview" / "thank-you.html").write_text(page("Goat's 33 thank-you preview", "\n".join([
-    ty("01"), ty("02"), ty("03"), ty("04"), reg("09")])))
+    ty("01"), f'<div class="mock-hero">{ty("02")}</div>', ty("03"), ty("04"), reg("09")])))
 print("wrote preview/registration.html, preview/thank-you.html")

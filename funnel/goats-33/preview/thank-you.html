@@ -100,7 +100,7 @@ html { scroll-behavior: smooth; }
 .wf-strip strong { font-weight: 700; }
 
 /* ---------- Hero ---------- */
-.wf-hero { background: radial-gradient(ellipse 70% 55% at 50% 0%, #FFE1E1 0%, rgba(255,225,225,0) 70%), #fff; }
+.wf-hero { background: transparent; } /* the GHL section carries the background (backgrounds/hero-section.jpg or #FFF5F5) */
 .wf-hero .wf__wrap { padding-top: 56px; padding-bottom: 72px; }
 .wf-hero h1 { margin: 18px 0 18px; }
 .wf-hero__media { position: relative; max-width: 560px; margin: 32px auto 28px; }
@@ -203,12 +203,7 @@ html { scroll-behavior: smooth; }
 .wf-fx__grid { position: absolute; inset: -40px; background-image: linear-gradient(rgba(240,0,28,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(240,0,28,.07) 1px, transparent 1px);
   background-size: 44px 44px; -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 20%, transparent 75%);
   animation: wf-grid 14s linear infinite; }
-.wf-fx__orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; }
-.wf-fx__orb--a { width: 380px; height: 380px; left: -120px; top: 60px; background: rgba(240,0,28,.35); animation: wf-orb-a 12s ease-in-out infinite; }
-.wf-fx__orb--b { width: 320px; height: 320px; right: -100px; top: 340px; background: rgba(242,185,55,.3); animation: wf-orb-b 14s ease-in-out infinite; }
 @keyframes wf-grid { to { transform: translate(44px, 44px); } }
-@keyframes wf-orb-a { 50% { transform: translate(120px, 80px) scale(1.15); } }
-@keyframes wf-orb-b { 50% { transform: translate(-120px, -60px) scale(1.1); } }
 
 /* Fade/slide in for labels, lead, button, trust row */
 .wf-in { animation: wf-rise .7s cubic-bezier(.2,.8,.2,1) var(--d, 0s) both; }
@@ -314,12 +309,11 @@ html { scroll-behavior: smooth; }
   .wf-float--a { left: -6px; top: 6%; }
   .wf-float--b { right: -6px; top: 44%; }
   .wf-float--c { left: -6px; bottom: 6%; }
-  .wf-fx__orb--a { width: 260px; height: 260px; }
   .wf-ticker__track { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .wf__btn, .wf-top__dot, .wf-okay, .wf-okay path, .wf-in, .wf-kinetic .wf-w > span, .wf-scribble path, .wf-wipe, .wf-wipe img,
-  .wf-float, .wf-fx__grid, .wf-fx__orb, .wf-ticker__track, .wf__btn--shine::after, .wf-progress span, .wf-offer--glow,
+  .wf-float, .wf-fx__grid, .wf-ticker__track, .wf__btn--shine::after, .wf-progress span, .wf-offer--glow,
   .wf-glowbg::before, .wf-tabs--seq.is-in .wf-tab, .wf-bio.is-in .wf-chip, .wf-card__num { animation: none !important; }
   .wf-scribble path { stroke-dashoffset: 0; }
   .wf-okay path { stroke-dashoffset: 0; }
@@ -327,6 +321,7 @@ html { scroll-behavior: smooth; }
 }
 </style><style>
 body{margin:0;background:#fff}
+.mock-hero{background:#FFF5F5 url(../backgrounds/hero-section.jpg) center top/cover no-repeat}
 .mock-row{background:#fff;padding:0 16px 80px}
 .mock-row__in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
 @media (max-width:760px){.mock-row__in{grid-template-columns:1fr}}
@@ -363,7 +358,7 @@ body{margin:0;background:#fff}
 })();
 </script>
 
-<!-- Goat's 33 · THANK-YOU · 02 YOU'RE IN · own GHL section, padding 0, no background (the block paints its own) -->
+<div class="mock-hero"><!-- Goat's 33 · THANK-YOU · 02 YOU'RE IN · own GHL section, padding 0, no background (the block paints its own) -->
 <div class="wf">
   <div class="wf-strip"><div class="wf-strip__in"><span class="wf-tick wf-tick--green" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>You're registered</strong> for the Goat's 33 waitlist. Check your email for your free credit check.</span></div></div>
   <div class="wf-hero">
@@ -376,7 +371,7 @@ body{margin:0;background:#fff}
     </div>
   </div>
 </div>
-
+</div>
 <!-- Goat's 33 · THANK-YOU · 03 WHAT HAPPENS NEXT (blush) · own GHL section, padding 0, no background (the block paints its own) -->
 <div class="wf wf--blush" id="wf-next" style="scroll-margin-top:0">
   <div class="wf__wrap wf__center">
