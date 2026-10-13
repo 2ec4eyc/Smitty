@@ -1,95 +1,76 @@
-# Goat's 33: registration page for GoHighLevel
+# Goat's 33: GoHighLevel funnel (registration + thank-you)
 
-Preview: open `preview/registration.html` in a browser, or look at `preview/shot-desktop.png` and `preview/shot-mobile.png`.
+Design follows the go.bizlaunch.io bridge-sale page: white and blush sections with black ones in between, heavy uppercase headlines with a red phrase, red label pills, glowing red buttons, chevron step tabs, a dark bio card and an offer card beside the form.
 
-## 1. Upload the backgrounds
-Upload everything in `backgrounds/` to GHL **Media**:
+Preview: open `preview/registration.html` and `preview/thank-you.html`, or look at the `preview/shot-*.png` screenshots.
 
-| File | Use on | Size |
-|---|---|---|
-| `hero-desktop.jpg` | Hero section (desktop) | 1920×2600 (tall so it covers the hero, waitlist header, form and perks) |
-| `hero-mobile.jpg` | Hero section (mobile) | 1080×5270 (tall on purpose: the hero is a long section on phones) |
-| `light-section.jpg` | "Why I'm doing this" section | 1920×1080 |
-| `dark-section.jpg` | "Who it's for" section | 1920×1080 |
+## 1. Upload Smitty's photo
+Upload `images/smitty-hero.jpg` (800×984) to GHL **Media** and copy its URL. In `registration/02-hero.html` and `registration/07-why.html`, replace `SMITTY_PHOTO_URL` with that URL before pasting.
 
-In each section: **Section → Background → Image**, size **Cover**, position **Center**. For the hero, set the mobile image in the mobile view if your builder supports a separate mobile background. Otherwise use `hero-desktop.jpg` for both. The balloons and confetti sit along the sides, so the text column stays clear either way.
+No background images are needed: every block paints its own background. Leave GHL section backgrounds empty, except the waitlist section (white, see below).
 
-## 1b. Upload Smitty's photo (hero)
-Upload `images/smitty-hero.jpg` (800×984) to GHL **Media**, copy its URL, then in `02-hero.html` replace `SMITTY_PHOTO_URL` with that URL before pasting the block.
+## 2. Paste the global styles (once per page)
+**Page Settings → Custom CSS**: paste all of `registration/00-global-styles.css` on **both** pages, replacing any earlier version.
 
-## 2. Paste the global styles (once)
-**Page Settings → Custom CSS**: paste all of `registration/00-global-styles.css`, replacing anything from an earlier version.
-It's plain CSS. It loads the fonts and holds the brand colors (`--wf-red` and the rest) and all styling. To change a color later, edit it there once.
+If the page shows plain Times-style fonts, black text on black, or buttons with no red, the global CSS isn't loading. Check it's pasted in Custom CSS, complete, and the page is saved.
 
-If the page shows black text, plain Times-style fonts or buttons with no red, the global CSS isn't loading. Check it's pasted in Custom CSS, complete, and the page is saved.
+## 3. Build the registration page
+Set every section and row to **full width, padding 0**. Each "Code" step is a **Custom JS/HTML** element with that file pasted in.
 
-## 3. Build the page (top to bottom)
-For every section and row, set **padding to 0** and **full width**, because the blocks bring their own spacing.
-Each "Code" step below means a **Custom JS/HTML** element with that file pasted in.
+1. **Top bar** → Code `01-top-bar.html` (also loads the fonts and the scroll fade-in)
+2. **Hero** → Code `02-hero.html`
+3. **What you get** → Code `03-what-you-get.html`
+4. **Key dates** → Code `04-key-dates.html`
+5. **Waitlist** (section background `#FFFFFF`):
+   1. Code `05-waitlist-header.html`
+   2. A **2-column row** (bottom padding about 80px): left column Code `06-waitlist-offer.html`, right column your **GHL Form**
+6. **Why I'm doing this** → Code `07-why.html`
+7. **Who it's for** → Code `08-final-cta.html`
+8. **Footer** → Code `09-footer.html`
 
-1. **Section: Top bar** → Code `01-top-bar.html`
-2. **Section: Hero** (background `hero-desktop.jpg`), one column, four elements stacked:
-   1. Code `02-hero.html`
-   2. Code `02b-waitlist-header.html`
-   3. **GHL Form element** (your waitlist form, see step 4)
-   4. Code `03-waitlist-perks.html`
-3. **Section: Why** (background `light-section.jpg`) → Code `04-why.html`
-4. **Section: Who it's for** (background `dark-section.jpg`) → Code `05-who-its-for.html`
-5. **Section: Footer** → Code `06-footer.html`
-
-The "I'm In For 33 →" button in the top bar and the "Save My Spot →" button jump to the form. They target `#wf-register`, the waitlist header right above the form. Nothing to configure.
+Every button jumps to `#wf-register`, the waitlist header right above the form. Nothing to configure.
 
 ## 4. Style the GHL form to match
 Fields: **First name** (required), **Email** (required), **Phone** (optional; label it "Phone (optional, for text reminders when doors open)").
 
 | Setting | Value |
 |---|---|
-| Form background | `#FFFFFF`, corner radius 14px, padding 24px, max width 520px, centered |
+| Form background | `#FFFFFF`, border `#ECE4E4`, radius 16px, padding 24px |
 | Field background / border | `#FBF8F8` / `#E3D6D7`, radius 10px, height 52px |
-| Label / text color | `#121212`, font Inter |
+| Label / text | `#111111`, font Inter |
 | Button text | `I'm In For 33 →` |
-| Button color / hover | `#F0001C` / `#B80018`, text `#FFFFFF`, bold, uppercase, radius 10px, full width |
-| On submit | Send them to your thank-you page and trigger the workflow that emails the free 3-report credit check |
+| Button | `#F0001C` (hover `#C20017`), white text, font Poppins 800, uppercase, radius 10px, full width |
+| On submit | Go to the thank-you page and trigger the workflow that emails the free 3-report credit check |
 
-## Brand colors (taken from partnerwithsmitty.com/class)
+## 5. Build the thank-you page
+Same Custom CSS as above, full width, padding 0.
+
+1. **Top bar** → Code `thank-you/01-top-bar.html`
+2. **You're in** → Code `thank-you/02-confirmed.html` (green "You're registered" strip + hero)
+3. **What happens next** → Code `thank-you/03-next-steps.html`
+4. **Perks locked in** → Code `thank-you/04-perks-locked.html`
+5. **Footer** → Code `registration/09-footer.html` (same footer)
+
+The calendar buttons save an all-day event for **Monday, Oct 19** (doors open): Google Calendar opens in a new tab, "Apple / Outlook" downloads an `.ics` file. No time is set because the doors-open time isn't decided yet.
+
+## Brand
 | Role | Hex |
 |---|---|
-| Gold (birthday accent: headline foil, balloons, confetti) | `#F2B937` |
-| Red (buttons, highlights) | `#F0001C` |
-| Deep red (hover, accents) | `#B80018` |
-| Near-black (dark sections) | `#0A0606` |
-| Bars / footer | `#111111` |
-| Blush (callouts) | `#FBEFEF` |
-| Text on light | `#121212` |
+| Red (buttons, highlights, top bar) | `#F0001C` |
+| Deep red (hover) | `#C20017` |
+| Black sections / dark cards | `#0B0B0B` / `#161616` |
+| Blush / grey sections | `#FFF4F4` / `#F5F5F5` |
+| Text | `#111111`, muted `#5E5E5E` |
+| Green ticks | `#16A34A` |
 
-Fonts: **Plus Jakarta Sans** (headlines), **Inter** (body), **Allura** (signature).
+Fonts: **Poppins** 800–900 (headlines, buttons), **Inter** (body). Smitty's signature is an inline SVG traced from Allura, so it needs no font.
 
 ## Copy I added
-Everything else is your copy word for word. These short lines are mine and are easy to change:
-- Hero pill: "Birthday month · 33 days · $330"
-- Above the form: "Join the waitlist" / "Phone is optional, for text reminders when doors open."
-- Why headline: "Real talk. I learned it the hard way." and the stat row (33 days · 1 move a day · ~20 minutes each)
-- Who it's for headline: "Tired of guessing about credit? Let's get you fundable."
+Everything else is your copy word for word. These short lines are mine and easy to change:
+- Hero labels "🎂 Birthday month" and "33 moves · 33 days · $330"; photo tag "Smitty · just turned 33"; note under the button; the four green ticks
+- Section labels and headlines: "In 33 days, you'll…", "Mark your calendar", "Get on the list before doors open", "Real talk. I learned it the hard way.", "Tired of guessing about credit? Let's get you fundable."
+- Card eyebrows (Credit / Business / Funding), the "33 days. One move a day." callout, the offer card's "For my birthday month only" and price line, the bio chips
+- All thank-you page copy
 
-## Editing the backgrounds
-`src/bg.html` draws them and `src/render-backgrounds.sh` saves them as JPGs. `src/build-preview.py` rebuilds the preview from the block files.
-
----
-
-# Thank-you page (after they join the waitlist)
-
-Preview: `preview/thank-you.html`, or `preview/shot-thank-you-desktop.png` / `shot-thank-you-mobile.png`.
-
-In GHL, add a new step to the funnel after the registration page and set the waitlist form's **On submit** to go to it.
-
-1. **Page Settings → Custom CSS**: paste the same `registration/00-global-styles.css` (it holds the styles for both pages).
-2. Build these sections (padding 0, full width):
-   1. **Top bar** (background `#111111`) → Code `thank-you/01-top-bar.html`
-   2. **You're in** (background `dark-section.jpg`) → Code `thank-you/02-confirmed.html`
-   3. **What happens next** (background `light-section.jpg`) → Code `thank-you/03-next-steps.html`
-   4. **Perks locked in** (background `dark-section.jpg`) → Code `thank-you/04-perks-locked.html`
-   5. **Footer** (background `#111111`) → Code `registration/06-footer.html` (same footer)
-
-No new images: it reuses the backgrounds you already uploaded.
-
-The "Add To Calendar" buttons save an all-day event for **Monday, Oct 19** (doors open). Google Calendar opens in a new tab; "Apple / Outlook" downloads an `.ics` file. No time is set because the exact doors-open time isn't decided; send it and I'll add it.
+## Rebuilding the preview
+`python3 src/build-preview.py` stitches the blocks into `preview/`.
