@@ -57,3 +57,6 @@ Type: **Alfa Slab One** (headlines, buttons, big numbers), **Poppins** (small la
 - All of it switches off for visitors with reduced motion on, and nothing stays hidden if the script doesn't run.
 
 The hero background is already linked to your GHL Media copy (https://assets.cdn.filesafe.space/BU5M3MidcixGHbnmd1on/media/6aeadc8534f57914737635b5.jpg). `src/hero-bg.html` draws it and `src/render-hero-bg.sh` renders it to `images/hero-bg.jpg`.
+
+## Form card
+The hero card first shows Kenny's photo (`6a6bc2ba…png`, the blue suit "SMITTY the goat" shot) with a **Save My Free Seat** button. Clicking it slides the GHL form up over the photo (the photo blurs behind it); the × closes it again. Every other "Save my seat" button on the page (top bar, section buttons, the sticky phone button) scrolls back to the card and opens the form.

@@ -88,7 +88,7 @@ html,body{overflow-x:clip}
 .ks-tick svg{width:11px;height:11px}
 
 /* Form card */
-.ks-form{position:relative;color:var(--ink);border-radius:20px;padding:26px 24px 22px;scroll-margin-top:20px;border:3px solid transparent;
+.ks-form{position:relative;color:var(--ink);border-radius:20px;padding:16px 16px 12px;scroll-margin-top:20px;border:3px solid transparent;
   background:linear-gradient(#fff,#fff) padding-box,conic-gradient(from var(--ang,0deg),var(--red),#9FB0CC,var(--gold),var(--red) 60%,var(--red2),var(--red)) border-box;
   box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);animation:ks-card 1s cubic-bezier(.2,.9,.25,1) .35s both,ks-spin 5s linear infinite}
 
@@ -96,12 +96,13 @@ html,body{overflow-x:clip}
 @keyframes ks-spin{to{--ang:360deg}}
 @keyframes ks-card{from{opacity:0;transform:perspective(900px) rotateY(-14deg) translateY(30px)}}
 .ks-form__tag{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--blush);color:var(--red2);font-family:var(--head);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.ks-form h3{font-size:24px;margin:10px 0 4px;text-transform:uppercase;font-weight:900}
+.ks-form__head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 4px 10px;border-bottom:1px solid #E3E7EE;margin-bottom:6px}
+.ks-form h3{font-size:20px;margin:0;text-transform:uppercase;font-weight:900}
 .ks-form__sub{font-size:15px;color:var(--muted);margin-bottom:14px!important}
 .ks-embed{min-height:300px}
 .ks-embed iframe{display:block;width:100%;border:0;min-height:300px}
 .ks-embed__ph{display:grid;place-items:center;text-align:center;min-height:300px;border:2px dashed #CDD3DD;border-radius:12px;background:#F6F7F9;color:var(--red2);font-weight:700;font-size:14px;padding:20px}
-.ks-form .ks-micro{text-align:center;margin-top:10px!important}
+.ks-form .ks-micro{text-align:center;margin-top:4px!important;font-size:13px}
 
 /* Ticker */
 .ks-ticker{position:relative;z-index:2;background:var(--red);color:#fff;padding:14px 0;overflow:hidden;transform:rotate(-1.4deg) scale(1.03);margin-top:-22px}
@@ -329,6 +330,28 @@ html,body{overflow-x:clip}
   .ks-hero__bg,.ks-hero .ks-net,[data-heroout],.ks-band__row{transform:none!important;opacity:1!important}
   .ks-progress{display:none}
 }
+
+/* ---------- Form card: Kenny's photo first, form slides up over it on click ---------- */
+.ks-form{padding:0;overflow:hidden;min-height:560px}
+.ks-gate{position:relative;margin:0;height:100%;min-height:560px;background:linear-gradient(180deg,#13284A,#0B1A30)}
+.ks-gate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%;transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
+.ks-gate::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,26,48,0) 45%,rgba(11,26,48,.92) 82%)}
+.ks-gate__cap{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:grid;gap:10px;justify-items:center;text-align:center}
+.ks-gate__btn{width:100%}
+.ks-gate .ks-micro{color:#C3CDDC;margin:0!important;font-size:13px}
+.ks-gate:hover img{transform:scale(1.04)}
+.ks-formpanel{position:absolute;inset:0;z-index:3;padding:16px 16px 12px;background:#fff;overflow:auto;
+  transform:translateY(102%);visibility:hidden;transition:transform .55s cubic-bezier(.2,.9,.25,1),visibility 0s linear .55s}
+.ks-form.is-open{min-height:0}
+.ks-form.is-open .ks-formpanel{position:relative;transform:none;visibility:visible;transition:transform .55s cubic-bezier(.2,.9,.25,1)}
+.ks-form.is-open .ks-gate{position:absolute;inset:0;min-height:0}
+.ks-form.is-open .ks-gate img{filter:blur(6px) brightness(.5);transform:scale(1.08)}
+.ks-form.is-open .ks-gate__cap{opacity:0;pointer-events:none}
+.ks-form__x{flex:none;width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;background:#ECEEF2;color:var(--navy);font-size:22px;line-height:1;display:grid;place-items:center}
+.ks-form__x:hover{background:var(--red);color:#fff}
+.ks-form__x:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.ks-formpanel .ks-micro{margin-top:4px!important}
+@media (prefers-reduced-motion:reduce){.ks-formpanel,.ks-gate img{transition:none}}
 </style>
 
 <div class="ks">
@@ -358,8 +381,8 @@ html,body{overflow-x:clip}
       <circle cx="420" cy="160" r="3"/><circle cx="300" cy="330" r="3"/><circle cx="560" cy="620" r="4"/><circle cx="360" cy="560" r="3"/><circle cx="900" cy="660" r="4"/>
       <circle class="hub" cx="760" cy="150" r="7"/><circle class="hub" cx="900" cy="320" r="9" style="animation-delay:-.8s"/><circle class="hub" cx="720" cy="470" r="7" style="animation-delay:-1.6s"/>
     </svg>
-    <div class="ks-wrap ks-hero__grid" data-heroout>
-      <div>
+    <div class="ks-wrap ks-hero__grid">
+      <div data-heroout>
         <div class="ks-pre ks-in"><span class="dot" aria-hidden="true"></span><span>Free live training · Steal the webinar and challenge launch strategy's that makes our clients an extra $50K-$200K/mth consistently w/ AI</span></div>
         <h1><span class="ln"><span>You're In The Room With Your Kids.</span></span> <span class="ln red"><span>You're Just Not Really There.</span></span></h1>
         <p class="ks-hook ks-in" style="--d:.45s">In one hour, I'll show you how to build a business that doesn't need you in every task — so you stop choosing between the business and your family.</p>
@@ -371,10 +394,18 @@ html,body{overflow-x:clip}
         </ul>
       </div>
       <div class="ks-form" id="ks-register">
-        <span class="ks-form__tag">Free · Live · This week</span>
-        <h3>Save your free seat</h3>
-        <p class="ks-form__sub">About an hour. I teach for the first forty minutes, then I answer questions.</p>
-        <div class="ks-embed">
+        <!-- Closed: Kenny's photo with a "Save My Free Seat" button. Open: the form slides up over the photo. -->
+        <figure class="ks-gate" aria-hidden="false">
+          <img src="https://assets.cdn.filesafe.space/BU5M3MidcixGHbnmd1on/media/6a6bc2ba778556a668d2d128.png" alt="Kenny Smith" width="761" height="1166" loading="eager">
+          <figcaption class="ks-gate__cap">
+            <span class="ks-form__tag">Free · Live · This week</span>
+            <button type="button" class="ks-btn ks-gate__btn" data-open-form aria-controls="ks-formpanel" aria-expanded="false">Save My Free Seat <span class="arw" aria-hidden="true">→</span></button>
+            <p class="ks-micro">Free to attend. No credit card. Replay sent if you can't make it live.</p>
+          </figcaption>
+        </figure>
+        <div class="ks-formpanel" id="ks-formpanel" aria-hidden="true">
+          <div class="ks-form__head"><h3>Save your free seat</h3><button type="button" class="ks-form__x" data-close-form aria-label="Close the form">×</button></div>
+          <div class="ks-embed">
           <form onsubmit="return false" style="display:grid;gap:12px">
 <p style="margin:0;font-size:12px;color:#C20017;text-align:center;text-transform:uppercase;letter-spacing:.08em;font-weight:700">Preview only: your GHL form embed goes here</p>
 <input placeholder="First name" style="height:50px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif">
@@ -382,7 +413,8 @@ html,body{overflow-x:clip}
 <input placeholder="Phone" style="height:50px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif">
 <button class="ks-btn" style="width:100%;animation:none">Save My Free Seat →</button></form>
         </div>
-        <p class="ks-micro">Free to attend. No credit card. Replay sent if you can't make it live.</p>
+          <p class="ks-micro">Free to attend. No credit card. Replay sent if you can't make it live.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -636,6 +668,28 @@ html,body{overflow-x:clip}
     }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
     addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); frame();
+  }
+
+  // Form card: open the form over Kenny's photo. Every "Save my seat" link also opens it.
+  var card = document.getElementById('ks-register');
+  if (card) {
+    var panel = card.querySelector('.ks-formpanel'), openBtn = card.querySelector('[data-open-form]');
+    function openForm(scroll) {
+      card.classList.add('is-open'); panel.setAttribute('aria-hidden', 'false'); openBtn.setAttribute('aria-expanded', 'true');
+      if (scroll) {
+        // Measure the card where it rests: the hero parallax shifts it while the page is scrolled down.
+        var drift = card.closest('[data-heroout]');
+        if (drift) drift.style.setProperty('--out', '0px');
+        var top = card.getBoundingClientRect().top + (window.scrollY || pageYOffset) - 20;
+        window.scrollTo({ top: Math.max(top, 0), behavior: reduce ? 'auto' : 'smooth' });
+      }
+    }
+    function closeForm() { card.classList.remove('is-open'); panel.setAttribute('aria-hidden', 'true'); openBtn.setAttribute('aria-expanded', 'false'); openBtn.focus(); }
+    openBtn.addEventListener('click', function () { openForm(false); });
+    card.querySelector('[data-close-form]').addEventListener('click', closeForm);
+    root.querySelectorAll('a[href="#ks-register"]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); openForm(true); });
+    });
   }
   // Sticky phone button: shows once the form card is out of view.
   var form = document.getElementById('ks-register'), sticky = root.querySelector('.ks-sticky');
