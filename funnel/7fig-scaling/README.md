@@ -1,6 +1,6 @@
 # The 7-Figure Scaling Ecosystem Framework Using AI: GHL pages
 
-Two paste-ready pages built from `FUNNEL_COPY___THE_7-FIGURE_SCALING_ECOSYSTEM_FRAMEWORK_USING_AI.docx`.
+Two paste-ready pages, styled to the Smitty Wealth Enterprises logo (navy, crimson, silver, varsity slab type), built from `FUNNEL_COPY___THE_7-FIGURE_SCALING_ECOSYSTEM_FRAMEWORK_USING_AI.docx`.
 Each page is ONE file you paste into ONE GoHighLevel **Custom JS/HTML** element. Fonts, styles, backgrounds and animation are all inside the file. No images to upload: your photos and videos load straight from your GHL media links, and the section backgrounds are drawn in code.
 
 | File | Page |
@@ -15,6 +15,7 @@ Preview with stand-in boxes for the photos and videos: `preview/landing.html`, `
 2. Add a **Custom JS/HTML** element to it and paste the whole file.
 3. Replace the placeholders first:
    - `landing.html`: `GHL_FORM_EMBED` → your form's embed code (Sites → Forms → your form → Integrate → Embed). Set the form's **On submit** to go to the thank-you page.
+   - Both pages: `SMITTY_LOGO_URL` → upload `images/smitty-logo.png` (transparent background) to GHL Media and paste its URL. If you leave it, the logo just doesn't show.
    - `thank-you.html`: `CALENDAR_LINK` → your add-to-calendar link, `VSL_VIDEO_URL` → the 90-second video's URL.
 
 ## What's on the landing page
@@ -38,3 +39,13 @@ The other 6 Kenny photos aren't used yet; swap any `src` to use a different one.
 `python3 src/build-preview.py` rebuilds the preview.
 
 `preview/shot-live-landing-*.png` show the updated block running inside the live GHL page with the real photos (videos show blank only because the headless test browser can't play H.264).
+
+## Brand (from the Smitty Wealth Enterprises logo)
+| Role | Hex |
+|---|---|
+| Navy (dark sections, labels) | `#13284A` → `#0B1A30` |
+| Crimson (buttons, highlights, stripes) | `#C21D2B`, bright `#EF4B55` on navy |
+| Silver (bevels, rails, text accents) | `#D9DCE1` |
+| Light sections | `#F3F4F7` / `#ECEEF2` with faint navy stars |
+
+Type: **Alfa Slab One** (headlines, buttons, big numbers), **Poppins** (small labels, card titles), **Inter** (body).

@@ -1,18 +1,19 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>landing preview</title><style>body{margin:0}</style></head><body><!-- ===================================================================================
      THE 7-FIGURE SCALING ECOSYSTEM FRAMEWORK USING AI · OPT-IN PAGE (one paste)
      Paste this whole file into ONE GHL "Custom JS/HTML" element, in a FULL-WIDTH section with padding 0.
-     Before pasting, replace the one placeholder:
+     Before pasting, replace the placeholders:
        <form onsubmit="return false" style="display:grid;gap:12px">
 <p style="margin:0;font-size:12px;color:#C20017;text-align:center;text-transform:uppercase;letter-spacing:.08em;font-weight:700">Preview only: your GHL form embed goes here</p>
 <input placeholder="First name" style="height:50px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif">
 <input placeholder="Email" style="height:50px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif">
 <input placeholder="Phone" style="height:50px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif">
 <button class="ks-btn" style="width:100%;animation:none">Save My Free Seat →</button></form>  →  your GHL form's embed code (Sites → Forms → your form → Integrate → Embed → copy)
+       ../images/smitty-logo.png →  the GHL Media URL of images/smitty-logo.png (the logo hides itself if this is left as is)
      Everything else (fonts, styles, backgrounds, animation) is inside this file. No images to upload.
      =================================================================================== -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap">
 <style>
-.ks{--red:#F0001C;--red2:#C20017;--ink:#0E0E10;--black:#08080A;--card:#141417;--line:#26262B;--muted:#6B6B73;--soft:#B9B9C2;--paper:#FFFFFF;--blush:#FFF4F4;--grey:#F4F4F6;--green:#16A34A;--gold:#F2B937;
+.ks{--red:#C21D2B;--red2:#8E0E1C;--ink:#0B1A30;--black:#0B1A30;--card:#13284A;--line:#24406A;--navy:#13284A;--navy2:#0B1A30;--silver:#D9DCE1;--muted:#5B6678;--soft:#B7C3D5;--paper:#FFFFFF;--blush:#F3F4F7;--grey:#ECEEF2;--green:#16A34A;--gold:#E8EAEE;
   --head:"Poppins","Inter",system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;
   width:100vw;max-width:100vw;position:relative;left:50%;margin-left:-50vw}
@@ -26,7 +27,7 @@ html,body{overflow-x:clip}
 .ks h2{font-size:clamp(28px,4.2vw,44px);font-weight:900;line-height:1.08;text-transform:uppercase}
 .ks h3{font-size:19px;font-weight:800;line-height:1.3}
 .ks .red{color:var(--red)}
-.ks-dark .red{color:#FF2B45}
+.ks-dark .red{color:#E8505A}
 .ks-sec{position:relative;padding:96px 20px;overflow:hidden;overflow:clip}
 .ks-wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto}
 .ks-narrow{max-width:820px}
@@ -36,7 +37,7 @@ html,body{overflow-x:clip}
 .ks-grey{background:var(--grey)}
 .ks-blush{background:var(--blush)}
 .ks-label{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--red);color:#fff;font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1.35}
-.ks-label--ghost{background:rgba(240,0,28,.12);color:#FF5468;border:1px solid rgba(240,0,28,.45)}
+.ks-label--ghost{background:rgba(194,29,43,.12);color:#F2A0A6;border:1px solid rgba(194,29,43,.45)}
 .ks-head{margin-bottom:44px}
 .ks-head h2{margin-top:16px}
 .ks-head p{margin:14px auto 0;max-width:640px;color:var(--muted);font-size:18px}
@@ -45,7 +46,7 @@ html,body{overflow-x:clip}
 /* Buttons */
 .ks-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:18px 36px;border-radius:12px;border:0;cursor:pointer;
   background:var(--red);color:#fff!important;text-decoration:none!important;font-family:var(--head);font-weight:800;font-size:17px;letter-spacing:.03em;text-transform:uppercase;
-  box-shadow:0 14px 36px -10px rgba(240,0,28,.7);transition:transform .2s,background .2s;animation:ks-glow 2.8s ease-in-out infinite}
+  box-shadow:0 14px 36px -10px rgba(194,29,43,.7);transition:transform .2s,background .2s;animation:ks-glow 2.8s ease-in-out infinite}
 .ks-btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:ks-shine 3.6s ease-in-out infinite}
 .ks-btn:hover{background:var(--red2);transform:translateY(-2px)}
 .ks-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
@@ -53,8 +54,8 @@ html,body{overflow-x:clip}
 .ks-btn .arw{transition:transform .2s}
 .ks-btn:hover .arw{transform:translateX(4px)}
 .ks-micro{margin:12px 0 0!important;font-size:14px;color:var(--muted)}
-.ks-dark .ks-micro{color:#9C9CA6}
-@keyframes ks-glow{0%,100%{box-shadow:0 14px 36px -10px rgba(240,0,28,.6)}50%{box-shadow:0 14px 46px -4px rgba(240,0,28,.9)}}
+.ks-dark .ks-micro{color:#A9B6CC}
+@keyframes ks-glow{0%,100%{box-shadow:0 14px 36px -10px rgba(194,29,43,.6)}50%{box-shadow:0 14px 46px -4px rgba(194,29,43,.9)}}
 @keyframes ks-shine{0%,55%{left:-60%}85%,100%{left:130%}}
 
 /* Top bar */
@@ -64,10 +65,10 @@ html,body{overflow-x:clip}
 @keyframes ks-blink{50%{opacity:.25}}
 
 /* ---------- HERO: animated "ecosystem" network behind ---------- */
-.ks-hero{background:radial-gradient(ellipse 60% 70% at 85% 10%,rgba(240,0,28,.28),transparent 60%),radial-gradient(ellipse 50% 60% at 0% 100%,rgba(240,0,28,.18),transparent 60%),var(--black);padding-top:72px;padding-bottom:88px}
+.ks-hero{background:radial-gradient(ellipse 60% 70% at 85% 10%,rgba(194,29,43,.28),transparent 60%),radial-gradient(ellipse 50% 60% at 0% 100%,rgba(194,29,43,.18),transparent 60%),var(--black);padding-top:72px;padding-bottom:88px}
 .ks-net{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 80% 80% at 60% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 80% 80% at 60% 40%,#000 30%,transparent 80%)}
 .ks-net line{stroke:rgba(255,255,255,.12);stroke-width:1}
-.ks-net .pulse{stroke:#FF2B45;stroke-width:2;stroke-dasharray:14 400;animation:ks-flow 3.2s linear infinite}
+.ks-net .pulse{stroke:#E8505A;stroke-width:2;stroke-dasharray:14 400;animation:ks-flow 3.2s linear infinite}
 .ks-net circle{fill:#fff;opacity:.35}
 .ks-net .hub{fill:var(--red);opacity:1;animation:ks-hub 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes ks-flow{to{stroke-dashoffset:-414}}
@@ -75,19 +76,19 @@ html,body{overflow-x:clip}
 .ks-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;
   -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}
 .ks-hero__grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:center}
-.ks-pre{display:inline-flex;gap:10px;align-items:flex-start;padding:10px 16px;border-radius:12px;background:rgba(240,0,28,.12);border:1px solid rgba(240,0,28,.45);
-  font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.05em;line-height:1.45;text-transform:uppercase;color:#FFD5DA;max-width:620px}
-.ks-pre .dot{flex:none;width:9px;height:9px;margin-top:4px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(240,0,28,.25);animation:ks-blink 1.4s ease-in-out infinite}
+.ks-pre{display:inline-flex;gap:10px;align-items:flex-start;padding:10px 16px;border-radius:12px;background:rgba(194,29,43,.12);border:1px solid rgba(194,29,43,.45);
+  font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.05em;line-height:1.45;text-transform:uppercase;color:#E6E9EF;max-width:620px}
+.ks-pre .dot{flex:none;width:9px;height:9px;margin-top:4px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(194,29,43,.25);animation:ks-blink 1.4s ease-in-out infinite}
 .ks-hero h1{margin:22px 0 16px}
 .ks-hero h1 .ln{display:block}
 .ks-hero h1 .ln>span{display:inline-block;animation:ks-rise .9s cubic-bezier(.2,.9,.2,1) both}
 .ks-hero h1 .ln:nth-child(2)>span{animation-delay:.18s}
-.ks-hook{font-size:clamp(18px,2.2vw,21px);font-style:italic;color:#D9D9E0;margin-bottom:22px!important;max-width:600px}
+.ks-hook{font-size:clamp(18px,2.2vw,21px);font-style:italic;color:#DCE2EC;margin-bottom:22px!important;max-width:600px}
 .ks-sub{color:var(--soft);font-size:17px;max-width:600px}
 .ks-sub strong{color:#fff}
 .ks-in{animation:ks-rise .8s cubic-bezier(.2,.8,.2,1) var(--d,0s) both}
 @keyframes ks-rise{from{opacity:0;transform:translateY(22px)}}
-.ks-trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:14px;font-weight:600;color:#D0D0D8;list-style:none;padding:0}
+.ks-trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:14px;font-weight:600;color:#CDD6E3;list-style:none;padding:0}
 .ks-trust li{display:inline-flex;gap:8px;align-items:center}
 .ks-trust b{color:#fff}
 .ks-tick{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--green)}
@@ -95,7 +96,7 @@ html,body{overflow-x:clip}
 
 /* Form card */
 .ks-form{position:relative;color:var(--ink);border-radius:20px;padding:26px 24px 22px;scroll-margin-top:20px;border:3px solid transparent;
-  background:linear-gradient(#fff,#fff) padding-box,conic-gradient(from var(--ang,0deg),var(--red),#FF8A96,var(--gold),var(--red) 60%,var(--red2),var(--red)) border-box;
+  background:linear-gradient(#fff,#fff) padding-box,conic-gradient(from var(--ang,0deg),var(--red),#9FB0CC,var(--gold),var(--red) 60%,var(--red2),var(--red)) border-box;
   box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);animation:ks-card 1s cubic-bezier(.2,.9,.25,1) .35s both,ks-spin 5s linear infinite}
 
 @property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
@@ -106,7 +107,7 @@ html,body{overflow-x:clip}
 .ks-form__sub{font-size:15px;color:var(--muted);margin-bottom:14px!important}
 .ks-embed{min-height:300px}
 .ks-embed iframe{width:100%;border:0;min-height:300px}
-.ks-embed__ph{display:grid;place-items:center;text-align:center;min-height:300px;border:2px dashed #E3D6D7;border-radius:12px;background:#FBF8F8;color:var(--red2);font-weight:700;font-size:14px;padding:20px}
+.ks-embed__ph{display:grid;place-items:center;text-align:center;min-height:300px;border:2px dashed #CDD3DD;border-radius:12px;background:#F6F7F9;color:var(--red2);font-weight:700;font-size:14px;padding:20px}
 .ks-form .ks-micro{text-align:center;margin-top:10px!important}
 
 /* Ticker */
@@ -116,15 +117,15 @@ html,body{overflow-x:clip}
 @keyframes ks-tick{to{transform:translateX(-50%)}}
 
 /* ---------- Problem / body copy ---------- */
-.ks-dots{position:absolute;inset:0;z-index:0;background-image:radial-gradient(rgba(240,0,28,.13) 1.2px,transparent 1.3px);background-size:22px 22px;
+.ks-dots{position:absolute;inset:0;z-index:0;background-image:radial-gradient(rgba(194,29,43,.13) 1.2px,transparent 1.3px);background-size:22px 22px;
   -webkit-mask-image:radial-gradient(ellipse 70% 70% at 20% 30%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 70% 70% at 20% 30%,#000 20%,transparent 75%)}
 .ks-prob{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:center}
 .ks-photo{position:relative;margin:0 18px 18px 0}
 .ks-photo::before{content:"";position:absolute;inset:24px -18px -18px 24px;border-radius:20px;background:var(--red);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.1) 0 2px,transparent 2px 14px)}
 .ks-photo img{position:relative;display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;border-radius:20px;box-shadow:0 30px 60px -28px rgba(0,0,0,.6);background:#ddd}
-.ks-photo__tag{position:absolute;left:14px;bottom:14px;z-index:2;padding:10px 14px;border-radius:12px;background:rgba(8,8,10,.8);color:#fff;backdrop-filter:blur(6px);font-size:13px}
+.ks-photo__tag{position:absolute;left:14px;bottom:14px;z-index:2;padding:10px 14px;border-radius:12px;background:rgba(11,26,48,.8);color:#fff;backdrop-filter:blur(6px);font-size:13px}
 .ks-photo__tag b{display:block;font-family:var(--head);font-size:18px;text-transform:uppercase}
-.ks-lines p{font-size:clamp(19px,2.2vw,23px);line-height:1.45;color:#2A2A30;margin-bottom:.9em!important}
+.ks-lines p{font-size:clamp(19px,2.2vw,23px);line-height:1.45;color:#22304A;margin-bottom:.9em!important}
 .ks-lines p:first-child{font-family:var(--head);font-weight:800;font-size:clamp(24px,3vw,32px);line-height:1.2;color:var(--ink)}
 .ks-lines strong{color:var(--red);font-weight:800}
 .ks-lines .ks-micro{font-size:14px;line-height:1.5;color:var(--muted)}
@@ -133,11 +134,11 @@ html,body{overflow-x:clip}
 /* ---------- Fascination bullets (dark) ---------- */
 .ks-glow{position:absolute;z-index:0;border-radius:50%;filter:blur(90px);pointer-events:none}
 .ks-bul{display:grid;grid-template-columns:1fr 1fr;gap:16px;list-style:none;margin:0;padding:0;counter-reset:b}
-.ks-bul li{position:relative;counter-increment:b;padding:24px 24px 22px 76px;border-radius:16px;background:var(--card);border:1px solid var(--line);color:#C9C9D2;font-size:16px;line-height:1.55;transition:transform .25s,border-color .25s}
-.ks-bul li:hover{transform:translateY(-4px);border-color:rgba(240,0,28,.6)}
+.ks-bul li{position:relative;counter-increment:b;padding:24px 24px 22px 76px;border-radius:16px;background:var(--card);border:1px solid var(--line);color:#C6D0DE;font-size:16px;line-height:1.55;transition:transform .25s,border-color .25s}
+.ks-bul li:hover{transform:translateY(-4px);border-color:rgba(194,29,43,.6)}
 .ks-bul li::before{content:counter(b,decimal-leading-zero);position:absolute;left:22px;top:22px;font-family:var(--head);font-weight:900;font-size:28px;line-height:1;color:var(--red)}
 .ks-bul li strong{display:block;color:#fff;font-family:var(--head);font-weight:800;font-size:18px;line-height:1.3;margin-bottom:6px}
-.ks-bul li:last-child{grid-column:1/-1;background:linear-gradient(120deg,rgba(240,0,28,.18),var(--card) 60%);border-color:rgba(240,0,28,.5)}
+.ks-bul li:last-child{grid-column:1/-1;background:linear-gradient(120deg,rgba(194,29,43,.18),var(--card) 60%);border-color:rgba(194,29,43,.5)}
 
 /* ---------- For / Not for ---------- */
 .ks-fit{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}
@@ -146,7 +147,7 @@ html,body{overflow-x:clip}
 .ks-fit__col ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
 .ks-fit__col li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;font-size:16px}
 .ks-fit__yes{background:#fff;border:1px solid #DDEFE3;box-shadow:0 24px 50px -30px rgba(22,163,74,.6)}
-.ks-fit__no{background:var(--black);color:#D7D7DE;box-shadow:0 24px 50px -30px rgba(240,0,28,.7)}
+.ks-fit__no{background:var(--black);color:#D3DBE7;box-shadow:0 24px 50px -30px rgba(194,29,43,.7)}
 .ks-fit__no h3{color:#fff}
 .ks-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center}
 .ks-ic svg{width:14px;height:14px}
@@ -156,24 +157,24 @@ html,body{overflow-x:clip}
 /* ---------- Proof (dark) ---------- */
 .ks-results{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .ks-res{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 18px;text-align:left;transition:transform .25s,border-color .25s}
-.ks-res:hover{transform:translateY(-4px);border-color:rgba(242,185,55,.6)}
-.ks-res__name{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9C9CA6;margin-bottom:10px}
+.ks-res:hover{transform:translateY(-4px);border-color:rgba(200,205,214,.6)}
+.ks-res__name{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#A9B6CC;margin-bottom:10px}
 .ks-res__big{display:block;font-family:var(--head);font-weight:900;font-size:26px;line-height:1.1;color:#fff}
 .ks-res__big em{font-style:normal;color:var(--gold)}
-.ks-res__note{display:block;margin-top:8px;font-size:14px;color:#BDBDC6;line-height:1.4}
-.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:22px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(90deg,rgba(240,0,28,.14),rgba(242,185,55,.08))}
+.ks-res__note{display:block;margin-top:8px;font-size:14px;color:#BAC5D6;line-height:1.4}
+.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:22px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(90deg,rgba(194,29,43,.14),rgba(200,205,214,.08))}
 .ks-stat{padding:22px 12px;text-align:center;border-right:1px solid var(--line)}
 .ks-stat:last-child{border-right:0}
 .ks-stat b{display:block;font-family:var(--head);font-weight:900;font-size:clamp(30px,4vw,44px);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
-.ks-stat span{display:block;margin-top:6px;font-size:13px;color:#C4C4CC}
+.ks-stat span{display:block;margin-top:6px;font-size:13px;color:#C3CDDC}
 .ks .ks-sub2{font-family:var(--head);font-weight:900;font-size:22px;text-transform:uppercase;margin:56px 0 18px}
 .ks-vids{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.ks-vid{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);aspect-ratio:16/9;box-shadow:0 24px 50px -28px rgba(240,0,28,.6)}
+.ks-vid{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);aspect-ratio:16/9;box-shadow:0 24px 50px -28px rgba(194,29,43,.6)}
 .ks-vid video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
 
 /* ---------- Screenshots + inner circle (blush) ---------- */
 .ks-shots{columns:3;column-gap:16px}
-.ks-shot{break-inside:avoid;margin:0 0 16px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 20px 40px -26px rgba(0,0,0,.45);border:1px solid #EFE4E4;transition:transform .25s}
+.ks-shot{break-inside:avoid;margin:0 0 16px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 20px 40px -26px rgba(0,0,0,.45);border:1px solid #DDE1E8;transition:transform .25s}
 .ks-shot:hover{transform:translateY(-4px) rotate(-.5deg)}
 .ks-shot img{display:block;width:100%;height:auto}
 .ks-circle{display:grid;grid-template-columns:repeat(3,minmax(0,280px));justify-content:center;gap:18px;margin-top:8px;align-items:start}
@@ -185,21 +186,21 @@ html,body{overflow-x:clip}
 
 /* ---------- FAQ ---------- */
 .ks-faq{display:grid;gap:12px;text-align:left}
-.ks-faq details{background:#fff;border:1px solid #ECE4E4;border-radius:14px;box-shadow:0 10px 26px -22px rgba(0,0,0,.4);transition:border-color .2s}
+.ks-faq details{background:#fff;border:1px solid #DDE1E8;border-radius:14px;box-shadow:0 10px 26px -22px rgba(0,0,0,.4);transition:border-color .2s}
 .ks-faq details[open]{border-color:var(--red)}
 .ks-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font-family:var(--head);font-weight:800;font-size:17px}
 .ks-faq summary::-webkit-details-marker{display:none}
 .ks-faq summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--blush);color:var(--red);font-size:22px;font-weight:700;transition:transform .25s,background .25s}
 .ks-faq details[open] summary::after{transform:rotate(45deg);background:var(--red);color:#fff}
-.ks-faq details p{margin:0;padding:0 22px 20px;color:#3A3A42}
+.ks-faq details p{margin:0;padding:0 22px 20px;color:#33405A}
 
 /* ---------- Final CTA ---------- */
-.ks-final{background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(240,0,28,.3),transparent 70%),var(--black)}
+.ks-final{background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(194,29,43,.3),transparent 70%),var(--black)}
 .ks-final h2{font-size:clamp(30px,5vw,54px)}
 .ks-final .ks-hook{margin:18px auto 30px!important}
 
 /* Footer */
-.ks-foot{background:#050506;color:#8C8C96;padding:30px 20px;text-align:center;font-size:13px;line-height:1.6;border-top:1px solid #1A1A1E}
+.ks-foot{background:#07111F;color:#8E9BB2;padding:30px 20px;text-align:center;font-size:13px;line-height:1.6;border-top:1px solid #1A2C4A}
 .ks-foot p{max-width:860px;margin:0 auto 8px!important}
 
 /* Sticky mobile CTA */
@@ -238,6 +239,67 @@ html,body{overflow-x:clip}
   .ks *,.ks *::before,.ks *::after{animation:none!important;transition:none!important}
   .ks [data-r][data-r="armed"]{opacity:1;transform:none}
 }
+
+/* ================= SMITTY WEALTH ENTERPRISES BRAND LAYER =================
+   Navy #13284A / #0B1A30, crimson #C21D2B, silver #D9DCE1. Varsity slab headlines, silver bevels, stars and stripes. */
+.ks h1,.ks h2{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+.ks h1{font-size:clamp(30px,4.6vw,54px);line-height:1.1}
+.ks h2{font-size:clamp(26px,3.8vw,42px);line-height:1.14}
+.ks-dark h1,.ks-dark h2{color:#fff;text-shadow:0 2px 0 #8E9BB2,0 8px 22px rgba(0,0,0,.45)}
+.ks-dark h1 .red,.ks-dark h2 .red{color:#EF4B55;text-shadow:0 2px 0 #6E0A14,0 8px 22px rgba(0,0,0,.45)}
+.ks h2{text-shadow:0 2px 0 rgba(11,26,48,.12)}
+.ks h3{font-family:"Poppins","Inter",sans-serif;font-weight:800}
+.ks-dark{background:linear-gradient(180deg,#13284A 0%,#0B1A30 100%)}
+.ks-dark::after{content:"";position:absolute;left:0;right:0;top:0;height:7px;z-index:2;pointer-events:none;
+  background:linear-gradient(#D9DCE1,#D9DCE1) 0 0/100% 2px no-repeat,linear-gradient(var(--red),var(--red)) 0 2px/100% 5px no-repeat}
+.ks-hero{background:radial-gradient(ellipse 55% 65% at 85% 10%,rgba(194,29,43,.32),transparent 60%),radial-gradient(ellipse 50% 60% at 0% 100%,rgba(194,29,43,.2),transparent 60%),linear-gradient(180deg,#13284A,#0B1A30)}
+.ks-hero::after{display:none}
+.ks-final{background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(194,29,43,.34),transparent 70%),linear-gradient(180deg,#13284A,#0B1A30)}
+.ks-dots{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2244%22%20height%3D%2244%22%3E%3Cpath%20d%3D%22M22%2014l2.35%204.76%205.25.77-3.8%203.7.9%205.23L22%2026l-4.7%202.46.9-5.23-3.8-3.7%205.25-.77z%22%20fill%3D%22%2313284A%22%20fill-opacity%3D%22.05%22/%3E%3C/svg%3E");background-size:44px 44px}
+.ks-white,.ks-grey,.ks-blush,.ks-steps{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2244%22%20height%3D%2244%22%3E%3Cpath%20d%3D%22M22%2014l2.35%204.76%205.25.77-3.8%203.7.9%205.23L22%2026l-4.7%202.46.9-5.23-3.8-3.7%205.25-.77z%22%20fill%3D%22%2313284A%22%20fill-opacity%3D%22.05%22/%3E%3C/svg%3E");background-size:44px 44px}
+
+/* Labels: navy pill, silver edge, red stars */
+.ks-label{background:var(--navy);border:1px solid var(--silver);font-family:"Inter",sans-serif;font-weight:800;letter-spacing:.14em;box-shadow:0 0 0 3px rgba(194,29,43,.18)}
+.ks-label::before,.ks-label::after{content:"\2605";color:#EF4B55;font-size:11px;letter-spacing:0}
+.ks-dark .ks-label{background:var(--red);border-color:var(--silver);box-shadow:0 0 0 3px rgba(217,220,225,.12)}
+.ks-dark .ks-label::before,.ks-dark .ks-label::after{color:#fff}
+
+/* Buttons: crimson with a silver bevel edge */
+.ks-btn{background:linear-gradient(180deg,#D7303C,#A81624);border:2px solid #E8EAEE;font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.05em;
+  text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.ks-btn:hover{background:linear-gradient(180deg,#C21D2B,#8E0E1C)}
+@keyframes ks-glow{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 30px -10px rgba(194,29,43,.65)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 42px -4px rgba(194,29,43,.9)}}
+
+/* Top bar: navy with crimson stripe */
+.ks-top{background:var(--navy2);border-bottom:4px solid var(--red);box-shadow:inset 0 -6px 0 -4px #D9DCE1}
+.ks-top .dot{background:#EF4B55}
+
+/* Logo */
+.ks-logo{display:block;width:92px;height:auto;margin:0 0 18px;filter:drop-shadow(0 12px 22px rgba(0,0,0,.55))}
+.ks-foot .ks-logo{width:64px;margin:0 auto 12px}
+
+/* Form card: silver bevel frame with a navy and crimson ring (replaces the spinning glow) */
+.ks-form{border:4px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#F5F6F8,#AEB6C2 30%,#FFFFFF 50%,#9AA3B0 70%,#E8EAEE) border-box;
+  box-shadow:0 0 0 5px #0B1A30,0 0 0 8px var(--red),0 40px 80px -30px rgba(0,0,0,.8);animation:ks-card 1s cubic-bezier(.2,.9,.25,1) .35s both}
+.ks-form__tag{background:var(--navy);color:#fff}
+.ks-form h3{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.02em;color:var(--navy)}
+
+/* Ticker: crimson banner with silver rails, like the SMITTY plate */
+.ks-ticker{background:linear-gradient(180deg,#B01826,#7A0A16);border-top:3px solid #D9DCE1;border-bottom:3px solid #D9DCE1;box-shadow:0 0 0 3px #0B1A30}
+.ks-ticker__track{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.06em}
+.ks-ticker__track i{color:#D9DCE1;opacity:1}
+
+/* Cards and numbers */
+.ks-bul li,.ks-res,.ks-why li{background:rgba(255,255,255,.04);border-color:#2C4A75}
+.ks-bul li::before,.ks-res__big,.ks-stat b{font-family:"Alfa Slab One",Georgia,serif;font-weight:400}
+.ks-bul li strong{font-family:"Poppins","Inter",sans-serif}
+.ks-res__big em{color:#EF4B55}
+.ks-stats{background:linear-gradient(90deg,rgba(194,29,43,.22),rgba(217,220,225,.06));border-color:#2C4A75}
+.ks-stat{border-color:#2C4A75}
+.ks-fit__no{background:linear-gradient(180deg,#13284A,#0B1A30)}
+.ks-step__n{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;border:2px solid #E8EAEE;box-shadow:0 0 0 3px var(--navy),0 12px 26px -10px rgba(194,29,43,.7)}
+.ks-step--dark{background:linear-gradient(180deg,#13284A,#0B1A30);border-color:#2C4A75}
+.ks-foot{background:#07111F;border-top:4px solid var(--red)}
 </style>
 
 <div class="ks">
@@ -265,6 +327,7 @@ html,body{overflow-x:clip}
     </svg>
     <div class="ks-wrap ks-hero__grid">
       <div>
+        <img class="ks-logo ks-in" src="../images/smitty-logo.png" alt="Smitty Wealth Enterprises" width="92" height="103" onerror="this.remove()">
         <div class="ks-pre ks-in"><span class="dot" aria-hidden="true"></span><span>Free live training · Steal the webinar and challenge launch strategy's that makes our clients an extra $50K-$200K/mth consistently w/ AI</span></div>
         <h1><span class="ln"><span>You're In The Room With Your Kids.</span></span> <span class="ln red"><span>You're Just Not Really There.</span></span></h1>
         <p class="ks-hook ks-in" style="--d:.45s">In one hour, I'll show you how to build a business that doesn't need you in every task — so you stop choosing between the business and your family.</p>
@@ -292,8 +355,8 @@ html,body{overflow-x:clip}
     </div>
   </section>
   <div class="ks-ticker" aria-hidden="true"><div class="ks-ticker__track">
-    <span>15+ millionaire students</span><i>✦</i><span>30+ students at $100K months</span><i>✦</i><span>5+ students at $100K days</span><i>✦</i><span>5,000+ coached</span><i>✦</i><span>Free · Live · This week</span><i>✦</i>
-    <span>15+ millionaire students</span><i>✦</i><span>30+ students at $100K months</span><i>✦</i><span>5+ students at $100K days</span><i>✦</i><span>5,000+ coached</span><i>✦</i><span>Free · Live · This week</span><i>✦</i>
+    <span>15+ millionaire students</span><i>★</i><span>30+ students at $100K months</span><i>★</i><span>5+ students at $100K days</span><i>★</i><span>5,000+ coached</span><i>★</i><span>Free · Live · This week</span><i>★</i>
+    <span>15+ millionaire students</span><i>★</i><span>30+ students at $100K months</span><i>★</i><span>5+ students at $100K days</span><i>★</i><span>5,000+ coached</span><i>★</i><span>Free · Live · This week</span><i>★</i>
   </div></div>
 
   <!-- THE REAL PROBLEM -->
@@ -319,8 +382,8 @@ html,body{overflow-x:clip}
 
   <!-- FASCINATION BULLETS -->
   <section class="ks-sec ks-dark">
-    <span class="ks-glow" style="width:520px;height:520px;left:-160px;top:-120px;background:rgba(240,0,28,.28)" aria-hidden="true"></span>
-    <span class="ks-glow" style="width:460px;height:460px;right:-140px;bottom:-140px;background:rgba(242,185,55,.14)" aria-hidden="true"></span>
+    <span class="ks-glow" style="width:520px;height:520px;left:-160px;top:-120px;background:rgba(194,29,43,.28)" aria-hidden="true"></span>
+    <span class="ks-glow" style="width:460px;height:460px;right:-140px;bottom:-140px;background:rgba(200,205,214,.14)" aria-hidden="true"></span>
     <span class="ks-grid" aria-hidden="true"></span>
     <div class="ks-wrap">
       <div class="ks-head ks-center" data-r>
@@ -377,7 +440,7 @@ html,body{overflow-x:clip}
 
   <!-- PROOF -->
   <section class="ks-sec ks-dark">
-    <span class="ks-glow" style="width:600px;height:600px;left:50%;top:-260px;margin-left:-300px;background:rgba(240,0,28,.25)" aria-hidden="true"></span>
+    <span class="ks-glow" style="width:600px;height:600px;left:50%;top:-260px;margin-left:-300px;background:rgba(194,29,43,.25)" aria-hidden="true"></span>
     <span class="ks-grid" aria-hidden="true"></span>
     <div class="ks-wrap">
       <div class="ks-head ks-center" data-r>
@@ -465,8 +528,9 @@ html,body{overflow-x:clip}
 
   <!-- FOOTER -->
   <footer class="ks-foot">
+    <img class="ks-logo" src="../images/smitty-logo.png" alt="Smitty Wealth Enterprises" width="64" height="72" loading="lazy" onerror="this.remove()">
     <p>Results shown are from individual students and are not typical. Your results depend on your business, your effort and many other factors. This training is educational and makes no guarantee of income.</p>
-    <p>© Kenny Smith · The 7-Figure Scaling Ecosystem Framework Using AI</p>
+    <p>© Smitty Wealth Enterprises · The 7-Figure Scaling Ecosystem Framework Using AI</p>
   </footer>
 
   <!-- Sticky button on phones once the form scrolls out of view -->

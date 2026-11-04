@@ -4,10 +4,11 @@
      Before pasting, replace the two placeholders:
        #  →  the link people use to add the session to their calendar
        VSL_VIDEO_URL  →  the URL of the 90-second video (an .mp4 from GHL Media)
+       ../images/smitty-logo.png →  the GHL Media URL of images/smitty-logo.png (hides itself if left as is)
      =================================================================================== -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap">
 <style>
-.ks{--red:#F0001C;--red2:#C20017;--ink:#0E0E10;--black:#08080A;--card:#141417;--line:#26262B;--muted:#6B6B73;--soft:#B9B9C2;--blush:#FFF4F4;--green:#16A34A;--gold:#F2B937;
+.ks{--red:#C21D2B;--red2:#8E0E1C;--ink:#0B1A30;--black:#0B1A30;--card:#13284A;--line:#24406A;--navy:#13284A;--navy2:#0B1A30;--silver:#D9DCE1;--muted:#5B6678;--soft:#B7C3D5;--blush:#F3F4F7;--green:#16A34A;--gold:#E8EAEE;
   --head:"Poppins","Inter",system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;
   width:100vw;max-width:100vw;position:relative;left:50%;margin-left:-50vw}
@@ -19,7 +20,7 @@ html,body{overflow-x:clip}
 .ks h2{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.1;text-transform:uppercase}
 .ks h3{font-size:20px;font-weight:800;line-height:1.3}
 .ks .red{color:var(--red)}
-.ks-dark .red{color:#FF2B45}
+.ks-dark .red{color:#E8505A}
 .ks-sec{position:relative;padding:88px 20px;overflow:hidden;overflow:clip}
 .ks-wrap{position:relative;z-index:1;max-width:900px;margin:0 auto}
 .ks-center{text-align:center}
@@ -27,7 +28,7 @@ html,body{overflow-x:clip}
 .ks-label{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--red);color:#fff;font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .ks-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 28px;border-radius:12px;border:0;cursor:pointer;
   background:var(--red);color:#fff!important;text-decoration:none!important;font-family:var(--head);font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;
-  box-shadow:0 14px 36px -10px rgba(240,0,28,.7);transition:transform .2s,background .2s}
+  box-shadow:0 14px 36px -10px rgba(194,29,43,.7);transition:transform .2s,background .2s}
 .ks-btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:ks-shine 3.6s ease-in-out infinite}
 .ks-btn:hover{background:var(--red2);transform:translateY(-2px)}
 .ks-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
@@ -42,7 +43,7 @@ html,body{overflow-x:clip}
 @keyframes ks-drop{from{transform:translateY(-100%);opacity:0}}
 
 /* Hero: check pop + rings + burst, headline rises */
-.ks-hero{background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(240,0,28,.3),transparent 65%),var(--black);padding-top:64px;padding-bottom:72px}
+.ks-hero{background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(194,29,43,.3),transparent 65%),var(--black);padding-top:64px;padding-bottom:72px}
 .ks-burst{position:relative;width:96px;height:96px;margin:0 auto 22px}
 .ks-ok{position:relative;z-index:2;width:96px;height:96px;border-radius:50%;background:var(--green);display:grid;place-items:center;box-shadow:0 18px 40px -12px rgba(22,163,74,.7);animation:ks-pop .6s cubic-bezier(.3,1.6,.5,1) .15s both}
 .ks-ok svg{width:48px;height:48px;fill:none;stroke:#fff;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}
@@ -61,27 +62,27 @@ html,body{overflow-x:clip}
 .ks-in{animation:ks-rise .8s cubic-bezier(.2,.8,.2,1) var(--d,0s) both}
 @keyframes ks-rise{from{opacity:0;transform:translateY(22px)}}
 .ks-hero h1{margin:16px 0 14px}
-.ks-hero .lead{font-size:clamp(18px,2.4vw,22px);font-style:italic;color:#D9D9E0;max-width:620px;margin:0 auto!important}
+.ks-hero .lead{font-size:clamp(18px,2.4vw,22px);font-style:italic;color:#DCE2EC;max-width:620px;margin:0 auto!important}
 
 /* Next steps */
-.ks-steps{background:#FFF4F4}
+.ks-steps{background:#F3F4F7}
 .ks-steps__list{display:grid;gap:18px;text-align:left;counter-reset:s}
-.ks-step{display:grid;grid-template-columns:64px 1fr;gap:20px;background:#fff;border:1px solid #ECE4E4;border-radius:18px;padding:26px 26px 24px;box-shadow:0 18px 40px -28px rgba(240,0,28,.55)}
-.ks-step__n{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:var(--red);color:#fff;font-family:var(--head);font-weight:900;font-size:28px;box-shadow:0 12px 26px -10px rgba(240,0,28,.7)}
+.ks-step{display:grid;grid-template-columns:64px 1fr;gap:20px;background:#fff;border:1px solid #DDE1E8;border-radius:18px;padding:26px 26px 24px;box-shadow:0 18px 40px -28px rgba(194,29,43,.55)}
+.ks-step__n{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:var(--red);color:#fff;font-family:var(--head);font-weight:900;font-size:28px;box-shadow:0 12px 26px -10px rgba(194,29,43,.7)}
 .ks-step h3{font-size:22px;text-transform:uppercase;font-weight:900;margin:4px 0 8px}
-.ks-step p{margin:0 0 .6em;color:#3A3A42}
+.ks-step p{margin:0 0 .6em;color:#33405A}
 .ks-step--dark{background:var(--black);border-color:var(--black);color:#fff}
-.ks-step--dark p{color:#C9C9D2}
+.ks-step--dark p{color:#C6D0DE}
 .ks-video{margin-top:14px;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
 .ks-video video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
 
 /* Show-up boosters */
 .ks-why{list-style:none;margin:28px auto 0;padding:0;display:grid;gap:14px;max-width:720px;text-align:left}
 .ks-why li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:center;padding:18px 20px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-size:17px;color:#E6E6EC}
-.ks-why__ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(240,0,28,.16)}
-.ks-why__ic svg{width:22px;height:22px;stroke:#FF2B45}
+.ks-why__ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(194,29,43,.16)}
+.ks-why__ic svg{width:22px;height:22px;stroke:#E8505A}
 
-.ks-foot{background:#050506;color:#8C8C96;padding:28px 20px;text-align:center;font-size:13px;border-top:1px solid #1A1A1E}
+.ks-foot{background:#07111F;color:#8E9BB2;padding:28px 20px;text-align:center;font-size:13px;border-top:1px solid #1A2C4A}
 .ks-foot p{margin:0!important}
 
 .ks [data-r][data-r="armed"]{opacity:0;transform:translateY(26px);transition:opacity .7s ease var(--d,0s),transform .7s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
@@ -100,6 +101,67 @@ html,body{overflow-x:clip}
   .ks-ring,.ks-bits{display:none}
   .ks [data-r][data-r="armed"]{opacity:1;transform:none}
 }
+
+/* ================= SMITTY WEALTH ENTERPRISES BRAND LAYER =================
+   Navy #13284A / #0B1A30, crimson #C21D2B, silver #D9DCE1. Varsity slab headlines, silver bevels, stars and stripes. */
+.ks h1,.ks h2{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+.ks h1{font-size:clamp(30px,4.6vw,54px);line-height:1.1}
+.ks h2{font-size:clamp(26px,3.8vw,42px);line-height:1.14}
+.ks-dark h1,.ks-dark h2{color:#fff;text-shadow:0 2px 0 #8E9BB2,0 8px 22px rgba(0,0,0,.45)}
+.ks-dark h1 .red,.ks-dark h2 .red{color:#EF4B55;text-shadow:0 2px 0 #6E0A14,0 8px 22px rgba(0,0,0,.45)}
+.ks h2{text-shadow:0 2px 0 rgba(11,26,48,.12)}
+.ks h3{font-family:"Poppins","Inter",sans-serif;font-weight:800}
+.ks-dark{background:linear-gradient(180deg,#13284A 0%,#0B1A30 100%)}
+.ks-dark::after{content:"";position:absolute;left:0;right:0;top:0;height:7px;z-index:2;pointer-events:none;
+  background:linear-gradient(#D9DCE1,#D9DCE1) 0 0/100% 2px no-repeat,linear-gradient(var(--red),var(--red)) 0 2px/100% 5px no-repeat}
+.ks-hero{background:radial-gradient(ellipse 55% 65% at 85% 10%,rgba(194,29,43,.32),transparent 60%),radial-gradient(ellipse 50% 60% at 0% 100%,rgba(194,29,43,.2),transparent 60%),linear-gradient(180deg,#13284A,#0B1A30)}
+.ks-hero::after{display:none}
+.ks-final{background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(194,29,43,.34),transparent 70%),linear-gradient(180deg,#13284A,#0B1A30)}
+.ks-dots{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2244%22%20height%3D%2244%22%3E%3Cpath%20d%3D%22M22%2014l2.35%204.76%205.25.77-3.8%203.7.9%205.23L22%2026l-4.7%202.46.9-5.23-3.8-3.7%205.25-.77z%22%20fill%3D%22%2313284A%22%20fill-opacity%3D%22.05%22/%3E%3C/svg%3E");background-size:44px 44px}
+.ks-white,.ks-grey,.ks-blush,.ks-steps{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2244%22%20height%3D%2244%22%3E%3Cpath%20d%3D%22M22%2014l2.35%204.76%205.25.77-3.8%203.7.9%205.23L22%2026l-4.7%202.46.9-5.23-3.8-3.7%205.25-.77z%22%20fill%3D%22%2313284A%22%20fill-opacity%3D%22.05%22/%3E%3C/svg%3E");background-size:44px 44px}
+
+/* Labels: navy pill, silver edge, red stars */
+.ks-label{background:var(--navy);border:1px solid var(--silver);font-family:"Inter",sans-serif;font-weight:800;letter-spacing:.14em;box-shadow:0 0 0 3px rgba(194,29,43,.18)}
+.ks-label::before,.ks-label::after{content:"\2605";color:#EF4B55;font-size:11px;letter-spacing:0}
+.ks-dark .ks-label{background:var(--red);border-color:var(--silver);box-shadow:0 0 0 3px rgba(217,220,225,.12)}
+.ks-dark .ks-label::before,.ks-dark .ks-label::after{color:#fff}
+
+/* Buttons: crimson with a silver bevel edge */
+.ks-btn{background:linear-gradient(180deg,#D7303C,#A81624);border:2px solid #E8EAEE;font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.05em;
+  text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.ks-btn:hover{background:linear-gradient(180deg,#C21D2B,#8E0E1C)}
+@keyframes ks-glow{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 30px -10px rgba(194,29,43,.65)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 42px -4px rgba(194,29,43,.9)}}
+
+/* Top bar: navy with crimson stripe */
+.ks-top{background:var(--navy2);border-bottom:4px solid var(--red);box-shadow:inset 0 -6px 0 -4px #D9DCE1}
+.ks-top .dot{background:#EF4B55}
+
+/* Logo */
+.ks-logo{display:block;width:92px;height:auto;margin:0 0 18px;filter:drop-shadow(0 12px 22px rgba(0,0,0,.55))}
+.ks-foot .ks-logo{width:64px;margin:0 auto 12px}
+
+/* Form card: silver bevel frame with a navy and crimson ring (replaces the spinning glow) */
+.ks-form{border:4px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#F5F6F8,#AEB6C2 30%,#FFFFFF 50%,#9AA3B0 70%,#E8EAEE) border-box;
+  box-shadow:0 0 0 5px #0B1A30,0 0 0 8px var(--red),0 40px 80px -30px rgba(0,0,0,.8);animation:ks-card 1s cubic-bezier(.2,.9,.25,1) .35s both}
+.ks-form__tag{background:var(--navy);color:#fff}
+.ks-form h3{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.02em;color:var(--navy)}
+
+/* Ticker: crimson banner with silver rails, like the SMITTY plate */
+.ks-ticker{background:linear-gradient(180deg,#B01826,#7A0A16);border-top:3px solid #D9DCE1;border-bottom:3px solid #D9DCE1;box-shadow:0 0 0 3px #0B1A30}
+.ks-ticker__track{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.06em}
+.ks-ticker__track i{color:#D9DCE1;opacity:1}
+
+/* Cards and numbers */
+.ks-bul li,.ks-res,.ks-why li{background:rgba(255,255,255,.04);border-color:#2C4A75}
+.ks-bul li::before,.ks-res__big,.ks-stat b{font-family:"Alfa Slab One",Georgia,serif;font-weight:400}
+.ks-bul li strong{font-family:"Poppins","Inter",sans-serif}
+.ks-res__big em{color:#EF4B55}
+.ks-stats{background:linear-gradient(90deg,rgba(194,29,43,.22),rgba(217,220,225,.06));border-color:#2C4A75}
+.ks-stat{border-color:#2C4A75}
+.ks-fit__no{background:linear-gradient(180deg,#13284A,#0B1A30)}
+.ks-step__n{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;border:2px solid #E8EAEE;box-shadow:0 0 0 3px var(--navy),0 12px 26px -10px rgba(194,29,43,.7)}
+.ks-step--dark{background:linear-gradient(180deg,#13284A,#0B1A30);border-color:#2C4A75}
+.ks-foot{background:#07111F;border-top:4px solid var(--red)}
 </style>
 
 <div class="ks">
@@ -109,6 +171,7 @@ html,body{overflow-x:clip}
   <section class="ks-sec ks-dark ks-hero">
     <span class="ks-grid" aria-hidden="true"></span>
     <div class="ks-wrap ks-center">
+      <img class="ks-logo ks-in" src="../images/smitty-logo.png" alt="Smitty Wealth Enterprises" width="92" height="103" style="margin:0 auto 22px" onerror="this.remove()">
       <div class="ks-burst" aria-hidden="true">
         <span class="ks-ring"></span><span class="ks-ring ks-ring--2"></span>
         <span class="ks-bits"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
@@ -153,7 +216,7 @@ html,body{overflow-x:clip}
 
   <!-- SHOW-UP BOOSTERS -->
   <section class="ks-sec ks-dark">
-    <span class="ks-glow" style="width:560px;height:560px;left:50%;top:-240px;margin-left:-280px;background:rgba(240,0,28,.26)" aria-hidden="true"></span>
+    <span class="ks-glow" style="width:560px;height:560px;left:50%;top:-240px;margin-left:-280px;background:rgba(194,29,43,.26)" aria-hidden="true"></span>
     <span class="ks-grid" aria-hidden="true"></span>
     <div class="ks-wrap ks-center">
       <span class="ks-label" data-r>Show up live</span>
@@ -165,7 +228,7 @@ html,body{overflow-x:clip}
     </div>
   </section>
 
-  <footer class="ks-foot"><p>© Kenny Smith · The 7-Figure Scaling Ecosystem Framework Using AI</p></footer>
+  <footer class="ks-foot"><img class="ks-logo" src="../images/smitty-logo.png" alt="Smitty Wealth Enterprises" width="64" height="72" loading="lazy" onerror="this.remove()"><p>© Smitty Wealth Enterprises · The 7-Figure Scaling Ecosystem Framework Using AI</p></footer>
 </div>
 
 <script>
