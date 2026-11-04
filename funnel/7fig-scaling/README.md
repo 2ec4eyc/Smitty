@@ -15,6 +15,7 @@ Preview with stand-in boxes for the photos and videos: `preview/landing.html`, `
 2. Add a **Custom JS/HTML** element to it and paste the whole file.
 3. Replace the placeholders first:
    - `landing.html`: `GHL_FORM_EMBED` → your form's embed code (Sites → Forms → your form → Integrate → Embed). Set the form's **On submit** to go to the thank-you page.
+   - `landing.html`: `HERO_BG_URL` → upload `images/hero-bg.jpg` (1920×1080 Chicago-night skyline, navy and crimson) to GHL Media and paste its URL. Left as is, the hero falls back to the plain navy gradient.
    - Both pages: `SMITTY_LOGO_URL` → upload `images/smitty-logo.png` (transparent background) to GHL Media and paste its URL. If you leave it, the logo just doesn't show.
    - `thank-you.html`: `CALENDAR_LINK` → your add-to-calendar link, `VSL_VIDEO_URL` → the 90-second video's URL.
 
@@ -49,3 +50,12 @@ The other 6 Kenny photos aren't used yet; swap any `src` to use a different one.
 | Light sections | `#F3F4F7` / `#ECEEF2` with faint navy stars |
 
 Type: **Alfa Slab One** (headlines, buttons, big numbers), **Poppins** (small labels, card titles), **Inter** (body).
+
+## Scroll motion (landing page)
+- Crimson reading-progress bar along the top.
+- Hero: the skyline background and the glowing network drift at different speeds (parallax); the hero copy eases up and fades as you scroll past it.
+- Two big "word bands" (System ★ Judgment ★ Time back, and Real people ★ Real numbers ★ Real results) whose rows slide opposite ways as you scroll.
+- Sections enter in different ways: the photo and "for you" column from the left, the copy and "not for you" column from the right, results and videos zoom in, DM screenshots tip up into place, bullets rise.
+- All of it switches off for visitors with reduced motion on, and nothing stays hidden if the script doesn't run.
+
+`src/hero-bg.html` draws the hero background and `src/render-hero-bg.sh` renders it to `images/hero-bg.jpg`.

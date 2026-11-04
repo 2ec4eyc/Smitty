@@ -9,6 +9,7 @@
 <input placeholder="Phone" style="height:50px;border:1px solid #E3D6D7;border-radius:10px;padding:0 14px;font:16px Inter,sans-serif">
 <button class="ks-btn" style="width:100%;animation:none">Save My Free Seat →</button></form>  →  your GHL form's embed code (Sites → Forms → your form → Integrate → Embed → copy)
        ../images/smitty-logo.png →  the GHL Media URL of images/smitty-logo.png (the logo hides itself if this is left as is)
+       ../images/hero-bg.jpg     →  the GHL Media URL of images/hero-bg.jpg (the Chicago-night hero background; the old gradient shows if left as is)
      Everything else (fonts, styles, backgrounds, animation) is inside this file. No images to upload.
      =================================================================================== -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap">
@@ -300,17 +301,60 @@ html,body{overflow-x:clip}
 .ks-step__n{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;border:2px solid #E8EAEE;box-shadow:0 0 0 3px var(--navy),0 12px 26px -10px rgba(194,29,43,.7)}
 .ks-step--dark{background:linear-gradient(180deg,#13284A,#0B1A30);border-color:#2C4A75}
 .ks-foot{background:#07111F;border-top:4px solid var(--red)}
+
+/* ================= SCROLL MOTION ================= */
+/* Hero background photo layer (parallax) + shade so the copy stays readable */
+.ks-hero__bg{position:absolute;left:0;right:0;top:-12%;height:124%;z-index:0;background:#0B1A30 url("../images/hero-bg.jpg") 62% 100%/cover no-repeat;
+  transform:translate3d(0,var(--py,0px),0) scale(1.06);will-change:transform}
+.ks-hero__shade{position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(8,18,36,.88) 0%,rgba(8,18,36,.6) 38%,rgba(8,18,36,.12) 72%,rgba(8,18,36,0) 100%),linear-gradient(0deg,rgba(8,18,36,.7),transparent 30%)}
+.ks-hero .ks-net{transform:translate3d(0,var(--py,0px),0);opacity:.4}
+.ks-hero .ks-grid{opacity:.5}
+[data-heroout]{transform:translate3d(0,var(--out,0px),0);opacity:var(--fade,1);will-change:transform,opacity}
+
+/* Reading progress bar */
+.ks-progress{position:fixed;left:0;top:0;right:0;height:4px;z-index:60;background:rgba(11,26,48,.35);pointer-events:none}
+.ks-progress span{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#C21D2B,#EF4B55 70%,#D9DCE1)}
+
+/* Big word band that slides with scroll */
+.ks-band{position:relative;overflow:hidden;background:#0B1A30;padding:18px 0;border-top:3px solid #D9DCE1;border-bottom:3px solid var(--red)}
+.ks-band__row{display:flex;gap:34px;width:max-content;white-space:nowrap;align-items:center;font-family:"Alfa Slab One",Georgia,serif;font-size:clamp(40px,7vw,96px);line-height:1.1;
+  text-transform:uppercase;color:#fff;transform:translate3d(var(--sx,0px),0,0);will-change:transform}
+.ks-band__row i{font-style:normal;color:var(--red);font-size:.5em}
+.ks-band__row--o{color:transparent;-webkit-text-stroke:2px rgba(217,220,225,.5);margin-top:4px}
+.ks-band__row--o i{-webkit-text-stroke:0;color:#D9DCE1}
+
+/* Reveal directions */
+.ks [data-r][data-r="armed"][data-fx="left"]{transform:translate3d(-70px,0,0)}
+.ks [data-r][data-r="armed"][data-fx="right"]{transform:translate3d(70px,0,0)}
+.ks [data-r][data-r="armed"][data-fx="zoom"]{transform:scale(.86);transform-origin:50% 80%}
+.ks [data-r][data-r="armed"][data-fx="tilt"]{transform:perspective(900px) rotateX(28deg) translate3d(0,40px,0);transform-origin:50% 100%}
+.ks [data-r][data-r="armed"][data-fx="rise"]{transform:translate3d(0,50px,0) scale(.97)}
+.ks [data-r][data-r="armed"].in.in{opacity:1;transform:none}
+@media (max-width:640px){
+  .ks-hero__bg{background-position:72% 100%}
+  .ks-hero__shade{background:linear-gradient(180deg,rgba(8,18,36,.45),rgba(8,18,36,.78) 55%,rgba(8,18,36,.9))}
+  .ks [data-r][data-r="armed"][data-fx="left"]{transform:translate3d(-36px,0,0)}
+  .ks [data-r][data-r="armed"][data-fx="right"]{transform:translate3d(36px,0,0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ks-hero__bg,.ks-hero .ks-net,[data-heroout],.ks-band__row{transform:none!important;opacity:1!important}
+  .ks-progress{display:none}
+}
 </style>
 
 <div class="ks">
+
+  <div class="ks-progress" aria-hidden="true"><span></span></div>
 
   <!-- TOP BAR -->
   <div class="ks-top"><span class="dot" aria-hidden="true"></span>Free live training · This week <a href="#ks-register">Save my free seat →</a></div>
 
   <!-- HERO -->
   <section class="ks-sec ks-dark ks-hero">
+    <span class="ks-hero__bg" data-par=".35" aria-hidden="true"></span>
+    <span class="ks-hero__shade" aria-hidden="true"></span>
     <span class="ks-grid" aria-hidden="true"></span>
-    <svg class="ks-net" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg class="ks-net" data-par=".18" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <g>
         <line x1="760" y1="150" x2="980" y2="90"/><line x1="760" y1="150" x2="900" y2="320"/><line x1="760" y1="150" x2="600" y2="260"/>
         <line x1="900" y1="320" x2="1100" y2="260"/><line x1="900" y1="320" x2="1040" y2="480"/><line x1="900" y1="320" x2="720" y2="470"/>
@@ -325,7 +369,7 @@ html,body{overflow-x:clip}
       <circle cx="420" cy="160" r="3"/><circle cx="300" cy="330" r="3"/><circle cx="560" cy="620" r="4"/><circle cx="360" cy="560" r="3"/><circle cx="900" cy="660" r="4"/>
       <circle class="hub" cx="760" cy="150" r="7"/><circle class="hub" cx="900" cy="320" r="9" style="animation-delay:-.8s"/><circle class="hub" cx="720" cy="470" r="7" style="animation-delay:-1.6s"/>
     </svg>
-    <div class="ks-wrap ks-hero__grid">
+    <div class="ks-wrap ks-hero__grid" data-heroout>
       <div>
         <img class="ks-logo ks-in" src="../images/smitty-logo.png" alt="Smitty Wealth Enterprises" width="92" height="103" onerror="this.remove()">
         <div class="ks-pre ks-in"><span class="dot" aria-hidden="true"></span><span>Free live training · Steal the webinar and challenge launch strategy's that makes our clients an extra $50K-$200K/mth consistently w/ AI</span></div>
@@ -363,22 +407,28 @@ html,body{overflow-x:clip}
   <section class="ks-sec ks-white">
     <span class="ks-dots" aria-hidden="true"></span>
     <div class="ks-wrap ks-prob">
-      <figure class="ks-photo" data-r>
+      <figure class="ks-photo" data-fx="left" data-r>
         <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22800%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2257%22%20fill%3D%22%23555%22%3EKenny%20photo%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Kenny Smith" loading="lazy">
         <figcaption class="ks-photo__tag"><b>Kenny Smith</b>Your host</figcaption>
       </figure>
       <div class="ks-lines">
         <span class="ks-label" data-r style="margin-bottom:18px">The real problem</span>
-        <p data-r>You've proven the business works. That's not the question anymore.</p>
-        <p data-r style="--d:.08s">The question is why it won't go past where it is.</p>
-        <p data-r style="--d:.12s">And the honest answer is that <strong>you're the system.</strong> Every decision runs through you. Every fire gets put out by you. So the business can only grow as fast as your calendar allows.</p>
-        <p class="big" data-r style="--d:.16s">You don't have a marketing problem. You have a <span class="red">system problem.</span></p>
-        <p data-r style="--d:.2s">In one hour, I'll show you the framework that fixes it.</p>
+        <p data-fx="right" data-r>You've proven the business works. That's not the question anymore.</p>
+        <p data-fx="right" data-r style="--d:.08s">The question is why it won't go past where it is.</p>
+        <p data-fx="right" data-r style="--d:.12s">And the honest answer is that <strong>you're the system.</strong> Every decision runs through you. Every fire gets put out by you. So the business can only grow as fast as your calendar allows.</p>
+        <p class="big" data-fx="right" data-r style="--d:.16s">You don't have a marketing problem. You have a <span class="red">system problem.</span></p>
+        <p data-fx="right" data-r style="--d:.2s">In one hour, I'll show you the framework that fixes it.</p>
         <div data-r style="--d:.24s"><a class="ks-btn" href="#ks-register">Save My Free Seat <span class="arw" aria-hidden="true">→</span></a>
         <p class="ks-micro">Free to attend. No credit card. Replay sent if you can't make it live.</p></div>
       </div>
     </div>
   </section>
+
+  <!-- SCROLL WORD BAND: two rows that slide opposite ways as you scroll -->
+  <div class="ks-band" aria-hidden="true">
+    <div class="ks-band__row" data-slide="-1"><span>System</span><i>★</i><span>Judgment</span><i>★</i><span>Time back</span><i>★</i><span>System</span><i>★</i><span>Judgment</span><i>★</i><span>Time back</span><i>★</i></div>
+    <div class="ks-band__row ks-band__row--o" data-slide="1"><span>Stop being the system</span><i>★</i><span>Build the ecosystem</span><i>★</i><span>Stop being the system</span><i>★</i><span>Build the ecosystem</span><i>★</i></div>
+  </div>
 
   <!-- FASCINATION BULLETS -->
   <section class="ks-sec ks-dark">
@@ -391,13 +441,13 @@ html,body{overflow-x:clip}
         <h2>On this free training, <span class="red">you'll discover…</span></h2>
       </div>
       <ul class="ks-bul">
-        <li data-r><strong>The reason your last program didn't work</strong>and it has nothing to do with the tactics you were taught. (It's the same reason mine didn't work for three years.)</li>
-        <li data-r style="--d:.08s"><strong>Why hiring more people made you more buried, not less</strong>and the order to do it in so that never happens again.</li>
-        <li data-r><strong>The three shifts that separate $40K months from $100K months</strong>none of them are tactics, and most people never get past the first one.</li>
-        <li data-r style="--d:.08s"><strong>What "scaling" actually means</strong>it's not more revenue. It's revenue that doesn't require your presence. Here's the test.</li>
-        <li data-r><strong>The one question to ask before you hire anyone</strong>get this wrong and you'll be managing your own shadow with more payroll.</li>
-        <li data-r style="--d:.08s"><strong>Why the same system works whether you're a coach, a consultant, or a service provider</strong>and why "my industry is different" is the most expensive sentence you'll say this year.</li>
-        <li data-r><strong>The first thing to fix</strong>it's not your ads, your funnel, or your offer. It's the thing that gives you time back first.</li>
+        <li data-fx="rise" data-r><strong>The reason your last program didn't work</strong>and it has nothing to do with the tactics you were taught. (It's the same reason mine didn't work for three years.)</li>
+        <li data-fx="rise" data-r style="--d:.08s"><strong>Why hiring more people made you more buried, not less</strong>and the order to do it in so that never happens again.</li>
+        <li data-fx="rise" data-r><strong>The three shifts that separate $40K months from $100K months</strong>none of them are tactics, and most people never get past the first one.</li>
+        <li data-fx="rise" data-r style="--d:.08s"><strong>What "scaling" actually means</strong>it's not more revenue. It's revenue that doesn't require your presence. Here's the test.</li>
+        <li data-fx="rise" data-r><strong>The one question to ask before you hire anyone</strong>get this wrong and you'll be managing your own shadow with more payroll.</li>
+        <li data-fx="rise" data-r style="--d:.08s"><strong>Why the same system works whether you're a coach, a consultant, or a service provider</strong>and why "my industry is different" is the most expensive sentence you'll say this year.</li>
+        <li data-fx="rise" data-r><strong>The first thing to fix</strong>it's not your ads, your funnel, or your offer. It's the thing that gives you time back first.</li>
       </ul>
       <div class="ks-center" style="margin-top:40px" data-r>
         <a class="ks-btn" href="#ks-register">Yes, Show Me The System <span class="arw" aria-hidden="true">→</span></a>
@@ -414,7 +464,7 @@ html,body{overflow-x:clip}
         <h2>Read this <span class="red">before you register</span></h2>
       </div>
       <div class="ks-fit">
-        <div class="ks-fit__col ks-fit__yes" data-r>
+        <div class="ks-fit__col ks-fit__yes" data-fx="left" data-r>
           <h3>This is for you if:</h3>
           <ul>
             <li><span class="ks-ic ks-ic--yes" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>You're doing <strong>$20K–$80K a month</strong> and you've proven the business works</span></li>
@@ -424,7 +474,7 @@ html,body{overflow-x:clip}
             <li><span class="ks-ic ks-ic--yes" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>You want your evenings back more than you want another tactic</span></li>
           </ul>
         </div>
-        <div class="ks-fit__col ks-fit__no" data-r style="--d:.12s">
+        <div class="ks-fit__col ks-fit__no" data-fx="right" data-r style="--d:.12s">
           <h3>This is NOT for you if:</h3>
           <ul>
             <li><span class="ks-ic ks-ic--no" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></span><span>You don't have a proven offer yet, or you haven't made a sale</span></li>
@@ -438,6 +488,12 @@ html,body{overflow-x:clip}
     </div>
   </section>
 
+  <!-- SCROLL WORD BAND (proof) -->
+  <div class="ks-band" aria-hidden="true">
+    <div class="ks-band__row" data-slide="-1"><span>Real people</span><i>★</i><span>Real numbers</span><i>★</i><span>Real results</span><i>★</i><span>Real people</span><i>★</i><span>Real numbers</span><i>★</i><span>Real results</span><i>★</i></div>
+    <div class="ks-band__row ks-band__row--o" data-slide="1"><span>$100K months</span><i>★</i><span>$100K days</span><i>★</i><span>$100K months</span><i>★</i><span>$100K days</span><i>★</i></div>
+  </div>
+
   <!-- PROOF -->
   <section class="ks-sec ks-dark">
     <span class="ks-glow" style="width:600px;height:600px;left:50%;top:-260px;margin-left:-300px;background:rgba(194,29,43,.25)" aria-hidden="true"></span>
@@ -448,11 +504,11 @@ html,body{overflow-x:clip}
         <h2>What's happened for <span class="red">people in this room</span></h2>
       </div>
       <div class="ks-results">
-        <div class="ks-res" data-r><span class="ks-res__name">Tiffany Dixon</span><span class="ks-res__big">$10K → <em>$200K</em>/month</span><span class="ks-res__note">in one year</span></div>
-        <div class="ks-res" data-r style="--d:.06s"><span class="ks-res__name">Ariel</span><span class="ks-res__big"><em>$350K</em>/month</span><span class="ks-res__note">and a $170K day</span></div>
-        <div class="ks-res" data-r style="--d:.12s"><span class="ks-res__name">Jay</span><span class="ks-res__big"><em>$100K</em> in a day</span><span class="ks-res__note">off one campaign</span></div>
-        <div class="ks-res" data-r style="--d:.18s"><span class="ks-res__name">Rosie</span><span class="ks-res__big">Added <em>$1M</em></span><span class="ks-res__note">to her tax prep business</span></div>
-        <div class="ks-res" data-r style="--d:.24s"><span class="ks-res__name">Adrian</span><span class="ks-res__big"><em>Six figures</em> a month</span></div>
+        <div class="ks-res" data-fx="zoom" data-r><span class="ks-res__name">Tiffany Dixon</span><span class="ks-res__big">$10K → <em>$200K</em>/month</span><span class="ks-res__note">in one year</span></div>
+        <div class="ks-res" data-fx="zoom" data-r style="--d:.06s"><span class="ks-res__name">Ariel</span><span class="ks-res__big"><em>$350K</em>/month</span><span class="ks-res__note">and a $170K day</span></div>
+        <div class="ks-res" data-fx="zoom" data-r style="--d:.12s"><span class="ks-res__name">Jay</span><span class="ks-res__big"><em>$100K</em> in a day</span><span class="ks-res__note">off one campaign</span></div>
+        <div class="ks-res" data-fx="zoom" data-r style="--d:.18s"><span class="ks-res__name">Rosie</span><span class="ks-res__big">Added <em>$1M</em></span><span class="ks-res__note">to her tax prep business</span></div>
+        <div class="ks-res" data-fx="zoom" data-r style="--d:.24s"><span class="ks-res__name">Adrian</span><span class="ks-res__big"><em>Six figures</em> a month</span></div>
       </div>
       <div class="ks-stats" data-r>
         <div class="ks-stat"><b data-to="15" data-suf="+">15+</b><span>millionaire students</span></div>
@@ -462,10 +518,10 @@ html,body{overflow-x:clip}
       </div>
       <h3 class="ks-sub2 ks-center" data-r>Hear it from them</h3>
       <div class="ks-vids">
-        <div class="ks-vid" data-r><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
-        <div class="ks-vid" data-r style="--d:.08s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
-        <div class="ks-vid" data-r style="--d:.16s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
-        <div class="ks-vid" data-r style="--d:.24s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-fx="zoom" data-r><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-fx="zoom" data-r style="--d:.08s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-fx="zoom" data-r style="--d:.16s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-fx="zoom" data-r style="--d:.24s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
       </div>
     </div>
   </section>
@@ -479,9 +535,9 @@ html,body{overflow-x:clip}
         <h2>Straight from <span class="red">the DMs</span></h2>
       </div>
       <div class="ks-shots">
-        <figure class="ks-shot" data-r><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
-        <figure class="ks-shot" data-r style="--d:.08s"><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
-        <figure class="ks-shot" data-r style="--d:.16s"><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221500%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221500%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
+        <figure class="ks-shot" data-fx="tilt" data-r><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
+        <figure class="ks-shot" data-fx="tilt" data-r style="--d:.08s"><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
+        <figure class="ks-shot" data-fx="tilt" data-r style="--d:.16s"><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221500%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221500%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
       </div>
       <h3 class="ks-sub2 ks-center" data-r>Kenny with the Inner Circle</h3>
       <div class="ks-circle">
@@ -564,6 +620,35 @@ html,body{overflow-x:clip}
       el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString('en-US') + suf;
       if (k < 1) requestAnimationFrame(step);
     });
+  }
+
+  // Scroll-linked motion: parallax layers, hero copy drifting away, progress bar, sliding word bands.
+  if (!reduce) {
+    var par = [].slice.call(root.querySelectorAll('[data-par]')), out = root.querySelector('[data-heroout]'),
+        bar = root.querySelector('.ks-progress'), rows = [].slice.call(root.querySelectorAll('[data-slide]')), ticking = false;
+    function frame() {
+      ticking = false;
+      var vh = innerHeight, y = scrollY || pageYOffset, doc = document.documentElement;
+      par.forEach(function (el) {
+        var r = el.parentNode.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        el.style.setProperty('--py', ((r.top + r.height / 2 - vh / 2) * -(+el.dataset.par)).toFixed(1) + 'px');
+      });
+      if (out) {
+        var k = Math.min(Math.max(y / (vh * .9), 0), 1);
+        out.style.setProperty('--out', (y * .18).toFixed(1) + 'px'); out.style.setProperty('--fade', (1 - k * .85).toFixed(3));
+      }
+      if (bar) bar.style.setProperty('--p', Math.min(y / Math.max(doc.scrollHeight - vh, 1), 1).toFixed(4));
+      rows.forEach(function (row) {
+        var r = row.parentNode.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var t = (vh - r.top) / (vh + r.height); // 0 → 1 while the band crosses the screen
+        var span = row.scrollWidth / 2;
+        row.style.setProperty('--sx', (row.dataset.slide === '1' ? -span * (1 - t) * .6 : -span * t * .6).toFixed(1) + 'px');
+      });
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); frame();
   }
   // Sticky phone button: shows once the form card is out of view.
   var form = document.getElementById('ks-register'), sticky = root.querySelector('.ks-sticky');
