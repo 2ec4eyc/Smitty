@@ -14,7 +14,10 @@
 <style>
 .ks{--red:#F0001C;--red2:#C20017;--ink:#0E0E10;--black:#08080A;--card:#141417;--line:#26262B;--muted:#6B6B73;--soft:#B9B9C2;--paper:#FFFFFF;--blush:#FFF4F4;--grey:#F4F4F6;--green:#16A34A;--gold:#F2B937;
   --head:"Poppins","Inter",system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+  font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;
+  width:100vw;max-width:100vw;position:relative;left:50%;margin-left:-50vw}
+/* the block breaks out of GHL's centered container to run edge to edge; clip stops the scrollbar-width overflow */
+html,body{overflow-x:clip}
 .ks *,.ks *::before,.ks *::after{box-sizing:border-box}
 .ks p{margin:0 0 1em}
 .ks img{max-width:100%}
@@ -164,20 +167,21 @@
 .ks-stat b{display:block;font-family:var(--head);font-weight:900;font-size:clamp(30px,4vw,44px);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
 .ks-stat span{display:block;margin-top:6px;font-size:13px;color:#C4C4CC}
 .ks .ks-sub2{font-family:var(--head);font-weight:900;font-size:22px;text-transform:uppercase;margin:56px 0 18px}
-.ks-vids{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.ks-vid{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);aspect-ratio:9/16}
-.ks-vid video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+.ks-vids{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.ks-vid{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);aspect-ratio:16/9;box-shadow:0 24px 50px -28px rgba(240,0,28,.6)}
+.ks-vid video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
 
 /* ---------- Screenshots + inner circle (blush) ---------- */
 .ks-shots{columns:3;column-gap:16px}
 .ks-shot{break-inside:avoid;margin:0 0 16px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 20px 40px -26px rgba(0,0,0,.45);border:1px solid #EFE4E4;transition:transform .25s}
 .ks-shot:hover{transform:translateY(-4px) rotate(-.5deg)}
 .ks-shot img{display:block;width:100%;height:auto}
-.ks-circle{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-top:8px}
-.ks-circle figure{margin:0;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#ddd}
-.ks-circle figure:first-child{grid-row:span 2;aspect-ratio:auto}
-.ks-circle img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
-.ks-circle figure:hover img{transform:scale(1.05)}
+.ks-circle{display:grid;grid-template-columns:repeat(3,minmax(0,280px));justify-content:center;gap:18px;margin-top:8px;align-items:start}
+.ks-circle figure{margin:0;border-radius:16px;overflow:hidden;background:#fff;padding:8px;box-shadow:0 20px 40px -26px rgba(0,0,0,.5);transition:transform .3s}
+.ks-circle figure:nth-child(odd){transform:rotate(-2deg)}
+.ks-circle figure:nth-child(even){transform:rotate(2deg) translateY(14px)}
+.ks-circle figure:hover{transform:rotate(0) translateY(-4px)}
+.ks-circle img{width:100%;height:auto;display:block;border-radius:10px}
 
 /* ---------- FAQ ---------- */
 .ks-faq{display:grid;gap:12px;text-align:left}
@@ -212,7 +216,6 @@
   .ks-hero__grid,.ks-prob{grid-template-columns:1fr;gap:40px}
   .ks-results{grid-template-columns:1fr 1fr}
   .ks-results .ks-res:first-child{grid-column:1/-1}
-  .ks-vids{grid-template-columns:1fr 1fr}
   .ks-shots{columns:2}
 }
 @media (max-width:640px){
@@ -224,8 +227,8 @@
   .ks-stat:nth-child(2){border-right:0}
   .ks-stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .ks-shots{columns:1}
-  .ks-circle{grid-template-columns:1fr 1fr}
-  .ks-circle figure:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
+  .ks-circle{grid-template-columns:repeat(3,1fr);gap:10px}
+  .ks-circle figure{padding:5px}
   .ks-btn{width:100%;padding-left:18px;padding-right:18px}
   .ks-photo{max-width:380px;margin:0 auto 18px}
   .ks-sticky{display:block}
@@ -396,10 +399,10 @@
       </div>
       <h3 class="ks-sub2 ks-center" data-r>Hear it from them</h3>
       <div class="ks-vids">
-        <div class="ks-vid" data-r><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22720%22%20height%3D%221280%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2251%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
-        <div class="ks-vid" data-r style="--d:.08s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22720%22%20height%3D%221280%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2251%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
-        <div class="ks-vid" data-r style="--d:.16s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22720%22%20height%3D%221280%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2251%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
-        <div class="ks-vid" data-r style="--d:.24s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22720%22%20height%3D%221280%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2251%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-r><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-r style="--d:.08s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-r style="--d:.16s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
+        <div class="ks-vid" data-r style="--d:.24s"><video controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221280%22%20height%3D%22720%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%232A2A30%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2291%22%20fill%3D%22%23555%22%3EVideo%20%28stand-in%29%3C/text%3E%3C/svg%3E"></video></div>
       </div>
     </div>
   </section>
@@ -413,15 +416,15 @@
         <h2>Straight from <span class="red">the DMs</span></h2>
       </div>
       <div class="ks-shots">
-        <figure class="ks-shot" data-r><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></figure>
-        <figure class="ks-shot" data-r style="--d:.08s"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></figure>
-        <figure class="ks-shot" data-r style="--d:.16s"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221500%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></figure>
+        <figure class="ks-shot" data-r><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
+        <figure class="ks-shot" data-r style="--d:.08s"><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221000%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
+        <figure class="ks-shot" data-r style="--d:.16s"><a href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221500%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%221500%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2264%22%20fill%3D%22%23555%22%3ETestimonial%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Student testimonial screenshot" loading="lazy"></a></figure>
       </div>
       <h3 class="ks-sub2 ks-center" data-r>Kenny with the Inner Circle</h3>
       <div class="ks-circle">
-        <figure data-r><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221200%22%20height%3D%22900%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2285%22%20fill%3D%22%23555%22%3EInner%20Circle%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Kenny Smith with Inner Circle members" loading="lazy"></figure>
-        <figure data-r style="--d:.08s"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221200%22%20height%3D%22900%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2285%22%20fill%3D%22%23555%22%3EInner%20Circle%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Kenny Smith with Inner Circle members" loading="lazy"></figure>
-        <figure data-r style="--d:.16s"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221200%22%20height%3D%22900%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2285%22%20fill%3D%22%23555%22%3EInner%20Circle%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Kenny Smith with Inner Circle members" loading="lazy"></figure>
+        <figure data-r><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22216%22%20height%3D%22298%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2215%22%20fill%3D%22%23555%22%3EInner%20Circle%201%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Kenny Smith with Inner Circle members" loading="lazy"></figure>
+        <figure data-r style="--d:.08s"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22266%22%20height%3D%22356%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2219%22%20fill%3D%22%23555%22%3EInner%20Circle%202%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Kenny Smith with Inner Circle members" loading="lazy"></figure>
+        <figure data-r style="--d:.16s"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22239%22%20height%3D%22292%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23C9C9CF%22/%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2217%22%20fill%3D%22%23555%22%3EInner%20Circle%203%20%28stand-in%29%3C/text%3E%3C/svg%3E" alt="Kenny Smith with Inner Circle members" loading="lazy"></figure>
       </div>
       <div class="ks-center" style="margin-top:44px" data-r>
         <a class="ks-btn" href="#ks-register">Save My Free Seat <span class="arw" aria-hidden="true">→</span></a>

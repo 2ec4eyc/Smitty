@@ -6,8 +6,8 @@ from pathlib import Path
 from urllib.parse import quote
 root = Path(__file__).resolve().parent.parent
 CDN = "https://assets.cdn.filesafe.space/BU5M3MidcixGHbnmd1on/media/"
-LABELS = {"6ad5013c989628c77a615ead": ("Kenny photo", 800, 1000), "69ca10ccbe0ea3271a9700f9": ("Inner Circle 1", 1200, 900),
-          "69ca10ccbe0ea3c5979700f7": ("Inner Circle 2", 1200, 900), "69ca10afcfb25f92dbd1e048": ("Inner Circle 3", 1200, 900),
+LABELS = {"6ad5013c989628c77a615ead": ("Kenny photo", 800, 1000), "69ca10ccbe0ea3271a9700f9": ("Inner Circle 1", 216, 298),
+          "69ca10ccbe0ea3c5979700f7": ("Inner Circle 2", 266, 356), "69ca10afcfb25f92dbd1e048": ("Inner Circle 3", 239, 292),
           "6aeac231fb31f444f21758bb": ("Testimonial 1", 900, 1300), "6aeac23134f5791473736d8c": ("Testimonial 2", 900, 1000),
           "6aeac231e322309abfaa6955": ("Testimonial 3", 900, 1500)}
 def ph(label, w, h, bg="#C9C9CF"):
@@ -23,7 +23,7 @@ FORM = """<form onsubmit="return false" style="display:grid;gap:12px">
 def fix(html):
     for key, (label, w, h) in LABELS.items():
         html = re.sub(re.escape(CDN + key) + r"\.\w+", ph(label, w, h), html)
-    html = re.sub(r'<video ([^>]*)src="[^"]+"', lambda m: f'<video {m.group(1)}poster="{ph("Video", 720, 1280, "#2A2A30")}"', html)
+    html = re.sub(r'<video ([^>]*)src="[^"]+"', lambda m: f'<video {m.group(1)}poster="{ph("Video", 1280, 720, "#2A2A30")}"', html)
     return html.replace("GHL_FORM_EMBED", FORM).replace("CALENDAR_LINK", "#")
 for name in ["landing", "thank-you"]:
     body = fix((root / f"{name}.html").read_text())

@@ -11,7 +11,7 @@ Each page is ONE file you paste into ONE GoHighLevel **Custom JS/HTML** element.
 Preview with stand-in boxes for the photos and videos: `preview/landing.html`, `preview/thank-you.html`, or the `preview/shot-*.png` screenshots.
 
 ## Setup in GHL
-1. Add a section, set it to **full width** with **padding 0** and no background.
+1. Add a section with **padding 0** and no background. (Full width is best, but the block now stretches edge to edge on its own even inside GHL's centered container.)
 2. Add a **Custom JS/HTML** element to it and paste the whole file.
 3. Replace the placeholders first:
    - `landing.html`: `GHL_FORM_EMBED` → your form's embed code (Sites → Forms → your form → Integrate → Embed). Set the form's **On submit** to go to the thank-you page.
@@ -29,10 +29,12 @@ Red top bar · hero (pre-headline, H1 "Present But Not Present", subheadline, tr
 | Where | Asset |
 |---|---|
 | Problem section photo | Kenny `6ad5013c…png` |
-| Video testimonials | the 4 `.mp4` files |
+| Video testimonials | the 4 `.mp4` files (1920×1080, shown 2×2 at 16:9) |
 | DM screenshots | the 3 testimonial `.png` files |
-| Inner Circle gallery | the 3 Inner Circle `.png` files |
+| Inner Circle gallery | the 3 Inner Circle `.png` files (small portraits, shown uncropped as framed cards) |
 
 The other 6 Kenny photos aren't used yet; swap any `src` to use a different one.
 
 `python3 src/build-preview.py` rebuilds the preview.
+
+`preview/shot-live-landing-*.png` show the updated block running inside the live GHL page with the real photos (videos show blank only because the headless test browser can't play H.264).
