@@ -88,7 +88,7 @@ html,body{overflow-x:clip}
 .ks-tick svg{width:11px;height:11px}
 
 /* Form card */
-.ks-form{position:relative;color:var(--ink);border-radius:20px;padding:26px 24px 22px;scroll-margin-top:20px;border:3px solid transparent;
+.ks-form{position:relative;color:var(--ink);border-radius:20px;padding:16px 16px 12px;scroll-margin-top:20px;border:3px solid transparent;
   background:linear-gradient(#fff,#fff) padding-box,conic-gradient(from var(--ang,0deg),var(--red),#9FB0CC,var(--gold),var(--red) 60%,var(--red2),var(--red)) border-box;
   box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);animation:ks-card 1s cubic-bezier(.2,.9,.25,1) .35s both,ks-spin 5s linear infinite}
 
@@ -96,12 +96,13 @@ html,body{overflow-x:clip}
 @keyframes ks-spin{to{--ang:360deg}}
 @keyframes ks-card{from{opacity:0;transform:perspective(900px) rotateY(-14deg) translateY(30px)}}
 .ks-form__tag{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--blush);color:var(--red2);font-family:var(--head);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.ks-form h3{font-size:24px;margin:10px 0 4px;text-transform:uppercase;font-weight:900}
+.ks-form__head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 4px 10px;border-bottom:1px solid #E3E7EE;margin-bottom:6px}
+.ks-form h3{font-size:20px;margin:0;text-transform:uppercase;font-weight:900}
 .ks-form__sub{font-size:15px;color:var(--muted);margin-bottom:14px!important}
 .ks-embed{min-height:300px}
 .ks-embed iframe{display:block;width:100%;border:0;min-height:300px}
 .ks-embed__ph{display:grid;place-items:center;text-align:center;min-height:300px;border:2px dashed #CDD3DD;border-radius:12px;background:#F6F7F9;color:var(--red2);font-weight:700;font-size:14px;padding:20px}
-.ks-form .ks-micro{text-align:center;margin-top:10px!important}
+.ks-form .ks-micro{text-align:center;margin-top:4px!important;font-size:13px}
 
 /* Ticker */
 .ks-ticker{position:relative;z-index:2;background:var(--red);color:#fff;padding:14px 0;overflow:hidden;transform:rotate(-1.4deg) scale(1.03);margin-top:-22px}
@@ -371,9 +372,7 @@ html,body{overflow-x:clip}
         </ul>
       </div>
       <div class="ks-form" id="ks-register">
-        <span class="ks-form__tag">Free · Live · This week</span>
-        <h3>Save your free seat</h3>
-        <p class="ks-form__sub">About an hour. I teach for the first forty minutes, then I answer questions.</p>
+        <div class="ks-form__head"><h3>Save your free seat</h3><span class="ks-form__tag">Free · Live</span></div>
         <div class="ks-embed">
           <iframe
             src="https://api.leadconnectorhq.com/widget/form/O1r9P5gEdhEQzvUvfPgw"
