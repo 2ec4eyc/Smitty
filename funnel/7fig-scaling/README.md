@@ -15,7 +15,6 @@ Preview with stand-in boxes for the photos and videos: `preview/landing.html`, `
 2. Add a **Custom JS/HTML** element to it and paste the whole file.
 3. Replace the placeholders first:
    - `landing.html`: `GHL_FORM_EMBED` → your form's embed code (Sites → Forms → your form → Integrate → Embed). Set the form's **On submit** to go to the thank-you page.
-   - Both pages: `SMITTY_LOGO_URL` → upload `images/smitty-logo.png` (transparent background) to GHL Media and paste its URL. If you leave it, the logo just doesn't show.
    - `thank-you.html`: `CALENDAR_LINK` → your add-to-calendar link, `VSL_VIDEO_URL` → the 90-second video's URL.
 
 ## What's on the landing page

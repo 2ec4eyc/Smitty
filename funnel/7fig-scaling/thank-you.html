@@ -4,7 +4,6 @@
      Before pasting, replace the two placeholders:
        CALENDAR_LINK  →  the link people use to add the session to their calendar
        VSL_VIDEO_URL  →  the URL of the 90-second video (an .mp4 from GHL Media)
-       SMITTY_LOGO_URL →  the GHL Media URL of images/smitty-logo.png (hides itself if left as is)
      =================================================================================== -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap">
 <style>
@@ -136,9 +135,6 @@ html,body{overflow-x:clip}
 .ks-top{background:var(--navy2);border-bottom:4px solid var(--red);box-shadow:inset 0 -6px 0 -4px #D9DCE1}
 .ks-top .dot{background:#EF4B55}
 
-/* Logo */
-.ks-logo{display:block;width:92px;height:auto;margin:0 0 18px;filter:drop-shadow(0 12px 22px rgba(0,0,0,.55))}
-.ks-foot .ks-logo{width:64px;margin:0 auto 12px}
 
 /* Form card: silver bevel frame with a navy and crimson ring (replaces the spinning glow) */
 .ks-form{border:4px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#F5F6F8,#AEB6C2 30%,#FFFFFF 50%,#9AA3B0 70%,#E8EAEE) border-box;
@@ -171,7 +167,6 @@ html,body{overflow-x:clip}
   <section class="ks-sec ks-dark ks-hero">
     <span class="ks-grid" aria-hidden="true"></span>
     <div class="ks-wrap ks-center">
-      <img class="ks-logo ks-in" src="SMITTY_LOGO_URL" alt="Smitty Wealth Enterprises" width="92" height="103" style="margin:0 auto 22px" onerror="this.remove()">
       <div class="ks-burst" aria-hidden="true">
         <span class="ks-ring"></span><span class="ks-ring ks-ring--2"></span>
         <span class="ks-bits"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
@@ -228,7 +223,7 @@ html,body{overflow-x:clip}
     </div>
   </section>
 
-  <footer class="ks-foot"><img class="ks-logo" src="SMITTY_LOGO_URL" alt="Smitty Wealth Enterprises" width="64" height="72" loading="lazy" onerror="this.remove()"><p>© Smitty Wealth Enterprises · The 7-Figure Scaling Ecosystem Framework Using AI</p></footer>
+  <footer class="ks-foot"><p>© Smitty Wealth Enterprises · The 7-Figure Scaling Ecosystem Framework Using AI</p></footer>
 </div>
 
 <script>
