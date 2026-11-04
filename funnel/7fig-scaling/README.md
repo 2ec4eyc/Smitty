@@ -60,3 +60,7 @@ The hero background is already linked to your GHL Media copy (https://assets.cdn
 
 ## Form card
 The hero card first shows Kenny's photo (`6a6bc2ba…png`, the blue suit "SMITTY the goat" shot) with a **Save My Free Seat** button. Clicking it slides the GHL form up over the photo (the photo blurs behind it); the × closes it again. Every other "Save my seat" button on the page (top bar, section buttons, the sticky phone button) scrolls back to the card and opens the form.
+
+## Thank-you page (same design system)
+`thank-you.html` now carries the registration page's full stylesheet and motion script, so both pages share the skyline hero, network lines, ticker, word bands, section styles, progress bar, reveal effects and footer. Its hero puts the check-mark burst and "You're In. Your Seat Is Saved." on the left and the 90-second video in a silver-framed card on the right. Below: the 3 next steps, a word band, why show up live, and a closing calendar CTA ("Show up live. Bring a pen. I'll see you there." from the VSL script).
+Placeholders: `CALENDAR_LINK` (3 buttons) and `VSL_VIDEO_URL`. The hero background is already linked.
