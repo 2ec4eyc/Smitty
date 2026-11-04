@@ -1,8 +1,7 @@
 <!-- ===================================================================================
      THE 7-FIGURE SCALING ECOSYSTEM FRAMEWORK USING AI · OPT-IN PAGE (one paste)
      Paste this whole file into ONE GHL "Custom JS/HTML" element, in a FULL-WIDTH section with padding 0.
-     Before pasting, replace the placeholders:
-       GHL_FORM_EMBED  →  your GHL form's embed code (Sites → Forms → your form → Integrate → Embed → copy)
+     Ready to paste: the "Webinar | Inner Circle" form is embedded inline. No placeholders left.
      Everything else (fonts, styles, backgrounds, animation) is inside this file. No images to upload.
      =================================================================================== -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap">
@@ -100,7 +99,7 @@ html,body{overflow-x:clip}
 .ks-form h3{font-size:24px;margin:10px 0 4px;text-transform:uppercase;font-weight:900}
 .ks-form__sub{font-size:15px;color:var(--muted);margin-bottom:14px!important}
 .ks-embed{min-height:300px}
-.ks-embed iframe{width:100%;border:0;min-height:300px}
+.ks-embed iframe{display:block;width:100%;border:0;min-height:300px}
 .ks-embed__ph{display:grid;place-items:center;text-align:center;min-height:300px;border:2px dashed #CDD3DD;border-radius:12px;background:#F6F7F9;color:var(--red2);font-weight:700;font-size:14px;padding:20px}
 .ks-form .ks-micro{text-align:center;margin-top:10px!important}
 
@@ -376,7 +375,25 @@ html,body{overflow-x:clip}
         <h3>Save your free seat</h3>
         <p class="ks-form__sub">About an hour. I teach for the first forty minutes, then I answer questions.</p>
         <div class="ks-embed">
-          GHL_FORM_EMBED
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/O1r9P5gEdhEQzvUvfPgw"
+            style="width:100%;height:718px;border:none;border-radius:8px"
+            id="inline-O1r9P5gEdhEQzvUvfPgw"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Webinar | Inner Circle"
+            data-height="718"
+            data-layout-iframe-id="inline-O1r9P5gEdhEQzvUvfPgw"
+            data-form-id="O1r9P5gEdhEQzvUvfPgw"
+            data-cookie-consent="true"
+            data-cookie-consent-provider="auto"
+            title="Webinar | Inner Circle"></iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
         </div>
         <p class="ks-micro">Free to attend. No credit card. Replay sent if you can't make it live.</p>
       </div>

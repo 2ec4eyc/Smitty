@@ -14,7 +14,7 @@ Preview with stand-in boxes for the photos and videos: `preview/landing.html`, `
 1. Add a section with **padding 0** and no background. (Full width is best, but the block now stretches edge to edge on its own even inside GHL's centered container.)
 2. Add a **Custom JS/HTML** element to it and paste the whole file.
 3. Replace the placeholders first:
-   - `landing.html`: `GHL_FORM_EMBED` → your form's embed code (Sites → Forms → your form → Integrate → Embed). Set the form's **On submit** to go to the thank-you page.
+   - `landing.html`: nothing to replace. The "Webinar | Inner Circle" form (O1r9P5gEdhEQzvUvfPgw) is embedded inline. In GHL, set that form's **On submit** to go to the thank-you page.
    - `thank-you.html`: `CALENDAR_LINK` → your add-to-calendar link, `VSL_VIDEO_URL` → the 90-second video's URL.
 
 ## What's on the landing page

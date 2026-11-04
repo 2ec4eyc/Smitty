@@ -24,6 +24,7 @@ def fix(html):
     for key, (label, w, h) in LABELS.items():
         html = re.sub(re.escape(CDN + key) + r"\.\w+", ph(label, w, h), html)
     html = re.sub(r'<video ([^>]*)src="[^"]+"', lambda m: f'<video {m.group(1)}poster="{ph("Video", 1280, 720, "#2A2A30")}"', html)
+    html = __import__('re').sub(r'<iframe\s+src="https://api.leadconnectorhq.com.*?</script>', FORM, html, flags=__import__('re').S)
     return html.replace("GHL_FORM_EMBED", FORM).replace("CALENDAR_LINK", "#").replace("SMITTY_LOGO_URL", "../images/smitty-logo.png").replace("HERO_BG_URL", "../images/hero-bg.jpg")
 for name in ["landing", "thank-you"]:
     body = fix((root / f"{name}.html").read_text())
