@@ -15,7 +15,6 @@ Preview with stand-in boxes for the photos and videos: `preview/landing.html`, `
 2. Add a **Custom JS/HTML** element to it and paste the whole file.
 3. Replace the placeholders first:
    - `landing.html`: `GHL_FORM_EMBED` → your form's embed code (Sites → Forms → your form → Integrate → Embed). Set the form's **On submit** to go to the thank-you page.
-   - `landing.html`: `HERO_BG_URL` → upload `images/hero-bg.jpg` (1920×1080 Chicago-night skyline, navy and crimson) to GHL Media and paste its URL. Left as is, the hero falls back to the plain navy gradient.
    - Both pages: `SMITTY_LOGO_URL` → upload `images/smitty-logo.png` (transparent background) to GHL Media and paste its URL. If you leave it, the logo just doesn't show.
    - `thank-you.html`: `CALENDAR_LINK` → your add-to-calendar link, `VSL_VIDEO_URL` → the 90-second video's URL.
 
@@ -58,4 +57,4 @@ Type: **Alfa Slab One** (headlines, buttons, big numbers), **Poppins** (small la
 - Sections enter in different ways: the photo and "for you" column from the left, the copy and "not for you" column from the right, results and videos zoom in, DM screenshots tip up into place, bullets rise.
 - All of it switches off for visitors with reduced motion on, and nothing stays hidden if the script doesn't run.
 
-`src/hero-bg.html` draws the hero background and `src/render-hero-bg.sh` renders it to `images/hero-bg.jpg`.
+The hero background is already linked to your GHL Media copy (https://assets.cdn.filesafe.space/BU5M3MidcixGHbnmd1on/media/6aeadc8534f57914737635b5.jpg). `src/hero-bg.html` draws it and `src/render-hero-bg.sh` renders it to `images/hero-bg.jpg`.
