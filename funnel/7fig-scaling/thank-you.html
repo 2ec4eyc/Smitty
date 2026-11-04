@@ -1,0 +1,180 @@
+<!-- ===================================================================================
+     THE 7-FIGURE SCALING ECOSYSTEM FRAMEWORK USING AI · THANK-YOU PAGE (one paste)
+     Paste this whole file into ONE GHL "Custom JS/HTML" element, in a FULL-WIDTH section with padding 0.
+     Before pasting, replace the two placeholders:
+       CALENDAR_LINK  →  the link people use to add the session to their calendar
+       VSL_VIDEO_URL  →  the URL of the 90-second video (an .mp4 from GHL Media)
+     =================================================================================== -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap">
+<style>
+.ks{--red:#F0001C;--red2:#C20017;--ink:#0E0E10;--black:#08080A;--card:#141417;--line:#26262B;--muted:#6B6B73;--soft:#B9B9C2;--blush:#FFF4F4;--green:#16A34A;--gold:#F2B937;
+  --head:"Poppins","Inter",system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+.ks *,.ks *::before,.ks *::after{box-sizing:border-box}
+.ks p{margin:0 0 1em}
+.ks h1,.ks h2,.ks h3{font-family:var(--head);margin:0;letter-spacing:-.015em}
+.ks h1{font-size:clamp(36px,6vw,64px);font-weight:900;line-height:1.04;text-transform:uppercase}
+.ks h2{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.1;text-transform:uppercase}
+.ks h3{font-size:20px;font-weight:800;line-height:1.3}
+.ks .red{color:var(--red)}
+.ks-dark .red{color:#FF2B45}
+.ks-sec{position:relative;padding:88px 20px;overflow:hidden;overflow:clip}
+.ks-wrap{position:relative;z-index:1;max-width:900px;margin:0 auto}
+.ks-center{text-align:center}
+.ks-dark{background:var(--black);color:#fff}
+.ks-label{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--red);color:#fff;font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ks-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 28px;border-radius:12px;border:0;cursor:pointer;
+  background:var(--red);color:#fff!important;text-decoration:none!important;font-family:var(--head);font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;
+  box-shadow:0 14px 36px -10px rgba(240,0,28,.7);transition:transform .2s,background .2s}
+.ks-btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:ks-shine 3.6s ease-in-out infinite}
+.ks-btn:hover{background:var(--red2);transform:translateY(-2px)}
+.ks-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@keyframes ks-shine{0%,55%{left:-60%}85%,100%{left:130%}}
+.ks-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.ks-glow{position:absolute;z-index:0;border-radius:50%;filter:blur(90px);pointer-events:none}
+
+/* Registered strip */
+.ks-strip{background:#EAF7EE;color:#14532D;border-bottom:1px solid #CDEBD6;padding:10px 16px;text-align:center;font-size:14px;animation:ks-drop .6s cubic-bezier(.2,.8,.2,1) both}
+.ks-strip strong{font-weight:700}
+@keyframes ks-drop{from{transform:translateY(-100%);opacity:0}}
+
+/* Hero: check pop + rings + burst, headline rises */
+.ks-hero{background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(240,0,28,.3),transparent 65%),var(--black);padding-top:64px;padding-bottom:72px}
+.ks-burst{position:relative;width:96px;height:96px;margin:0 auto 22px}
+.ks-ok{position:relative;z-index:2;width:96px;height:96px;border-radius:50%;background:var(--green);display:grid;place-items:center;box-shadow:0 18px 40px -12px rgba(22,163,74,.7);animation:ks-pop .6s cubic-bezier(.3,1.6,.5,1) .15s both}
+.ks-ok svg{width:48px;height:48px;fill:none;stroke:#fff;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}
+.ks-ok path{stroke-dasharray:40;stroke-dashoffset:40;animation:ks-draw .5s ease-out .6s forwards}
+.ks-ring{position:absolute;inset:0;border-radius:50%;border:2px solid var(--green);opacity:0;animation:ks-ring 1.6s ease-out .5s 2}
+.ks-ring--2{border-color:var(--red);animation-delay:.8s}
+.ks-bits{position:absolute;left:50%;top:50%;z-index:1}
+.ks-bits i{position:absolute;left:-4px;top:-7px;width:8px;height:14px;border-radius:2px;opacity:0;background:var(--c,var(--red));transform:rotate(var(--a));animation:ks-bit 1s cubic-bezier(.1,.7,.3,1) .6s both}
+.ks-bits i:nth-child(1){--a:0deg}.ks-bits i:nth-child(2){--a:30deg;--c:var(--gold)}.ks-bits i:nth-child(3){--a:60deg;--c:#fff}.ks-bits i:nth-child(4){--a:90deg}
+.ks-bits i:nth-child(5){--a:120deg;--c:var(--gold)}.ks-bits i:nth-child(6){--a:150deg;--c:var(--green)}.ks-bits i:nth-child(7){--a:180deg}.ks-bits i:nth-child(8){--a:210deg;--c:var(--gold)}
+.ks-bits i:nth-child(9){--a:240deg;--c:#fff}.ks-bits i:nth-child(10){--a:270deg}.ks-bits i:nth-child(11){--a:300deg;--c:var(--gold)}.ks-bits i:nth-child(12){--a:330deg;--c:var(--green)}
+@keyframes ks-pop{from{transform:scale(.3);opacity:0}}
+@keyframes ks-draw{to{stroke-dashoffset:0}}
+@keyframes ks-ring{0%{transform:scale(.9);opacity:.7}100%{transform:scale(2.4);opacity:0}}
+@keyframes ks-bit{0%{opacity:1;transform:rotate(var(--a)) translateY(0) scale(.6)}70%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateY(-100px) rotate(200deg)}}
+.ks-in{animation:ks-rise .8s cubic-bezier(.2,.8,.2,1) var(--d,0s) both}
+@keyframes ks-rise{from{opacity:0;transform:translateY(22px)}}
+.ks-hero h1{margin:16px 0 14px}
+.ks-hero .lead{font-size:clamp(18px,2.4vw,22px);font-style:italic;color:#D9D9E0;max-width:620px;margin:0 auto!important}
+
+/* Next steps */
+.ks-steps{background:#FFF4F4}
+.ks-steps__list{display:grid;gap:18px;text-align:left;counter-reset:s}
+.ks-step{display:grid;grid-template-columns:64px 1fr;gap:20px;background:#fff;border:1px solid #ECE4E4;border-radius:18px;padding:26px 26px 24px;box-shadow:0 18px 40px -28px rgba(240,0,28,.55)}
+.ks-step__n{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:var(--red);color:#fff;font-family:var(--head);font-weight:900;font-size:28px;box-shadow:0 12px 26px -10px rgba(240,0,28,.7)}
+.ks-step h3{font-size:22px;text-transform:uppercase;font-weight:900;margin:4px 0 8px}
+.ks-step p{margin:0 0 .6em;color:#3A3A42}
+.ks-step--dark{background:var(--black);border-color:var(--black);color:#fff}
+.ks-step--dark p{color:#C9C9D2}
+.ks-video{margin-top:14px;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.ks-video video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+
+/* Show-up boosters */
+.ks-why{list-style:none;margin:28px auto 0;padding:0;display:grid;gap:14px;max-width:720px;text-align:left}
+.ks-why li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:center;padding:18px 20px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-size:17px;color:#E6E6EC}
+.ks-why__ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(240,0,28,.16)}
+.ks-why__ic svg{width:22px;height:22px;stroke:#FF2B45}
+
+.ks-foot{background:#050506;color:#8C8C96;padding:28px 20px;text-align:center;font-size:13px;border-top:1px solid #1A1A1E}
+.ks-foot p{margin:0!important}
+
+.ks [data-r][data-r="armed"]{opacity:0;transform:translateY(26px);transition:opacity .7s ease var(--d,0s),transform .7s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.ks [data-r][data-r="armed"].in{opacity:1;transform:none}
+
+@media (max-width:640px){
+  .ks{font-size:16px}
+  .ks-sec{padding:64px 16px}
+  .ks-step{grid-template-columns:1fr;gap:12px;padding:22px 18px}
+  .ks-step__n{width:52px;height:52px;font-size:22px}
+  .ks-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .ks *,.ks *::before,.ks *::after{animation:none!important;transition:none!important}
+  .ks-ok path{stroke-dashoffset:0}
+  .ks-ring,.ks-bits{display:none}
+  .ks [data-r][data-r="armed"]{opacity:1;transform:none}
+}
+</style>
+
+<div class="ks">
+  <div class="ks-strip"><strong>You're registered.</strong> Check your email for the details.</div>
+
+  <!-- HERO -->
+  <section class="ks-sec ks-dark ks-hero">
+    <span class="ks-grid" aria-hidden="true"></span>
+    <div class="ks-wrap ks-center">
+      <div class="ks-burst" aria-hidden="true">
+        <span class="ks-ring"></span><span class="ks-ring ks-ring--2"></span>
+        <span class="ks-bits"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <div class="ks-ok"><svg viewBox="0 0 48 48"><path d="M12 25l8 8 16-17"/></svg></div>
+      </div>
+      <span class="ks-label ks-in" style="--d:.5s">The 7-Figure Scaling Ecosystem Framework Using AI</span>
+      <h1 class="ks-in" style="--d:.7s">You're In. <span class="red">Your Seat Is Saved.</span></h1>
+      <p class="lead ks-in" style="--d:.9s">Here's exactly what happens next — and what to do before we start.</p>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="ks-sec ks-steps">
+    <div class="ks-wrap">
+      <div class="ks-steps__list">
+        <div class="ks-step" data-r>
+          <span class="ks-step__n">1</span>
+          <div>
+            <h3>Put it in your calendar.</h3>
+            <p>The session is this week. Add it now — the people who add it show up.</p>
+            <a class="ks-btn" href="CALENDAR_LINK" target="_blank" rel="noopener">Add It To My Calendar <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="ks-step ks-step--dark" data-r>
+          <span class="ks-step__n">2</span>
+          <div>
+            <h3>Watch the 90-second video below.</h3>
+            <p>It tells you what this training is, what it isn't, and what to bring.</p>
+            <div class="ks-video"><video controls playsinline preload="metadata" src="VSL_VIDEO_URL#t=0.5"></video></div>
+          </div>
+        </div>
+        <div class="ks-step" data-r>
+          <span class="ks-step__n">3</span>
+          <div>
+            <h3>Bring one thing.</h3>
+            <p>The thing you're actually stuck on. The hire you're not sure about. The month that swung. The launch that flopped. Write it down before we start.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOW-UP BOOSTERS -->
+  <section class="ks-sec ks-dark">
+    <span class="ks-glow" style="width:560px;height:560px;left:50%;top:-240px;margin-left:-280px;background:rgba(240,0,28,.26)" aria-hidden="true"></span>
+    <span class="ks-grid" aria-hidden="true"></span>
+    <div class="ks-wrap ks-center">
+      <span class="ks-label" data-r>Show up live</span>
+      <h2 style="margin-top:16px" data-r>Why show up live <span class="red">instead of watching the replay:</span></h2>
+      <ul class="ks-why">
+        <li data-r><span class="ks-why__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span>I answer questions live. The replay doesn't.</span></li>
+        <li data-r style="--d:.1s"><span class="ks-why__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span>The people who show up live are the ones who implement. That's not a coincidence.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="ks-foot"><p>© Kenny Smith · The 7-Figure Scaling Ecosystem Framework Using AI</p></footer>
+</div>
+
+<script>
+(function () {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); e.target.classList.add('in'); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.ks [data-r]').forEach(function (el) {
+    if (el.getBoundingClientRect().top < innerHeight) return;
+    el.setAttribute('data-r', 'armed'); io.observe(el);
+  });
+})();
+</script>
